@@ -35,12 +35,20 @@
         android:id="@+id/genreFragment"
         android:name="com.example.movieapp.start.GenreFragment"
         android:label="fragment_genre"
-        tools:layout="@layout/fragment_genre" />
+        tools:layout="@layout/fragment_genre" >
+        <action
+            android:id="@+id/action_genreFragment_to_filterScreenFragment"
+            app:destination="@id/filterScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/directorFragment"
         android:name="com.example.movieapp.start.DirectorFragment"
         android:label="fragment_director"
-        tools:layout="@layout/fragment_director" />
+        tools:layout="@layout/fragment_director" >
+        <action
+            android:id="@+id/action_directorFragment_to_filterScreenFragment"
+            app:destination="@id/filterScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shareFragment"
         android:name="com.example.movieapp.start.ShareFragment"
