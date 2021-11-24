@@ -23,18 +23,17 @@ class ShareFragment : Fragment() {
     ): View? {
         _binding = FragmentShareBinding.inflate(inflater, container, false)
         // TODO: 24.11.2021 generate a database id and pass it to the intent
-        //val databaseId = todo
+        val databaseId = "" //todo
         val startSwipeButton= binding.startSwiping
         val shareButton = binding.shareLink
         startSwipeButton.setOnClickListener{
-            val swipeIntent = Intents("todo","admin",this.context)
-            // TODO: 24.11.2021 the databaseID has to be passed here somehow
+            val swipeIntent = Intents(databaseId,"admin",this.context)
             swipeIntent.intentToSwipe()
         }
         shareButton.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.setType("text/plain")
-            intent.putExtra(Intent.EXTRA_TEXT,"Hi there, let's watch a movie together: https://www.meineurl.com/path?key=<insert databaseID>")//<- todo
+            intent.putExtra(Intent.EXTRA_TEXT,"Hi there, let's watch a movie together: https://www.meineurl.com/path?key="+databaseId)
             try {
                 startActivity(intent)
             }catch (e: ActivityNotFoundException){
