@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentDirectorBinding
-import com.example.movieapp.databinding.FragmentGenreBinding
 
 class DirectorFragment : Fragment() {
     private var _binding: FragmentDirectorBinding? = null
@@ -16,11 +15,10 @@ class DirectorFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDirectorBinding.inflate(inflater, container, false)
         val continueButton = binding.directorContinue
         continueButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_directorFragment_to_filterScreenFragment))
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 }

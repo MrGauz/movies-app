@@ -7,17 +7,19 @@ import com.example.movieapp.swipe.SwipeActivity
 
 class Intents {
     private val databaseID: String
-    private val userStatus : String
-    private val context : Context?
-    constructor(databaseID : String, userStatus : String, context: Context?){
+    private val userStatus: String
+    private val context: Context?
+
+    constructor(databaseId: String, userStatus: String, context: Context?) {
         this.userStatus = userStatus
-        this.databaseID = databaseID
+        this.databaseID = databaseId
         this.context = context
     }
-    fun intentToSwipe(){
+
+    fun intentToSwipe() {
         val intent = Intent(this.context, SwipeActivity::class.java);
         intent.putExtra("UserStatus", userStatus)
         intent.putExtra("DatabaseID", databaseID)
-        this.context?.let { startActivity(it,intent,null) }
+        this.context?.let { startActivity(it, intent, null) }
     }
 }

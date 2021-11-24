@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
-import com.example.movieapp.databinding.FragmentStartScreenBinding
 
 class FilterScreenFragment : Fragment() {
     private var _binding: FragmentFilterScreenBinding? = null
@@ -16,7 +15,7 @@ class FilterScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFilterScreenBinding.inflate(inflater, container, false)
         val genreButton = binding.genreButton
         val directorButton = binding.directorButton
