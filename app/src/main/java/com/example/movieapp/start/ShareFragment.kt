@@ -24,13 +24,13 @@ class ShareFragment : Fragment() {
         val startSwipeButton= binding.startSwiping
         val shareButton = binding.shareLink
         startSwipeButton.setOnClickListener{
-            val swipeIntent = Intents("todo","user",this.context)
+            val swipeIntent = Intents("todo","admin",this.context)
             // TODO: 24.11.2021 the database ID has to be passed here somehow
             swipeIntent.intentToSwipe()
         }
         shareButton.setOnClickListener{
             // TODO: 24.11.2021 make intent to share deep link to swipe activity
-            Toast.makeText(this.context, "this function hasnt been implemented yet", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "this function hasn't been implemented yet", Toast.LENGTH_SHORT).show()
         }
         val root: View = binding.root
         return root

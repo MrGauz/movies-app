@@ -15,6 +15,17 @@
             android:exported="true"
             android:label="@string/title_activity_swipe"
             android:theme="@style/Theme.MovieApp.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <data
+                    android:host="www.meineurl.com"
+                    android:pathPrefix="/path"
+                    android:scheme="https" />
+
+            </intent-filter>
         </activity>
         <activity
             android:name=".start.MainActivity"
