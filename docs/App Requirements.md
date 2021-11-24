@@ -39,7 +39,7 @@ Submit button either creates a session and opens the «share» screen or updates
 When this window is opened during swiping it also has a button to stop the session which navigates all users to the «start» screen. Session is stopped automatically after 18 hours.
 
 ## «Share» screen
-This screen’s main purpose is to share created session with others. It shows a copiable session ID, a QR code with an embedded join link and a share button to share the join link. If a user who opens the link does not have the app installed, the link should lead to app installation. Otherwise new user joins session. There is a button at the bottom of the screen to start swiping which leads to the «swipe» screen.
+This screen’s main purpose is to share created session with others. It shows a copyable session ID, a QR code with an embedded join link and a share button to share the join link. If a user who opens the link does not have the app installed, the link should lead to app installation. Otherwise new user joins session. There is a button at the bottom of the screen to start swiping which leads to the «swipe» screen.
 
 ## «Join» screen
 The screen contains an input field for the session ID with a submit button and a button to scan a QR code. After submit button has been pressed, QR code scanned, or a join link was opened outside the app, new user is redirected to the «swipe» screen.
