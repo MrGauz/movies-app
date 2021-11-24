@@ -2,4 +2,53 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph" />
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startScreenFragment">
+    <fragment
+        android:id="@+id/startScreenFragment"
+        android:name="com.example.movieapp.start.StartScreenFragment"
+        android:label="fragment_start_screen"
+        tools:layout="@layout/fragment_start_screen" >
+        <action
+            android:id="@+id/action_startScreenFragment_to_filterScreenFragment"
+            app:destination="@id/filterScreenFragment" />
+        <action
+            android:id="@+id/action_startScreenFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterScreenFragment"
+        android:name="com.example.movieapp.start.FilterScreenFragment"
+        android:label="fragment_filter_screen"
+        tools:layout="@layout/fragment_filter_screen" >
+        <action
+            android:id="@+id/action_filterScreenFragment_to_genreFragment"
+            app:destination="@id/genreFragment" />
+        <action
+            android:id="@+id/action_filterScreenFragment_to_directorFragment"
+            app:destination="@id/directorFragment" />
+        <action
+            android:id="@+id/action_filterScreenFragment_to_shareFragment"
+            app:destination="@id/shareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="com.example.movieapp.start.GenreFragment"
+        android:label="fragment_genre"
+        tools:layout="@layout/fragment_genre" />
+    <fragment
+        android:id="@+id/directorFragment"
+        android:name="com.example.movieapp.start.DirectorFragment"
+        android:label="fragment_director"
+        tools:layout="@layout/fragment_director" />
+    <fragment
+        android:id="@+id/shareFragment"
+        android:name="com.example.movieapp.start.ShareFragment"
+        android:label="fragment_share"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.example.movieapp.start.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" />
+</navigation>
