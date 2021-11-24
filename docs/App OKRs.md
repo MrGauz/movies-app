@@ -1,0 +1,55 @@
+# "Movies" App OKRs
+
+- P1: allow users to create a session
+  - P1: give different options to share session with others
+  - P1: allow the host to stop a session
+  - P2: allow to select filtering options
+  - P3: enable setting session options
+- P1: allow users to join a session  
+  - P1: enter per session ID 
+  - P1: allow leaving the session
+  - P2: enter per join link 
+  - P3: enter per scanning QR code
+- P2: create app’s UI
+  - P1: draw layouts for each screen
+  - P2: create app icon
+  - P2: add swiping animations
+  - P2: add animation for new matches
+  - P4: add transaction animations
+- P1: Create movie cards design
+  - P2: draw layout of a card
+  - P1: add information about the movie to a card
+- P2: apply configured movie filter to loading movies
+  - P1: filter by genres
+  - P1: filter by rating
+  - P1: filter by release year
+  - P2: filter by duration
+  - P3: filter by director
+  - P4: add advanced search
+- P3: display detailed information about a movie
+  - P1: display detailed information while swiping
+  - P1: display detailed information for matches
+- P1: show same movies to all users in the session
+  - P1: load filtered movies
+  - P2: show movies in different order
+  - P3: reload movies if filter was changed during swiping
+- P4: add social engagement
+  - P1: share a download link to the app with friends
+  - P1: add a button to share matches
+- P3: implement the design
+  - P1: "Start" screen
+  - P2: "Filter" screen
+  - P2: "Share" screen 
+  - P2: "Join" screen
+  - P1: "Swiping" screen
+  - P1: "Matches" screen
+  - P2: "Details" screen
+- P3: do all the copywriting
+  - P2: write welcome screen
+  - P1: write explanations for how to use the app
+  - P3: write template message for sharing matches
+  - P1: write template message for sharing a join link
+- P3: test the application
+  - P1: test "normal" usage
+  - P1: test "edge" cases
+  - P2: test losing connection
