@@ -24,13 +24,9 @@ class ShareFragment : Fragment() {
         val startSwipeButton= binding.startSwiping
         val shareButton = binding.shareLink
         startSwipeButton.setOnClickListener{
-            // TODO: 24.11.2021 call the swipe activity with an intent
-            val intent = Intent(this.context,SwipeActivity::class.java);
-            val userStatus = "admin"
-            val databaseID = "todo" // TODO: 24.11.2021 the database ID has to be passed here somehow
-            intent.putExtra("UserStatus", userStatus)
-            intent.putExtra("DatabaseID", databaseID)
-            startActivity(intent);
+            val swipeIntent = Intents("todo","user",this.context)
+            // TODO: 24.11.2021 the database ID has to be passed here somehow
+            swipeIntent.intentToSwipe()
         }
         shareButton.setOnClickListener{
             // TODO: 24.11.2021 make intent to share deep link to swipe activity

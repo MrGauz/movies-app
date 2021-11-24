@@ -17,8 +17,10 @@ class SwipeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySwipeBinding.inflate(layoutInflater)
+        var userStat = intent.getStringExtra("UserStatus")//receive the information from the different Intents
+        var databaseID = intent.getStringExtra("DatabaseID")
+        // TODO: 24.11.2021 establish connection to the database
         setContentView(binding.root)
     }
 }
