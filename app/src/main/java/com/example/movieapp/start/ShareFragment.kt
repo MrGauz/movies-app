@@ -1,27 +1,19 @@
 package com.example.movieapp.start
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidmads.library.qrgenearator.QRGEncoder
-import androidx.navigation.Navigation
-import com.example.movieapp.R
-import com.example.movieapp.databinding.FragmentDirectorBinding
 import com.example.movieapp.databinding.FragmentShareBinding
 import com.google.zxing.qrcode.QRCodeWriter
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.widget.ImageView
-
 import com.google.zxing.BarcodeFormat
-
-import com.google.zxing.common.BitMatrix
 import java.lang.Exception
+import android.content.*
 
 
 class ShareFragment : Fragment() {
@@ -30,34 +22,47 @@ class ShareFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentShareBinding.inflate(inflater, container, false)
         // TODO: 24.11.2021 generate a database id and pass it to the intent
-        val databaseId = "todo"//Database.
-        val startSwipeButton= binding.startSwiping
+        val databaseId = "todo"
+        binding.sessionId.text = "Session ID: $databaseId"
+        val startSwipeButton = binding.startSwiping
         val shareButton = binding.shareLink
-        val deepLink = "https://www.meineurl.com/path?key="+databaseId
+        val deepLink = "https://www.meineurl.com/path?key=$databaseId"
         val qrView = binding.qrView
 
-        startSwipeButton.setOnClickListener{
-            val swipeIntent = Intents(databaseId,"admin",this.context)
+        binding.copySessionId.setOnClickListener {
+            val clipboardManager =
+                context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData: ClipData = ClipData.newPlainText("Swovie session ID", databaseId)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(context, "Session ID was copied to your clipboard", Toast.LENGTH_SHORT)
+                .show()
+        }
+        startSwipeButton.setOnClickListener {
+            val swipeIntent = Intents(databaseId, "admin", this.context)
             swipeIntent.intentToSwipe()
         }
-        shareButton.setOnClickListener{
+        shareButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
-            intent.setType("text/plain")
-            intent.putExtra(Intent.EXTRA_TEXT,"Hi there, let's watch a movie together:"+deepLink)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, "Hi there, let's watch a movie together: $deepLink")
             try {
                 startActivity(intent)
-            }catch (e: ActivityNotFoundException){
-                Toast.makeText(this.context, "couldn't find a matching application on your device", Toast.LENGTH_SHORT).show()
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(
+                    this.context,
+                    "couldn't find a matching application on your device",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
-        generateQRCode(deepLink,qrView)
-        val root: View = binding.root
-        return root
+        generateQRCode(deepLink, qrView)
+        return binding.root
     }
-    private fun generateQRCode(message : String,qrView: ImageView){
+
+    private fun generateQRCode(message: String, qrView: ImageView) {
         val qrCodeWriter = QRCodeWriter()
         try {
             val bitMatrix = qrCodeWriter.encode(message, BarcodeFormat.QR_CODE, 200, 200)
