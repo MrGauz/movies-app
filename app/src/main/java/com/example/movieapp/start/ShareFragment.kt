@@ -1,5 +1,6 @@
 package com.example.movieapp.start
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,16 +22,24 @@ class ShareFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentShareBinding.inflate(inflater, container, false)
+        // TODO: 24.11.2021 generate a database id and pass it to the intent
+        //val databaseId = todo
         val startSwipeButton= binding.startSwiping
         val shareButton = binding.shareLink
         startSwipeButton.setOnClickListener{
             val swipeIntent = Intents("todo","admin",this.context)
-            // TODO: 24.11.2021 the database ID has to be passed here somehow
+            // TODO: 24.11.2021 the databaseID has to be passed here somehow
             swipeIntent.intentToSwipe()
         }
         shareButton.setOnClickListener{
-            // TODO: 24.11.2021 make intent to share deep link to swipe activity
-            Toast.makeText(this.context, "this function hasn't been implemented yet", Toast.LENGTH_SHORT).show()
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.setType("text/plain")
+            intent.putExtra(Intent.EXTRA_TEXT,"Hi there, let's watch a movie together: https://www.meineurl.com/path?key=<insert databaseID>")//<- todo
+            try {
+                startActivity(intent)
+            }catch (e: ActivityNotFoundException){
+                Toast.makeText(this.context, "couldn't find a matching application on your device", Toast.LENGTH_SHORT).show()
+            }
         }
         val root: View = binding.root
         return root
