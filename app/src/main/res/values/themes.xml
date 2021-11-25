@@ -22,4 +22,15 @@
     <style name="Theme.MovieApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MovieApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip"
+    item name="android:textAppearance"@style/TextAppearance.App.Tooltip/item
+    item name="backgroundTint"@color/colorPrimaryDark/item
+    /style
+
+    style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip"
+    item name="android:textColor"@android:color/white/item
+    /style
+
 </resources>
