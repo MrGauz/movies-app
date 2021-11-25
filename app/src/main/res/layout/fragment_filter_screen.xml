@@ -30,15 +30,11 @@
             android:value="20"
             android:valueFrom="1912"
             android:valueTo="2021"
-            app:values="@array/rangeSliderValues"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-
-            app:HaloColor ="@color/black"
-
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:values="@array/rangeSliderValues" />
 
         <Button
             android:id="@+id/genreButton"

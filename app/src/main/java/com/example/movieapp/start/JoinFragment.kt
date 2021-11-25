@@ -10,16 +10,21 @@ import com.example.movieapp.databinding.FragmentJoinBinding
 class JoinFragment : Fragment() {
     private var _binding: FragmentJoinBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
-        val joinButton = binding.joinButton
-        joinButton.setOnClickListener {
 
-            val swipeIntent = Intents("todo", "user", this.context)
-            // TODO: 24.11.2021 the database ID has to be passed here somehow
+        binding.joinButton.setOnClickListener {
+            val inputSessionId = binding.sessionIdInput.text.toString().trim()
+            if (inputSessionId.isEmpty()) {
+                binding.sessionIdInput.error = "Please provide a session ID"
+                return@setOnClickListener
+            }
+            // TODO: check session ID against the database
+            val swipeIntent = Intents(inputSessionId, "user", this.context)
             swipeIntent.intentToSwipe()
         }
         return binding.root
