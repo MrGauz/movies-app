@@ -27,7 +27,7 @@
             android:layout_marginTop="500dp">
 
             <Button
-                android:id="@+id/startLobbyButton"
+                android:id="@+id/startLobby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -46,7 +46,7 @@
 
 
             <Button
-                android:id="@+id/joinLobbyButton"
+                android:id="@+id/joinLobby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
