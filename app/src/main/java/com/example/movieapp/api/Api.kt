@@ -1,8 +1,13 @@
 package com.example.movieapp.api
 
 import com.example.movieapp.BuildConfig
+import com.example.movieapp.api.models.GenresListResponse
+import com.example.movieapp.api.models.MovieDetailsResponse
+import com.example.movieapp.api.models.MoviesListResponse
+import com.example.movieapp.api.models.PeopleListResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Api {
@@ -37,4 +42,12 @@ interface Api {
         @Query("query") query: String,
         @Query("sort_by") sort_by: String = "popularity.desc"
     ): Call<PeopleListResponse>
+
+    @GET("movie/{api_id}")
+    fun getMovieDetails(
+        @Path("api_id") api_id: String,
+        @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
+        @Query("language") language: String = "en-US",
+        @Query("append_to_response") append_to_response: String,
+    ): Call<MovieDetailsResponse>
 }
