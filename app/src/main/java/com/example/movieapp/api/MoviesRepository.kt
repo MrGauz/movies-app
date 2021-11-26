@@ -1,6 +1,9 @@
 package com.example.movieapp.api
 
 import android.util.Log
+import com.example.movieapp.api.models.Genre
+import com.example.movieapp.api.models.Movie
+import com.example.movieapp.api.models.Person
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +22,10 @@ object MoviesRepository {
         api = retrofit.create(Api::class.java)
     }
 
-    fun getGenres(page: Int = 1, language: String = "en-US") {
-        api.getGenres(page = page, language = language)
+    fun getGenres(page: Int = 1): List<Genre> {
+        var list: List<Genre> = emptyList()
+
+        api.getGenres(page = page)
             .enqueue(object : Callback<GenresListResponse> {
                 override fun onResponse(
                     call: Call<GenresListResponse>,
@@ -30,10 +35,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Repository", "Genres: ${responseBody.genres}")
-                            // TODO: save loaded genres locally
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            list = responseBody.genres
                         }
                     }
                 }
@@ -41,8 +43,9 @@ object MoviesRepository {
                 override fun onFailure(call: Call<GenresListResponse>, t: Throwable) {
                     Log.e("Repository", "onFailure", t)
                 }
-
             })
+
+        return list
     }
 
     fun getMovies(
@@ -55,9 +58,10 @@ object MoviesRepository {
         min_duration: Int? = 60,
         max_duration: Int? = 120,
         page: Int = 1,
-        language: String = "en-US",
         append_to_response: List<String> = listOf("videos", "credits")
-    ) {
+    ): List<Movie> {
+        var list: List<Movie> = emptyList()
+
         api.getMovies(
             with_genres = genre_ids.joinToString(separator = ","),
             with_crew = director_id?.toString() ?: "",
@@ -68,7 +72,6 @@ object MoviesRepository {
             with_runtime_gte = min_duration?.toString() ?: "",
             with_runtime_lte = max_duration?.toString() ?: "",
             page = page,
-            language = language,
             append_to_response = append_to_response.joinToString(separator = ",")
         )
             .enqueue(object : Callback<MoviesListResponse> {
@@ -81,9 +84,7 @@ object MoviesRepository {
 
                         if (responseBody != null) {
                             // TODO: filter by job=Director
-                            Log.d("Repository", "Movies: ${responseBody.movies}")
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            list = responseBody.movies
                         }
                     }
                 }
@@ -91,11 +92,14 @@ object MoviesRepository {
                 override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
                     Log.e("Repository", "onFailure", t)
                 }
-
             })
+
+        return list
     }
 
-    fun searchPerson(query: String, page: Int = 1) {
+    fun searchPerson(query: String, page: Int = 1): List<Person> {
+        var list: List<Person> = emptyList()
+
         api.searchPerson(page = page, query = query)
             .enqueue(object : Callback<PeopleListResponse> {
                 override fun onResponse(
@@ -106,9 +110,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Repository", "Genres: ${responseBody.people}")
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            list = responseBody.people
                         }
                     }
                 }
@@ -116,7 +118,9 @@ object MoviesRepository {
                 override fun onFailure(call: Call<PeopleListResponse>, t: Throwable) {
                     Log.e("Repository", "onFailure", t)
                 }
-
             })
+        return list
     }
+
+    // TODO: get movie details
 }
