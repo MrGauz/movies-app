@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import java.util.*
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
@@ -42,13 +43,10 @@ class DeckAdapter     // on below line we have created constructor for our varia
         // on below line we are initializing our variables and setting data to our variables.
         (v.findViewById<View>(R.id.titleId) as TextView).text =
             swipeInfoData[position].filmTitle
-        (v.findViewById<View>(R.id.directorID) as TextView).text =
-            swipeInfoData[position].genres
-        (v.findViewById<View>(R.id.genresID) as TextView).text =
-            swipeInfoData[position].director
-        (v.findViewById<View>(R.id.posterView) as ImageView).setImageResource(
-            swipeInfoData[position].imgId
-        )
+        (v.findViewById<View>(R.id.directorID) as TextView).text = "todo"
+            //swipeInfoData[position].genres // todo convert to text
+        Glide.with(v).load(swipeInfoData[position].imgId).into(v.findViewById(R.id.posterView))
+
         return v
     }//source: https://www.geeksforgeeks.org/tinder-swipe-view-with-example-in-android/
 }

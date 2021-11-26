@@ -11,6 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
 import android.widget.Toast
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.database.models.FilterToSwipeItemList
 import java.util.ArrayList
 
 
@@ -26,49 +27,14 @@ class SwipeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_swipe, container, false)
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
-        swipeItemInfoArrayList = ArrayList()
-        cardStack = view.findViewById(R.id.swipe_deck)
 
-        swipeItemInfoArrayList!!.add(
-            SwipeItemInfo(
-                "C++",
-                "30 days",
-                "20 Tracks",
-                R.drawable.movie_poster_test
-            )
-        )
-        swipeItemInfoArrayList!!.add(
-            SwipeItemInfo(
-                "Java",
-                "30 days",
-                "20 Tracks",
-                R.drawable.movie_poster_test
-            )
-        )
-        swipeItemInfoArrayList!!.add(
-            SwipeItemInfo(
-                "Python",
-                "30 days",
-                "20 Tracks",
-                R.drawable.movie_poster_test
-            )
-        )
-        swipeItemInfoArrayList!!.add(
-            SwipeItemInfo(
-                "DSA",
-                "30 days",
-                "20 Tracks",
-                R.drawable.movie_poster_test
-            )
-        )
-        swipeItemInfoArrayList!!.add(
-            SwipeItemInfo(
-                "PHP",
-                "30 days",
-                "20 Tracks",
-                R.drawable.movie_poster_test
-            )
-        )
+        swipeItemInfoArrayList = FilterToSwipeItemList.getSwipeItemInfoArrayList()
+
+        cardStack = view.findViewById(R.id.swipe_deck)
+        if (swipeItemInfoArrayList == null){
+            System.out.println("failed miserably")
+        }
+
         val adapter = DeckAdapter(swipeItemInfoArrayList!!, view.context)
         cardStack?.setAdapter(adapter)
 

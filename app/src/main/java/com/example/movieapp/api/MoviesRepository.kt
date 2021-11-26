@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.movieapp.api.models.Genre
 import com.example.movieapp.api.models.Movie
 import com.example.movieapp.api.models.Person
+import com.example.movieapp.database.models.Filter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +47,20 @@ object MoviesRepository {
             })
 
         return list
+    }
+
+    fun getMovies(filter: Filter, page: Int = 1): List<Movie> {
+        return getMovies(
+            genre_ids = filter.genres ?: emptyList(),
+            director_id = filter.director?.api_id,
+            min_release_year = filter.release_year?.starting_year,
+            max_release_year = filter.release_year?.end_year,
+            min_rating = filter.min_rating,
+            max_rating = null,
+            min_duration = filter.duration?.from,
+            max_duration = filter.duration?.to,
+            page = page
+        )
     }
 
     fun getMovies(

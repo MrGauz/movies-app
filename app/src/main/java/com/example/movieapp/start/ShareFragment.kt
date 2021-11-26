@@ -14,6 +14,7 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
+import com.example.movieapp.database.models.Filter
 
 class ShareFragment : Fragment() {
     private var _binding: FragmentShareBinding? = null

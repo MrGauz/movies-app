@@ -6,7 +6,7 @@ class SwipeItemInfo     // constructor.
     // description,tracks and duration,imageId.
     var filmTitle: String,
     //var courseDuration: String,
-    var genres: String,
-    var director: String,
-    var imgId: Int
+    var genres: List<Int>,
+    //var director: String,
+    var imgId: String
 )

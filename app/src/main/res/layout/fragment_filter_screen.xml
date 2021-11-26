@@ -34,11 +34,11 @@
             app:layout_constraintEnd_toStartOf="@+id/genreButton"
             app:layout_constraintHorizontal_bias="0.794"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/yearText"
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/yearText"
             android:layout_width="89dp"
             android:layout_height="35dp"
             android:layout_marginStart="28dp"
@@ -51,7 +51,7 @@
 
 
         <com.google.android.material.slider.RangeSlider
-            android:id="@+id/sliderRange"
+            android:id="@+id/sliderRangeYears"
             android:layout_width="200dp"
             android:layout_height="66dp"
             android:layout_marginBottom="448dp"
@@ -62,8 +62,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.797"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+            app:layout_constraintStart_toEndOf="@+id/yearText"
+            app:layout_constraintTop_toBottomOf="@+id/directorChoseET"
             app:layout_constraintVertical_bias="0.926"
             app:tickVisible="false"
             app:values="@array/rangeSliderValues" />
@@ -94,11 +94,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.819"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/sliderRange"
+            app:layout_constraintTop_toTopOf="@+id/sliderRangeYears"
             app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+            android:id="@+id/directorChoseET"
             android:layout_width="201dp"
             android:layout_height="42dp"
             android:layout_marginTop="152dp"
@@ -123,7 +123,7 @@
             tools:ignore="MissingConstraints" />
 
         <com.google.android.material.slider.RangeSlider
-            android:id="@+id/sliderDurationRange"
+            android:id="@+id/sliderVotesPercentage"
             android:layout_width="200dp"
             android:layout_height="51dp"
             android:layout_marginBottom="240dp"
@@ -159,7 +159,7 @@
             android:layout_marginEnd="104dp"
             android:text="Director"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/textInputEditText"
+            app:layout_constraintEnd_toStartOf="@+id/directorChoseET"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -173,7 +173,7 @@
             android:layout_marginTop="32dp"
             android:timePickerMode="spinner"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sliderDurationRange"
+            app:layout_constraintTop_toBottomOf="@+id/sliderVotesPercentage"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="194dp" />
