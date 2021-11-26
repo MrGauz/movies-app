@@ -16,7 +16,7 @@ import java.util.ArrayList
 
 class SwipeFragment : Fragment() {
     private var cardStack: SwipeDeck? = null
-    private var courseModalArrayList: ArrayList<CourseModal>? = null
+    private var swipeItemInfoArrayList: ArrayList<SwipeItemInfo>? = null
 
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
@@ -26,55 +26,50 @@ class SwipeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_swipe, container, false)
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
-        courseModalArrayList = ArrayList()
+        swipeItemInfoArrayList = ArrayList()
         cardStack = view.findViewById(R.id.swipe_deck)
 
-        courseModalArrayList!!.add(
-            CourseModal(
+        swipeItemInfoArrayList!!.add(
+            SwipeItemInfo(
                 "C++",
                 "30 days",
                 "20 Tracks",
-                "C++ Self Paced Course",
-                R.drawable.gfg
+                R.drawable.movie_poster_test
             )
         )
-        courseModalArrayList!!.add(
-            CourseModal(
+        swipeItemInfoArrayList!!.add(
+            SwipeItemInfo(
                 "Java",
                 "30 days",
                 "20 Tracks",
-                "Java Self Paced Course",
-                R.drawable.gfg
+                R.drawable.movie_poster_test
             )
         )
-        courseModalArrayList!!.add(
-            CourseModal(
+        swipeItemInfoArrayList!!.add(
+            SwipeItemInfo(
                 "Python",
                 "30 days",
                 "20 Tracks",
-                "Python Self Paced Course",
-                R.drawable.gfg
+                R.drawable.movie_poster_test
             )
         )
-        courseModalArrayList!!.add(
-            CourseModal(
+        swipeItemInfoArrayList!!.add(
+            SwipeItemInfo(
                 "DSA",
                 "30 days",
                 "20 Tracks",
-                "DSA Self Paced Course",
-                R.drawable.gfg
+                R.drawable.movie_poster_test
             )
         )
-        courseModalArrayList!!.add(
-            CourseModal(
+        swipeItemInfoArrayList!!.add(
+            SwipeItemInfo(
                 "PHP",
                 "30 days",
                 "20 Tracks",
-                "PHP Self Paced Course",
-                R.drawable.gfg
+                R.drawable.movie_poster_test
             )
         )
-        val adapter = DeckAdapter(courseModalArrayList!!, view.context)
+        val adapter = DeckAdapter(swipeItemInfoArrayList!!, view.context)
         cardStack?.setAdapter(adapter)
 
         cardStack?.setEventCallback(object : SwipeEventCallback {

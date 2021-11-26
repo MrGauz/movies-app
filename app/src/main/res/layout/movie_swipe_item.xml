@@ -4,31 +4,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="30dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="10dp"
     android:elevation="8dp"
     app:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
         <!--image view for course image-->
-        <ImageView
-            android:id="@+id/idIVCourse"
+        <ImageButton
+            android:id="@+id/posterView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:scaleType="centerCrop" />
 
         <!--text view for our course name-->
         <TextView
-            android:id="@+id/idTVCourseName"
+            android:id="@+id/titleId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dp"
-            android:text="Course Name"
-            android:textColor="@color/black" />
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,34 +43,26 @@
 
             <!--text view for our course tracks-->
             <TextView
-                android:id="@+id/idTVCourseTracks"
+                android:id="@+id/genresID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="3dp"
-                android:text="Course Tracks"
+                android:text="genres"
                 android:textColor="@color/black" />
 
             <!--text view for our course duration-->
-            <TextView
-                android:id="@+id/idTVCourseDuration"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="3dp"
-                android:text="Duration"
-                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <!--text view for our course description-->
         <TextView
-            android:id="@+id/idTVCourseDescription"
+            android:id="@+id/directorID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="3dp"
-            android:text="Description"
+            android:text="director"
             android:textColor="@color/black" />
 
     </LinearLayout>
