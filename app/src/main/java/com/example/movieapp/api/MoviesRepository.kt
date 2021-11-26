@@ -1,15 +1,13 @@
 package com.example.movieapp.api
 
 import android.util.Log
-import com.example.movieapp.api.models.Genre
-import com.example.movieapp.api.models.Movie
-import com.example.movieapp.api.models.Person
-import com.example.movieapp.database.models.Filter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.example.movieapp.api.models.*
+import com.example.movieapp.database.models.Filter
 
 object MoviesRepository {
     private val api: Api
@@ -23,9 +21,7 @@ object MoviesRepository {
         api = retrofit.create(Api::class.java)
     }
 
-    fun getGenres(page: Int = 1): List<Genre> {
-        var list: List<Genre> = emptyList()
-
+    fun getGenres(page: Int = 1) {
         api.getGenres(page = page)
             .enqueue(object : Callback<GenresListResponse> {
                 override fun onResponse(
@@ -36,7 +32,10 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            list = responseBody.genres
+                            Log.d("Repository", "Genres: ${responseBody.genres}")
+                            // TODO: save loaded genres locally
+                        } else {
+                            Log.d("Repository", "Failed to get response")
                         }
                     }
                 }
@@ -45,12 +44,10 @@ object MoviesRepository {
                     Log.e("Repository", "onFailure", t)
                 }
             })
-
-        return list
     }
 
-    fun getMovies(filter: Filter, page: Int = 1): List<Movie> {
-        return getMovies(
+    fun getMovies(filter: Filter, page: Int = 1) {
+        getMovies(
             genre_ids = filter.genres ?: emptyList(),
             director_id = filter.director?.api_id,
             min_release_year = filter.release_year?.starting_year,
@@ -74,9 +71,7 @@ object MoviesRepository {
         max_duration: Int? = 120,
         page: Int = 1,
         append_to_response: List<String> = listOf("videos", "credits")
-    ): List<Movie> {
-        var list: List<Movie> = emptyList()
-
+    ) {
         api.getMovies(
             with_genres = genre_ids.joinToString(separator = ","),
             with_crew = director_id?.toString() ?: "",
@@ -99,7 +94,9 @@ object MoviesRepository {
 
                         if (responseBody != null) {
                             // TODO: filter by job=Director
-                            list = responseBody.movies
+                            Log.d("Repository", "Movies: ${responseBody.movies}")
+                        } else {
+                            Log.d("Repository", "Failed to get response")
                         }
                     }
                 }
@@ -108,13 +105,9 @@ object MoviesRepository {
                     Log.e("Repository", "onFailure", t)
                 }
             })
-
-        return list
     }
 
-    fun searchPerson(query: String, page: Int = 1): List<Person> {
-        var list: List<Person> = emptyList()
-
+    fun searchPerson(query: String, page: Int = 1) {
         api.searchPerson(page = page, query = query)
             .enqueue(object : Callback<PeopleListResponse> {
                 override fun onResponse(
@@ -125,7 +118,9 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            list = responseBody.people
+                            Log.d("Repository", "Genres: ${responseBody.people}")
+                        } else {
+                            Log.d("Repository", "Failed to get response")
                         }
                     }
                 }
@@ -134,8 +129,36 @@ object MoviesRepository {
                     Log.e("Repository", "onFailure", t)
                 }
             })
-        return list
     }
 
-    // TODO: get movie details
+    fun getMovieDetails(
+        api_id: String,
+        append_to_results: List<String> = listOf("videos")
+    ) {
+        api.getMovieDetails(
+            api_id = api_id,
+            append_to_response = append_to_results.joinToString(separator = ","),
+        )
+            .enqueue(object : Callback<MovieDetailsResponse> {
+                override fun onResponse(
+                    call: Call<MovieDetailsResponse>,
+                    response: Response<MovieDetailsResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+
+                        if (responseBody != null) {
+                            val movieDetails = MovieDetails(responseBody)
+                            println("Trailer link: ${movieDetails.getTrailerUrl()}")
+                        } else {
+                            Log.d("Repository", "Failed to get response")
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable) {
+                    Log.e("Repository", "onFailure", t)
+                }
+            })
+    }
 }
