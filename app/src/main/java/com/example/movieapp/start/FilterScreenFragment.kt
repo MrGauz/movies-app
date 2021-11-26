@@ -8,23 +8,28 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
+import com.google.android.material.slider.RangeSlider
 
 class FilterScreenFragment : Fragment() {
     private var _binding: FragmentFilterScreenBinding? = null
     private val binding get() = _binding!!
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         _binding = FragmentFilterScreenBinding.inflate(inflater, container, false)
         val genreButton = binding.genreButton
-        val directorButton = binding.directorButton
+//        val directorButton = binding.directorButton
         val createButton = binding.createButton
         genreButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_filterScreenFragment_to_genreFragment))
-        directorButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_filterScreenFragment_to_directorFragment))
+//        directorButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_filterScreenFragment_to_directorFragment))
         createButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_filterScreenFragment_to_shareFragment))
         val root: View = binding.root
         return root
     }
 
-}
+    }
+

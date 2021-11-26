@@ -13,54 +13,96 @@
 
         <Button
             android:id="@+id/createButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="164dp"
+            android:layout_marginBottom="84dp"
             android:text="Create"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.462"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="89dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="8dp"
+            android:text="Year"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/sliderRange"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/sliderRange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="268dp"
+            android:layout_width="384dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="412dp"
+            android:stepSize="1"
             android:value="20"
             android:valueFrom="1912"
             android:valueTo="2021"
-            app:values="@array/rangeSliderValues"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-
-            app:HaloColor ="@color/black"
-
+            app:layout_constraintHorizontal_bias="0.592"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:tickVisible="false"
+            app:values="@array/rangeSliderValues" />
+
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/sliderRangeRating"
+            android:layout_width="384dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="216dp"
+            android:stepSize="0.1"
+            android:value="20"
+            android:valueFrom="0"
+            android:valueTo="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.592"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tickVisible="false"
+            app:values="@array/rangeRatingSliderValues" />
 
         <Button
             android:id="@+id/genreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="144dp"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="192dp"
             android:text="Genre"
             app:layout_constraintBottom_toTopOf="@+id/createButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintHorizontal_bias="0.455"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/directorButton"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="201dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="180dp"
+            android:hint="Director"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:textColorHint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="180dp"
-            android:text="Director"
-            app:layout_constraintBottom_toTopOf="@+id/genreButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.458"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="24dp"
+            android:text="Rating"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/sliderRangeRating"
             app:layout_constraintStart_toStartOf="parent" />
+
+        />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

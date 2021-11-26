@@ -6,7 +6,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_fetch_movies">Please check your internet connection</string>
     <string-array name="rangeSliderValues">
-        <item>1950</item>
-        <item>2006</item>
+        <item>1920</item>
+        <item>2012</item>
     </string-array>
+
+    <string-array name="rangeRatingSliderValues">
+        <item>2.4</item>
+        <item>7.4</item>
+    </string-array>
+
+
 </resources>
