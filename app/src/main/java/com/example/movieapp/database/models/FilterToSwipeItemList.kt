@@ -18,7 +18,7 @@ object FilterToSwipeItemList {//this is wrong, the items have to be loaded from 
                     movie.genre_ids,
                     movie.poster_path,
                     null,
-                    movie.id
+                    movie.id //<--- thats how the id is pulled from the api
                 )
             )
         }
