@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import java.util.*
 import com.example.movieapp.R
@@ -46,6 +48,8 @@ class DeckAdapter     // on below line we have created constructor for our varia
         (v.findViewById<View>(R.id.directorID) as TextView).text = "todo"
             //swipeInfoData[position].genres // todo convert to text
         Glide.with(v).load(swipeInfoData[position].imgId).into(v.findViewById(R.id.posterView))
+        val posterView = v.findViewById<ImageButton>(R.id.posterView)
+        posterView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_infoFragment))
 
         return v
     }//source: https://www.geeksforgeeks.org/tinder-swipe-view-with-example-in-android/

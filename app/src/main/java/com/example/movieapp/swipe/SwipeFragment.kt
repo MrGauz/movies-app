@@ -31,9 +31,6 @@ class SwipeFragment : Fragment() {
         swipeItemInfoArrayList = FilterToSwipeItemList.getSwipeItemInfoArrayList()
 
         cardStack = view.findViewById(R.id.swipe_deck)
-        if (swipeItemInfoArrayList == null){
-            System.out.println("failed miserably")
-        }
 
         val adapter = DeckAdapter(swipeItemInfoArrayList!!, view.context)
         cardStack?.setAdapter(adapter)
@@ -41,12 +38,16 @@ class SwipeFragment : Fragment() {
         cardStack?.setEventCallback(object : SwipeEventCallback {
             override fun cardSwipedLeft(position: Int) {
                 // on card swipe left we are displaying a toast message.
-                Toast.makeText(context, "Card Swiped Left", Toast.LENGTH_SHORT).show()
+                val title = swipeItemInfoArrayList!![position].filmTitle
+                FilterToSwipeItemList.setItemSwiped(swipeItemInfoArrayList!![position].movID,"left")
+                Toast.makeText(context, "Card Swiped Left on "+title, Toast.LENGTH_SHORT).show()
             }
 
             override fun cardSwipedRight(position: Int) {
                 // on card swiped to right we are displaying a toast message.
-                Toast.makeText(context, "Card Swiped Right", Toast.LENGTH_SHORT).show()
+                val title = swipeItemInfoArrayList!![position].filmTitle
+                FilterToSwipeItemList.setItemSwiped(swipeItemInfoArrayList!![position].movID,"right")
+                Toast.makeText(context, "Card Swiped Right"+title, Toast.LENGTH_SHORT).show()
             }
 
             override fun cardsDepleted() {
