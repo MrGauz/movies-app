@@ -9,6 +9,6 @@ class SwipeItemInfo     // constructor.
     var genres: List<Int>,
     //var director: String,
     var imgId: String,
-    var swiped : String?,
-    var movID : Int
+    var swiped: String?,
+    var movID: Long
 )
