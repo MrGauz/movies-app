@@ -2,8 +2,8 @@ package com.example.movieapp.database.models
 
 data class Filter(
     var genres: List<Int>?,
-    var release_year: ReleaseYearInterval?,
+    var releaseYear: ReleaseYearInterval?,
     var director: Director?,
-    var min_rating: Double?,
+    var minRating: Double?,
     var duration: DurationInterval?
 )

@@ -42,7 +42,7 @@ class ShareFragment : Fragment() {
         }
 
         binding.startSwipingButton.setOnClickListener {
-            val swipeIntent = Intents(databaseId, "admin", this.context)
+            val swipeIntent = Intents(true, this.context)
             swipeIntent.intentToSwipe()
         }
 

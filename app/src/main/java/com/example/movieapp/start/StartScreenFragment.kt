@@ -19,11 +19,15 @@ class StartScreenFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentStartScreenBinding.inflate(inflater, container, false)
-        val startLobby = binding.startLobby
-        startLobby.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_filterScreenFragment))
-        val joinLobby = binding.joinLobby
-        joinLobby.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_joinFragment))
-        val root: View = binding.root
-        return root
+
+        binding.startLobby.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_filterScreenFragment)
+        )
+
+        binding.joinLobby.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_joinFragment)
+        )
+
+        return binding.root
     }
 }

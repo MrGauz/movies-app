@@ -50,9 +50,9 @@ object MoviesRepository {
         getMovies(
             genre_ids = filter.genres ?: emptyList(),
             director_id = filter.director?.api_id,
-            min_release_year = filter.release_year?.starting_year,
-            max_release_year = filter.release_year?.end_year,
-            min_rating = filter.min_rating,
+            min_release_year = filter.releaseYear?.starting_year,
+            max_release_year = filter.releaseYear?.end_year,
+            min_rating = filter.minRating,
             max_rating = null,
             min_duration = filter.duration?.from,
             max_duration = filter.duration?.to,

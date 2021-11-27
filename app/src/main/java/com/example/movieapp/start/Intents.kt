@@ -6,20 +6,17 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.movieapp.swipe.SwipeActivity
 
 class Intents {
-    private val databaseID: String
-    private val userStatus: String
+    private val isHost: Boolean
     private val context: Context?
 
-    constructor(databaseId: String, userStatus: String, context: Context?) {
-        this.userStatus = userStatus
-        this.databaseID = databaseId
+    constructor(isHost: Boolean, context: Context?) {
+        this.isHost = isHost
         this.context = context
     }
 
     fun intentToSwipe() {
         val intent = Intent(this.context, SwipeActivity::class.java);
-        intent.putExtra("UserStatus", userStatus)
-        intent.putExtra("DatabaseID", databaseID)
+        intent.putExtra("UserStatus", isHost)
         this.context?.let { startActivity(it, intent, null) }
     }
 }

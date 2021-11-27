@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentJoinBinding
 
 class JoinFragment : Fragment() {
@@ -23,10 +24,20 @@ class JoinFragment : Fragment() {
                 binding.sessionIdInput.error = "Please provide a session ID"
                 return@setOnClickListener
             }
-            // TODO: check session ID against the database
-            val swipeIntent = Intents(inputSessionId, "user", this.context)
-            swipeIntent.intentToSwipe()
+
+            Database.joinSession(inputSessionId, this)
         }
+
         return binding.root
+    }
+
+    fun onSuccessfulSessionJoin() {
+        // Navigate to swipe screen
+        val swipeIntent = Intents(false, this.context)
+        swipeIntent.intentToSwipe()
+    }
+
+    fun onFailedSessionJoin() {
+        binding.sessionIdInput.error = "Session ID not found"
     }
 }
