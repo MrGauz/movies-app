@@ -14,7 +14,7 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
-import com.example.movieapp.database.models.Filter
+import com.example.movieapp.database.Database
 
 class ShareFragment : Fragment() {
     private var _binding: FragmentShareBinding? = null
@@ -26,12 +26,13 @@ class ShareFragment : Fragment() {
     ): View {
         _binding = FragmentShareBinding.inflate(inflater, container, false)
 
-        // TODO: 24.11.2021 generate a database id and pass it to the intent
-        val databaseId = "todo"
+        // Compose sharing information
+        val databaseId = Database.sessionId
         binding.sessionId.text = "Session ID: $databaseId"
+        // TODO: setup a real deep link
         val deepLink = "https://www.meineurl.com/path?key=$databaseId"
-        val qrView = binding.qrView
 
+        // Copy session ID button
         binding.copySessionId.setOnClickListener {
             val clipboardManager =
                 context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -41,11 +42,7 @@ class ShareFragment : Fragment() {
                 .show()
         }
 
-        binding.startSwipingButton.setOnClickListener {
-            val swipeIntent = Intents(true, this.context)
-            swipeIntent.intentToSwipe()
-        }
-
+        // Share link button
         binding.shareLinkButton.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -56,7 +53,15 @@ class ShareFragment : Fragment() {
             startActivity(shareIntent)
         }
 
-        generateQRCode(deepLink, qrView)
+        // Start swiping button
+        binding.startSwipingButton.setOnClickListener {
+            val swipeIntent = Intents(true, this.context)
+            swipeIntent.intentToSwipe()
+        }
+
+        // Show a QR code
+        generateQRCode(deepLink, binding.qrView)
+
         return binding.root
     }
 
