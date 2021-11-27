@@ -8,5 +8,7 @@ class SwipeItemInfo     // constructor.
     //var courseDuration: String,
     var genres: List<Int>,
     //var director: String,
-    var imgId: String
+    var imgId: String,
+    var swiped: String?,
+    var movID: Long
 )
