@@ -18,10 +18,13 @@ class JoinFragment : Fragment() {
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
-        if (Database.sessionId != null){
-            trySessionJoin(Database.sessionId!!)
+        // Join after a deep link
+        if (sessionId != null) {
+            binding.sessionIdInput.setText(sessionId)
+            trySessionJoin(sessionId!!)
         }
 
+        // Join after typing a session ID
         binding.joinButton.setOnClickListener {
             trySessionJoin(binding.sessionIdInput.text.toString().trim())
         }
@@ -46,5 +49,9 @@ class JoinFragment : Fragment() {
 
     fun onFailedSessionJoin(error: String = "Could not connect to session :c") {
         binding.sessionIdInput.error = error
+    }
+
+    companion object DeepLinkData {
+        var sessionId: String? = null
     }
 }

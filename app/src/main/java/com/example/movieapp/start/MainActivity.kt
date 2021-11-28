@@ -17,14 +17,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set device ID
         Database.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
+        // User joined via deep link
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
         if (intent?.action == "android.intent.action.VIEW") {
-            // User joined via deep link
-            val isHost = false
-            val databaseId = intent?.data?.getQueryParameter("id").toString()
-            Database.sessionId = databaseId
+            JoinFragment.sessionId = intent?.data?.getQueryParameter("id").toString()
             navController.navigate(R.id.joinFragment)
         }
     }
