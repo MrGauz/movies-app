@@ -16,7 +16,7 @@ import com.google.firebase.database.ktx.getValue
 object Database {
     private var sessionsReference: DatabaseReference
     private lateinit var sessionReference: DatabaseReference
-    var sessionId: String? = null
+    lateinit var sessionId: String
     lateinit var deviceId: String
 
     init {
@@ -58,7 +58,10 @@ object Database {
                         return
                     }
 
-                    // TODO: check if session is active
+                    if (!session.isActive) {
+                        fragment.onFailedSessionJoin("This session is over")
+                        return
+                    }
 
                     // Check if join time is over
                     if (session.startTimestamp + session.options.joinTimer * 1000 < System.currentTimeMillis()) {

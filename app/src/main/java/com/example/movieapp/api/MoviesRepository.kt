@@ -1,6 +1,7 @@
 package com.example.movieapp.api
 
 import android.util.Log
+import com.example.movieapp.data.GenresData
 import com.example.movieapp.database.Database
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +34,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            GenresList.genres = responseBody.genres
+                            GenresData.genres = responseBody.genres
                         }
                     }
                 }
@@ -94,9 +95,7 @@ object MoviesRepository {
                     }
                 }
 
-                override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
-                    Log.e("Repository", "onFailure", t)
-                }
+                override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {}
             })
     }
 
@@ -112,15 +111,11 @@ object MoviesRepository {
 
                         if (responseBody != null) {
                             Log.d("Repository", "Genres: ${responseBody.people}")
-                        } else {
-                            Log.d("Repository", "Failed to get response")
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<PeopleListResponse>, t: Throwable) {
-                    Log.e("Repository", "onFailure", t)
-                }
+                override fun onFailure(call: Call<PeopleListResponse>, t: Throwable) {}
             })
     }
 
@@ -148,9 +143,7 @@ object MoviesRepository {
                     }
                 }
 
-                override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable) {
-                    Log.e("Repository", "onFailure", t)
-                }
+                override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable) {}
             })
     }
 }
