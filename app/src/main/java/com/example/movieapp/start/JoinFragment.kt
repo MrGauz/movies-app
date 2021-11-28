@@ -18,6 +18,10 @@ class JoinFragment : Fragment() {
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
+        if (Database.sessionId != null){
+            trySessionJoin(Database.sessionId!!)
+        }
+
         binding.joinButton.setOnClickListener {
             trySessionJoin(binding.sessionIdInput.text.toString().trim())
         }

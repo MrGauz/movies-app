@@ -17,7 +17,7 @@ object Database {
     private var sessionsReference: DatabaseReference
     private var genresReference: DatabaseReference
     private lateinit var sessionReference: DatabaseReference
-    lateinit var sessionId: String
+    var sessionId: String? = null
     lateinit var deviceId: String
 
     init {
