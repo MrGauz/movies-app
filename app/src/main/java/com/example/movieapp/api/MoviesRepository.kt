@@ -1,6 +1,7 @@
 package com.example.movieapp.api
 
 import android.util.Log
+import com.example.movieapp.database.Database
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -93,10 +94,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            // TODO: filter by job=Director
-                            Log.d("Repository", "Movies: ${responseBody.movies}")
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            Database.saveNewMoviesBatch(responseBody.movies)
                         }
                     }
                 }

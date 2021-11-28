@@ -1,6 +1,7 @@
 package com.example.movieapp.database
 
 import com.example.movieapp.models.Filter
+import com.example.movieapp.models.Movie
 import com.example.movieapp.models.Options
 import com.example.movieapp.models.Session
 import com.example.movieapp.start.JoinFragment
@@ -71,5 +72,12 @@ object Database {
                     fragment.onFailedSessionJoin()
                 }
             })
+    }
+
+    fun saveNewMoviesBatch(batch: List<Movie>) {
+        val uid = sessionReference.child("movies").push().key
+        if (uid != null) {
+            sessionReference.child("movies").child(uid).setValue(batch)
+        }
     }
 }
