@@ -1,8 +1,8 @@
-package com.example.movieapp.api
+package com.example.movieapp.data
 
 import com.example.movieapp.models.Genre
 
-object GenresList {
+object GenresData {
     var genres: List<Genre> = emptyList()
 
     fun whereId(id: Long): String? {
