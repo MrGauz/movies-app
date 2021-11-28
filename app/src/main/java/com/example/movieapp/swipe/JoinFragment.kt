@@ -24,8 +24,8 @@ class JoinFragment : Fragment() {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
         //If statement that checks if a sessionID already exists -> checks if its valid
-        if(!Database.sessionId.isEmpty()){
-            Database.joinSession(Database.sessionId, this)
+        if(Database.sessionId != null){
+            Database.joinSession(Database.sessionId!!, this)
         }
         else {
             binding.joinButton.setOnClickListener {
