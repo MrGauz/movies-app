@@ -11,7 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
 import android.widget.Toast
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
-import com.example.movieapp.database.models.FilterToSwipeItemList
+import com.example.movieapp.models.FilterToSwipeItemList
 import java.util.ArrayList
 
 

@@ -1,4 +1,4 @@
-package com.example.movieapp.api.models
+package com.example.movieapp.models
 
 data class MovieDetails(val response: MovieDetailsResponse) {
     val id: Long = response.id

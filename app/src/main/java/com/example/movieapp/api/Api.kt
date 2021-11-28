@@ -1,10 +1,10 @@
 package com.example.movieapp.api
 
 import com.example.movieapp.BuildConfig
-import com.example.movieapp.api.models.GenresListResponse
-import com.example.movieapp.api.models.MovieDetailsResponse
-import com.example.movieapp.api.models.MoviesListResponse
-import com.example.movieapp.api.models.PeopleListResponse
+import com.example.movieapp.models.GenresListResponse
+import com.example.movieapp.models.MovieDetailsResponse
+import com.example.movieapp.models.MoviesListResponse
+import com.example.movieapp.models.PeopleListResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

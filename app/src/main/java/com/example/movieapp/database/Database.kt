@@ -1,8 +1,8 @@
 package com.example.movieapp.database
 
-import com.example.movieapp.database.models.Filter
-import com.example.movieapp.database.models.Options
-import com.example.movieapp.database.models.Session
+import com.example.movieapp.models.Filter
+import com.example.movieapp.models.Options
+import com.example.movieapp.models.Session
 import com.example.movieapp.start.JoinFragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -33,6 +33,7 @@ object Database {
             sessionsReference.child(uid).setValue(session)
             sessionId = uid
             sessionReference = sessionsReference.child(uid)
+            // TODO: save device ID (https://stackoverflow.com/a/12190973) to users
         }
         return uid
     }
@@ -63,6 +64,7 @@ object Database {
                     fragment.onSuccessfulSessionJoin()
                     sessionId = inputSessionId
                     sessionReference = sessionsReference.child(inputSessionId)
+                    // TODO: save device ID (https://stackoverflow.com/a/12190973) to users
                 }
 
                 override fun onCancelled(error: DatabaseError) {

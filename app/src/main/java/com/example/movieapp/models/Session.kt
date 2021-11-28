@@ -1,6 +1,4 @@
-package com.example.movieapp.database.models
-
-import com.example.movieapp.api.models.Movie
+package com.example.movieapp.models
 
 data class Session(
     var id: String = "",

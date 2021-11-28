@@ -1,4 +1,4 @@
-package com.example.movieapp.database.models
+package com.example.movieapp.models
 
 data class DurationInterval(
     var from: Int? = null,

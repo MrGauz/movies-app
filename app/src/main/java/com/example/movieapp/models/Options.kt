@@ -1,4 +1,4 @@
-package com.example.movieapp.database.models
+package com.example.movieapp.models
 
 data class Options(
     var matchPercentage: Double = 1.0,

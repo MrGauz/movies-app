@@ -1,7 +1,5 @@
-package com.example.movieapp.database.models
+package com.example.movieapp.models
 
-import com.example.movieapp.api.MoviesRepository
-import com.example.movieapp.api.models.Movie
 import com.example.movieapp.swipe.SwipeItemInfo
 import java.util.ArrayList
 
@@ -24,8 +22,8 @@ object FilterToSwipeItemList {//this is wrong, the items have to be loaded from 
         }
 
          */
-        this.swipeItemInfoArrayList?.add(SwipeItemInfo("test", listOf(1,2),"https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg",null,4))
-        this.swipeItemInfoArrayList?.add(SwipeItemInfo("test2", listOf(1,2),"https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg",null,7))
+        swipeItemInfoArrayList?.add(SwipeItemInfo("test", listOf(1,2),"https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg",null,4))
+        swipeItemInfoArrayList?.add(SwipeItemInfo("test2", listOf(1,2),"https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg",null,7))
         if(swipeItemInfoArrayList.size>0){ //<--- update currentID directly after the list is being created, so the first element is covered aswell
             currentItemApiId = swipeItemInfoArrayList[0].movID
         }
@@ -48,6 +46,6 @@ object FilterToSwipeItemList {//this is wrong, the items have to be loaded from 
                 item.swiped = direction
             }
         }
-        this.swipeItemInfoArrayList = newSwipeItemInfoArrayList
+        swipeItemInfoArrayList = newSwipeItemInfoArrayList
     }
 }

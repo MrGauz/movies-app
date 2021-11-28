@@ -6,8 +6,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.example.movieapp.api.models.*
-import com.example.movieapp.database.models.Filter
+import com.example.movieapp.models.*
 import com.example.movieapp.swipe.DetailsFragment
 
 object MoviesRepository {

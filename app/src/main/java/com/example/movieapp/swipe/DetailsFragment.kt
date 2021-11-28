@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
-import com.example.movieapp.api.models.MovieDetails
-import com.example.movieapp.database.models.FilterToSwipeItemList
+import com.example.movieapp.models.MovieDetails
 import com.example.movieapp.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {

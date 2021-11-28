@@ -9,8 +9,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.database.Database
-import com.example.movieapp.database.models.*
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
+import com.example.movieapp.models.*
 import java.util.Collections.max
 import java.util.Collections.min
 
