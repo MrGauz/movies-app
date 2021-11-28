@@ -18,6 +18,7 @@ object Database {
     private lateinit var sessionReference: DatabaseReference
     lateinit var sessionId: String
     lateinit var deviceId: String
+    var currentBatchIndex = 0
 
     init {
         val database = Firebase
@@ -58,6 +59,7 @@ object Database {
                         return
                     }
 
+                    // Check if session is still active
                     if (!session.isActive) {
                         fragment.onFailedSessionJoin("This session is over")
                         return
@@ -94,5 +96,9 @@ object Database {
 
     fun loadNextMoviesBatch() {
         TODO()
+    }
+
+    fun getMoviesReference():DatabaseReference {
+        return sessionReference.child("movies")
     }
 }

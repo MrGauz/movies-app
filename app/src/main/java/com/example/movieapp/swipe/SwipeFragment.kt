@@ -10,14 +10,19 @@ import com.daprlabs.cardstack.SwipeDeck
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.FilterToSwipeItemList
+import com.example.movieapp.models.Movie
+import com.example.movieapp.models.MoviesBatchViewModel
 import java.util.ArrayList
 
 
 class SwipeFragment : Fragment() {
     private var cardStack: SwipeDeck? = null
-    private var swipeItemInfoArrayList: ArrayList<SwipeItemInfo>? = null
+    private var swipeItemInfoArrayList: ArrayList<Movie>? = null
+    private lateinit var moviesBatchViewModel: MoviesBatchViewModel
 
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
@@ -28,21 +33,24 @@ class SwipeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_swipe, container, false)
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
 
-        swipeItemInfoArrayList = FilterToSwipeItemList.getSwipeItemInfoArrayList()
+        val factory = MoviesBatchViewModelFactory()
+        moviesBatchViewModel =
+            ViewModelProviders.of(this, factory).get(MoviesBatchViewModel::class.java)
 
-        cardStack = binding.swipeDeck
+        cardStack = view.findViewById(R.id.swipe_deck)
 
-        val adapter = DeckAdapter(swipeItemInfoArrayList!!, view.context)
-        cardStack?.setAdapter(adapter)
+        moviesBatchViewModel.getBatch().observe(viewLifecycleOwner, { movies ->
+            cardStack?.setAdapter(DeckAdapter(movies as ArrayList<Movie>, requireContext()))
+        })
 
         cardStack?.setEventCallback(object :
             SwipeEventCallback { //<----we gotta get the position of the Item in the List somehow, then it is possible to get the id
             override fun cardSwipedLeft(position: Int) {
                 updateCurrentItemApiID(position)//<----call this function for cardSwiped left aswell the function is implemented below
                 // on card swipe left we are displaying a toast message.
-                val title = swipeItemInfoArrayList!![position].filmTitle
+                val title = swipeItemInfoArrayList!![position].title
                 FilterToSwipeItemList.setItemSwiped(
-                    swipeItemInfoArrayList!![position].movID,
+                    swipeItemInfoArrayList!![position].id,
                     "left"
                 )
                 Toast.makeText(context, "Card Swiped Left on " + title, Toast.LENGTH_SHORT).show()
@@ -51,9 +59,9 @@ class SwipeFragment : Fragment() {
             override fun cardSwipedRight(position: Int) {
                 updateCurrentItemApiID(position)
                 // on card swiped to right we are displaying a toast message.
-                val title = swipeItemInfoArrayList!![position].filmTitle
+                val title = swipeItemInfoArrayList!![position].title
                 FilterToSwipeItemList.setItemSwiped(
-                    swipeItemInfoArrayList!![position].movID,
+                    swipeItemInfoArrayList!![position].id,
                     "right"
                 )
                 Toast.makeText(context, "Card Swiped Right" + title, Toast.LENGTH_SHORT).show()
@@ -82,7 +90,7 @@ class SwipeFragment : Fragment() {
     fun updateCurrentItemApiID(position: Int) {//<--- implemented here
         if (swipeItemInfoArrayList!!.size > position + 1) {//position +1 bec the current position was already swiped
             FilterToSwipeItemList.currentItemApiId =
-                swipeItemInfoArrayList!![position + 1].movID // write the ApiID of the next Item in our object class
+                swipeItemInfoArrayList!![position + 1].id // write the ApiID of the next Item in our object class
         }
     }
 }

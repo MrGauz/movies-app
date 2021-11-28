@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.movieapp.R
+import com.example.movieapp.api.MoviesRepository
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
 import com.example.movieapp.models.*
@@ -49,6 +50,9 @@ class FilterScreenFragment : Fragment() {
 
             // Create new session in database
             Database.createNewSession(filter, options)
+
+            // Load first batch of movies
+            MoviesRepository.getMovies(filter)
 
             // Navigate to share screen
             FilterToSwipeItemList.updateswipeItemInfoArrayList(filter)
