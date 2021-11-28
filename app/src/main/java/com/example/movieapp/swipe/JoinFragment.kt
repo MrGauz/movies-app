@@ -23,20 +23,14 @@ class JoinFragment : Fragment() {
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
-        //If statement that checks if a sessionID already exists -> checks if its valid
-        if(!Database.sessionId.isEmpty()){
-            Database.joinSession(Database.sessionId, this)
-        }
-        else {
-            binding.joinButton.setOnClickListener {
-                val inputSessionId = binding.sessionIdInput.text.toString().trim()
-                if (inputSessionId.isEmpty()) {
-                    binding.sessionIdInput.error = "Please provide a session ID"
-                    return@setOnClickListener
-                }
-
-                Database.joinSession(inputSessionId, this)
+        binding.joinButton.setOnClickListener {
+            val inputSessionId = binding.sessionIdInput.text.toString().trim()
+            if (inputSessionId.isEmpty()) {
+                binding.sessionIdInput.error = "Please provide a session ID"
+                return@setOnClickListener
             }
+
+            Database.joinSession(inputSessionId, this)
         }
 
         return binding.root
