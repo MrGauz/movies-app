@@ -7,7 +7,7 @@ data class Session(
     var filter: Filter = Filter(),
     var options: Options = Options(),
 ) {
-    var users: List<String> = emptyList()
-    var matches: List<Movie>? = null
-    var movies: List<List<Movie>>? = null
+    var users: HashMap<String, String> = hashMapOf()
+    var matches: List<Movie> = mutableListOf()
+    var movies: List<List<Movie>> = mutableListOf()
 }

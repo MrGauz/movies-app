@@ -75,8 +75,7 @@ dependencies {
     // QR code generator
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 
-    implementation 'com.google.android.material:material:1.4.0'
-    //tinder swipes
+    // Cards and swipes
     implementation 'com.daprlabs.aaron:cardstack:0.3.1-beta0'
     implementation 'com.google.android.material:material:1.4.0'
 }

@@ -18,6 +18,7 @@ object Database {
     private var genresReference: DatabaseReference
     private lateinit var sessionReference: DatabaseReference
     lateinit var sessionId: String
+    lateinit var deviceId: String
 
     init {
         val database = Firebase
@@ -30,11 +31,14 @@ object Database {
     fun createNewSession(filter: Filter, options: Options): String? {
         val uid: String? = sessionsReference.push().key
         if (uid != null) {
+            // Create session
             val session = Session(uid, System.currentTimeMillis(), true, filter, options)
             sessionsReference.child(uid).setValue(session)
             sessionId = uid
             sessionReference = sessionsReference.child(uid)
-            // TODO: save device ID (https://stackoverflow.com/a/12190973) to users
+            // Add user
+            val newUser = sessionReference.child("users").push()
+            newUser.setValue(deviceId)
         }
         return uid
     }
@@ -56,16 +60,22 @@ object Database {
                         return
                     }
 
+                    // TODO: check if session is active
+
                     // Check if join time is over
                     if (session.startTimestamp + session.options.joinTimer * 1000 < System.currentTimeMillis()) {
                         fragment.onFailedSessionJoin("Time to join the session is over")
                         return
                     }
 
-                    fragment.onSuccessfulSessionJoin()
+                    // Save session data
                     sessionId = inputSessionId
                     sessionReference = sessionsReference.child(inputSessionId)
-                    // TODO: save device ID (https://stackoverflow.com/a/12190973) to users
+                    // Add user
+                    val newUser = sessionReference.child("users").push()
+                    newUser.setValue(deviceId)
+                    // UI callback to continue
+                    fragment.onSuccessfulSessionJoin()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
