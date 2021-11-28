@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph2"
-    app:startDestination="@id/joinFragment">
+    app:startDestination="@id/swipeFragment">
+    <fragment
+        android:id="@+id/swipeFragment"
+        android:name="com.example.movieapp.swipe.SwipeFragment"
+        android:label="fragment_swipe"
+        tools:layout="@layout/fragment_swipe" >
+        <action
+            android:id="@+id/action_swipeFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_swipeFragment_to_matchesFragment"
+            app:destination="@id/matchesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.movieapp.swipe.DetailsFragment"
@@ -24,25 +36,5 @@
         <action
             android:id="@+id/action_matchesFragment_to_swipeFragment"
             app:destination="@id/swipeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/joinFragment"
-        android:name="com.example.movieapp.swipe.JoinFragment"
-        android:label="fragment_join"
-        tools:layout="@layout/fragment_join" >
-        <action
-            android:id="@+id/action_joinFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/swipeFragment"
-        android:name="com.example.movieapp.swipe.SwipeFragment"
-        android:label="SwipeFragment" >
-        <action
-            android:id="@+id/action_swipeFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-        <action
-            android:id="@+id/action_swipeFragment_to_matchesFragment"
-            app:destination="@id/matchesFragment" />
     </fragment>
 </navigation>

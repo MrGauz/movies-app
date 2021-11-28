@@ -23,9 +23,10 @@ class SwipeActivity : AppCompatActivity() {
         } else {
             // User started the session or joined from within the app
             isHost = intent.getBooleanExtra("isHost", false)
-            //databaseId = Database.sessionId
+            databaseId = Database.sessionId
         }
-        //Toast.makeText(this, "$isHost | $databaseId", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(this, "$isHost | $databaseId", Toast.LENGTH_SHORT).show()
 
         setContentView(binding.root)
     }

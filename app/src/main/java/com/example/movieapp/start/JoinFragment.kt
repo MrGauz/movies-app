@@ -1,17 +1,12 @@
-package com.example.movieapp.swipe
+package com.example.movieapp.start
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.movieapp.R
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentJoinBinding
-import com.example.movieapp.start.Intents
 
 class JoinFragment : Fragment() {
     private var _binding: FragmentJoinBinding? = null
@@ -38,9 +33,8 @@ class JoinFragment : Fragment() {
 
     fun onSuccessfulSessionJoin() {
         // Navigate to swipe screen
-        //val swipeIntent = Intents(isHost = false, context = this.context)
-        //swipeIntent.intentToSwipe()
-        findNavController().navigate(R.id.action_joinFragment_to_swipeFragment)
+        val swipeIntent = Intents(isHost = false, context = this.context)
+        swipeIntent.intentToSwipe()
     }
 
     fun onFailedSessionJoin(error: String = "Could not connect to session :c") {

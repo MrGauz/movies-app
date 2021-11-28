@@ -4,7 +4,7 @@ import com.example.movieapp.models.Filter
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.Options
 import com.example.movieapp.models.Session
-import com.example.movieapp.swipe.JoinFragment
+import com.example.movieapp.start.JoinFragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

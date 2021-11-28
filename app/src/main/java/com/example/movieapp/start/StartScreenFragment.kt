@@ -24,11 +24,9 @@ class StartScreenFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_filterScreenFragment)
         )
 
-        binding.joinLobby.setOnClickListener {
-            //Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_joinFragment)
-            val intent = Intents(false, this.context)
-            intent.intentToSwipe()
-        }
+        binding.joinLobby.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_joinFragment)
+        )
 
         return binding.root
     }
