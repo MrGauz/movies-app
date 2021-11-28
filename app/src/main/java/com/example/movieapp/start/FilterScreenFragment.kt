@@ -39,12 +39,12 @@ class FilterScreenFragment : Fragment() {
                 genres = null, // TODO: take from GenreFragment
                 releaseYear = releaseYearInterval,
                 director = null,
-                minRating = binding.sliderRangeRating.values.get(0).toDouble(),
+                minRating = binding.sliderRangeRating.values[0].toDouble(),
                 duration = DurationInterval(null, null) // TODO: get value from slider
             )
             val options = Options(
-                match_percentage = binding.sliderVotesPercentage.values.get(0).toDouble() / 100,
-                join_timer = 5 // TODO: get value from slider
+                matchPercentage = binding.sliderVotesPercentage.values[0].toDouble() / 100,
+                joinTimer = 120 // TODO: get value from slider
             )
 
             // Create new session in database

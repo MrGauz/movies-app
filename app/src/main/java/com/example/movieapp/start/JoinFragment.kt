@@ -33,11 +33,11 @@ class JoinFragment : Fragment() {
 
     fun onSuccessfulSessionJoin() {
         // Navigate to swipe screen
-        val swipeIntent = Intents(false, this.context)
+        val swipeIntent = Intents(isHost = false, context = this.context)
         swipeIntent.intentToSwipe()
     }
 
-    fun onFailedSessionJoin() {
-        binding.sessionIdInput.error = "Session ID not found"
+    fun onFailedSessionJoin(error: String = "Could not connect to session :c") {
+        binding.sessionIdInput.error = error
     }
 }

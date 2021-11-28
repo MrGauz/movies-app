@@ -1,6 +1,6 @@
 package com.example.movieapp.database.models
 
 data class ReleaseYearInterval(
-    var starting_year: Int?,
-    var end_year: Int?
+    var from: Int? = null,
+    var to: Int? = null
 )

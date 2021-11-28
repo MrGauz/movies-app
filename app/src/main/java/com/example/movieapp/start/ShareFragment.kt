@@ -30,7 +30,7 @@ class ShareFragment : Fragment() {
         val databaseId = Database.sessionId
         binding.sessionId.text = "Session ID: $databaseId"
         // TODO: setup a real deep link
-        val deepLink = "https://www.meineurl.com/path?key=$databaseId"
+        val deepLink = "https://www.meineurl.com/path?id=$databaseId"
 
         // Copy session ID button
         binding.copySessionId.setOnClickListener {

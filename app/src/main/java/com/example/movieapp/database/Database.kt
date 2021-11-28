@@ -10,6 +10,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 object Database {
     private var sessionsReference: DatabaseReference
@@ -28,7 +29,7 @@ object Database {
     fun createNewSession(filter: Filter, options: Options): String? {
         val uid: String? = sessionsReference.push().key
         if (uid != null) {
-            var session = Session(uid, System.currentTimeMillis(), true, filter, options)
+            val session = Session(uid, System.currentTimeMillis(), true, filter, options)
             sessionsReference.child(uid).setValue(session)
             sessionId = uid
             sessionReference = sessionsReference.child(uid)
@@ -41,15 +42,27 @@ object Database {
         sessionsReference.child(inputSessionId).addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.value != null) {
-                        // Session found
-                        fragment.onSuccessfulSessionJoin()
-                        sessionId = inputSessionId
-                        sessionReference = sessionsReference.child(inputSessionId)
-                    } else {
+                    if (snapshot.value == null) {
                         // Session not found
-                        fragment.onFailedSessionJoin()
+                        fragment.onFailedSessionJoin("Session not found")
+                        return
                     }
+
+                    val session = snapshot.getValue<Session>()
+                    if (session == null) {
+                        fragment.onFailedSessionJoin()
+                        return
+                    }
+
+                    // Check if join time is over
+                    if (session.startTimestamp + session.options.joinTimer * 1000 < System.currentTimeMillis()) {
+                        fragment.onFailedSessionJoin("Time to join the session is over")
+                        return
+                    }
+
+                    fragment.onSuccessfulSessionJoin()
+                    sessionId = inputSessionId
+                    sessionReference = sessionsReference.child(inputSessionId)
                 }
 
                 override fun onCancelled(error: DatabaseError) {

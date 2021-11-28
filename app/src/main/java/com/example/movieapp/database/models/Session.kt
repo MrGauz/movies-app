@@ -1,11 +1,11 @@
 package com.example.movieapp.database.models
 
 data class Session(
-    val id: String?,
-    val startTimestamp: Long,
-    var isActive: Boolean,
-    var filter: Filter,
-    var options: Options,
+    var id: String = "",
+    var startTimestamp: Long = 0,
+    var isActive: Boolean = false,
+    var filter: Filter = Filter(),
+    var options: Options = Options(),
 ) {
     var matches: List<Movie>? = null
     var movies: List<List<Movie>>? = null

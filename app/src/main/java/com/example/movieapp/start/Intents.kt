@@ -16,7 +16,7 @@ class Intents {
 
     fun intentToSwipe() {
         val intent = Intent(this.context, SwipeActivity::class.java);
-        intent.putExtra("UserStatus", isHost)
+        intent.putExtra("isHost", isHost)
         this.context?.let { startActivity(it, intent, null) }
     }
 }

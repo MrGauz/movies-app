@@ -1,34 +1,33 @@
 package com.example.movieapp.swipe
 
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.ActivitySwipeBinding
 
 class SwipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySwipeBinding
-    private var userStat: String? = null
-    private var databaseId: String? = null
+    private var isHost: Boolean = false
+    private lateinit var databaseId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySwipeBinding.inflate(layoutInflater)
-        initvars()
-        //receive the information from the different Intents
-        setContentView(binding.root)
-        // TODO: 24.11.2021 establish connection to the database
-        //using the parameters databaseId and userStat
-    }
 
-    fun initvars(){
-        userStat = intent.getStringExtra("UserStatus")
-        databaseId = intent.getStringExtra("DatabaseID")
-        if (userStat == null || databaseId == null) { // If joining over deep link
-            val data: Uri? = intent?.data
-            userStat = "user" //people joining via deep link are always users
-            databaseId = data?.getQueryParameter("key").toString()
+        if (intent?.action == "android.intent.action.VIEW") {
+            // User joined via deep link
+            isHost = false
+            databaseId = intent?.data?.getQueryParameter("id").toString()
+            // TODO: move this logic to JoinFragment to check if database ID exists
+        } else {
+            // User started the session or joined from within the app
+            isHost = intent.getBooleanExtra("isHost", false)
+            databaseId = Database.sessionId
         }
-        Toast.makeText(this, "$userStat|$databaseId", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(this, "$isHost | $databaseId", Toast.LENGTH_SHORT).show()
+
+        setContentView(binding.root)
     }
 }
