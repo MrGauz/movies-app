@@ -22,8 +22,8 @@ object MoviesRepository {
         api = retrofit.create(Api::class.java)
     }
 
-    fun getGenres(page: Int = 1) {
-        api.getGenres(page = page)
+    fun getGenres() {
+        api.getGenres()
             .enqueue(object : Callback<GenresListResponse> {
                 override fun onResponse(
                     call: Call<GenresListResponse>,
@@ -33,17 +33,12 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Repository", "Genres: ${responseBody.genres}")
-                            // TODO: save loaded genres locally
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            GenresList.genres = responseBody.genres
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<GenresListResponse>, t: Throwable) {
-                    Log.e("Repository", "onFailure", t)
-                }
+                override fun onFailure(call: Call<GenresListResponse>, t: Throwable) {}
             })
     }
 

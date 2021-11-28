@@ -14,7 +14,6 @@ interface Api {
     @GET("genre/movie/list")
     fun getGenres(
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
-        @Query("page") page: Int,
         @Query("language") language: String = "en-US"
     ): Call<GenresListResponse>
 

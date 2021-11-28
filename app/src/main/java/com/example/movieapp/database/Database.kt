@@ -15,7 +15,6 @@ import com.google.firebase.database.ktx.getValue
 
 object Database {
     private var sessionsReference: DatabaseReference
-    private var genresReference: DatabaseReference
     private lateinit var sessionReference: DatabaseReference
     var sessionId: String? = null
     lateinit var deviceId: String
@@ -25,7 +24,6 @@ object Database {
             .database("https://swovieapp-default-rtdb.europe-west1.firebasedatabase.app/")
         database.setPersistenceEnabled(true)
         sessionsReference = database.getReference("sessions")
-        genresReference = database.getReference("genres")
     }
 
     fun createNewSession(filter: Filter, options: Options): String? {
@@ -89,5 +87,9 @@ object Database {
         if (uid != null) {
             sessionReference.child("movies").child(uid).setValue(batch)
         }
+    }
+
+    fun loadNextMoviesBatch() {
+        TODO()
     }
 }
