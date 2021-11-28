@@ -19,11 +19,11 @@ class SwipeActivity : AppCompatActivity() {
             // User joined via deep link
             isHost = false
             databaseId = intent?.data?.getQueryParameter("id").toString()
+            Database.sessionId = databaseId //It should work that way. Now JoinFragment should have access to the id
             // TODO: move this logic to JoinFragment to check if database ID exists
         } else {
-            // User started the session or joined from within the app
+            // The admin just configured the filter and wants to join now
             isHost = intent.getBooleanExtra("isHost", false)
-            //databaseId = Database.sessionId
         }
         //Toast.makeText(this, "$isHost | $databaseId", Toast.LENGTH_SHORT).show()
 
