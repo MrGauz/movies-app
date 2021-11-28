@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.movieapp.api.models.*
 import com.example.movieapp.database.models.Filter
+import com.example.movieapp.swipe.DetailsFragment
 
 object MoviesRepository {
     private val api: Api
@@ -132,11 +133,12 @@ object MoviesRepository {
     }
 
     fun getMovieDetails(
-        api_id: String,
-        append_to_results: List<String> = listOf("videos")
+        api_id: Long,
+        append_to_results: List<String> = listOf("videos"),
+        fragment: DetailsFragment
     ) {
         api.getMovieDetails(
-            api_id = api_id,
+            api_id = api_id.toString(),
             append_to_response = append_to_results.joinToString(separator = ","),
         )
             .enqueue(object : Callback<MovieDetailsResponse> {
@@ -149,9 +151,7 @@ object MoviesRepository {
 
                         if (responseBody != null) {
                             val movieDetails = MovieDetails(responseBody)
-                            println("Trailer link: ${movieDetails.getTrailerUrl()}")
-                        } else {
-                            Log.d("Repository", "Failed to get response")
+                            fragment.showLoadedMovieDetails(movieDetails)
                         }
                     }
                 }
