@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".start.JoinFragment" >
+    tools:context=".swipe.JoinFragment" >
 
     <Button
         android:id="@+id/joinButton"

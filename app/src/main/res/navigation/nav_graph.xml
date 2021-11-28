@@ -16,13 +16,6 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_startScreenFragment_to_joinFragment"
-            app:destination="@id/joinFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/filterScreenFragment"
@@ -62,9 +55,4 @@
         android:name="com.example.movieapp.start.ShareFragment"
         android:label="fragment_share"
         tools:layout="@layout/fragment_share" />
-    <fragment
-        android:id="@+id/joinFragment"
-        android:name="com.example.movieapp.start.JoinFragment"
-        android:label="fragment_join"
-        tools:layout="@layout/fragment_join" />
 </navigation>
