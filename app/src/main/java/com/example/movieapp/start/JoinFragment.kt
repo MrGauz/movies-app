@@ -19,16 +19,19 @@ class JoinFragment : Fragment() {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
         binding.joinButton.setOnClickListener {
-            val inputSessionId = binding.sessionIdInput.text.toString().trim()
-            if (inputSessionId.isEmpty()) {
-                binding.sessionIdInput.error = "Please provide a session ID"
-                return@setOnClickListener
-            }
-
-            Database.joinSession(inputSessionId, this)
+            trySessionJoin(binding.sessionIdInput.text.toString().trim())
         }
 
         return binding.root
+    }
+
+    fun trySessionJoin(inputSessionId: String) {
+        if (inputSessionId.isEmpty()) {
+            binding.sessionIdInput.error = "Please provide a session ID"
+            return
+        }
+
+        Database.joinSession(inputSessionId, this)
     }
 
     fun onSuccessfulSessionJoin() {

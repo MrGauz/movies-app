@@ -16,5 +16,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Database.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+
+        if (intent?.action == "android.intent.action.VIEW") {
+            // User joined via deep link
+            val isHost = false
+            val databaseId = intent?.data?.getQueryParameter("id").toString()
+            // TODO: navigate to JoinFragment and call trySessionJoin()
+        }
     }
 }
