@@ -72,11 +72,14 @@ class FilterScreenFragment : Fragment() {
             )
             val options = Options(
                 matchPercentage = binding.sliderVotesPercentage.values[0].toDouble() / 100,
-                joinTimer = 120 // TODO: get value from slider
+                joinTimer = binding.joinTimerSlider.values[0].toInt()
             )
 
             // Create new session in database
             Database.createNewSession(filter, options)
+
+            // Initialize session data object
+            Database.loadSessionData()
 
             // Load first batch of movies
             MoviesRepository.getMovies(filter)

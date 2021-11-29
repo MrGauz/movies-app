@@ -15,7 +15,7 @@ import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
 import com.example.movieapp.R
-import com.example.movieapp.database.Database
+import com.example.movieapp.data.SessionData
 
 class ShareFragment : Fragment() {
     private var _binding: FragmentShareBinding? = null
@@ -28,7 +28,7 @@ class ShareFragment : Fragment() {
         _binding = FragmentShareBinding.inflate(inflater, container, false)
 
         // Compose sharing information
-        val databaseId = Database.sessionId
+        val databaseId = SessionData.id
         binding.sessionId.text = "Session ID: $databaseId"
         val deepLink = "https://" + getString(R.string.domain_name) + "/?id=$databaseId"
 

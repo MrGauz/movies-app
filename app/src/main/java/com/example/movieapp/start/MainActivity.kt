@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
-import com.example.movieapp.database.Database
+import com.example.movieapp.data.SessionData
 import com.example.movieapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set device ID
-        Database.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        SessionData.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
         // Load movie genres
         MoviesRepository.getGenres()

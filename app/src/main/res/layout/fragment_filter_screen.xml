@@ -155,7 +155,7 @@
                     android:textSize="20sp" />
 
                 <com.google.android.material.slider.RangeSlider
-                    android:id="@+id/sliderRangeActiveFor"
+                    android:id="@+id/joinTimerSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"

@@ -1,5 +1,6 @@
 package com.example.movieapp.database
 
+import com.example.movieapp.data.SessionData
 import com.example.movieapp.models.*
 import com.example.movieapp.start.JoinFragment
 import com.google.firebase.database.DatabaseReference
@@ -13,9 +14,6 @@ import com.google.firebase.database.ktx.getValue
 object Database {
     private var sessionsReference: DatabaseReference
     private lateinit var sessionReference: DatabaseReference
-    lateinit var sessionId: String
-    lateinit var deviceId: String
-    var currentBatchIndex = 0
 
     init {
         val database = Firebase
@@ -30,11 +28,13 @@ object Database {
             // Create session
             val session = Session(uid, System.currentTimeMillis(), true, filter, options)
             sessionsReference.child(uid).setValue(session)
-            sessionId = uid
+            SessionData.id = uid
             sessionReference = sessionsReference.child(uid)
             // Add user
             val newUser = sessionReference.child("users").push()
-            newUser.setValue(deviceId)
+            newUser.setValue(SessionData.deviceId)
+            // Save startTimestamp
+            SessionData.startTimestamp = session.startTimestamp
         }
         return uid
     }
@@ -69,11 +69,11 @@ object Database {
                     }
 
                     // Save session data
-                    sessionId = inputSessionId
+                    SessionData.id = inputSessionId
                     sessionReference = sessionsReference.child(inputSessionId)
                     // Add user
                     val newUser = sessionReference.child("users").push()
-                    newUser.setValue(deviceId)
+                    newUser.setValue(SessionData.deviceId)
                     // UI callback to continue
                     fragment.onSuccessfulSessionJoin()
                 }
@@ -100,6 +100,51 @@ object Database {
 
     fun loadNextMoviesBatch() {
         TODO()
+    }
+
+    fun loadSessionData() {
+        // Load isActive
+        sessionReference.child("active").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                SessionData.isActive = snapshot.getValue<Boolean>()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Load filter
+        sessionReference.child("filter").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                SessionData.filter = snapshot.getValue<Filter>()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Load options
+        sessionReference.child("options").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                SessionData.options = snapshot.getValue<Options>()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Load options
+        sessionReference.child("users").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var tmpUsersList = mutableListOf<String>()
+                snapshot.children.forEach {
+                    if (it != null) {
+                        tmpUsersList.add(it.getValue<String>()!!)
+                    }
+                }
+
+                SessionData.users = tmpUsersList
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     fun getMoviesReference() = sessionReference.child("movies")
