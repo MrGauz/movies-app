@@ -5,11 +5,7 @@ import com.example.movieapp.models.Genre
 object GenresData {
     var genres: List<Genre> = emptyList()
 
-    fun whereId(id: Long): String? {
-        return genres.find { g -> g.id == id }?.name
-    }
+    fun findById(id: Long) = genres.find { g -> g.id == id }
 
-    fun whereName(name: String): Long? {
-        return genres.find { g -> g.name == name }?.id
-    }
+    fun findByName(name: String) = genres.find { g -> g.name == name }
 }

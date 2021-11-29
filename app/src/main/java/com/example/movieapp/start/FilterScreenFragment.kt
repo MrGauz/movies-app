@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
+import com.example.movieapp.data.CountriesData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
 import com.example.movieapp.models.*
@@ -65,7 +66,7 @@ class FilterScreenFragment : Fragment() {
             val filter = Filter(
                 genres = null, // TODO: take from GenreFragment
                 releaseYear = releaseYearInterval,
-                director = null,
+                country = CountriesData.findByCode("US"), // TODO: take data from CountryFragment
                 minRating = binding.sliderRangeRating.values[0].toDouble(),
                 duration = durationInterval
             )
@@ -81,7 +82,6 @@ class FilterScreenFragment : Fragment() {
             MoviesRepository.getMovies(filter)
 
             // Navigate to share screen
-            //FilterToSwipeItemList.updateswipeItemInfoArrayList(filter)
             binding.root.findNavController()
                 .navigate(R.id.action_filterScreenFragment_to_shareFragment)
         }
