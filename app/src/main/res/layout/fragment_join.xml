@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".start.JoinFragment" >
+    android:background="@drawable/join_background"
+    tools:context=".start.JoinFragment">
 
     <Button
         android:id="@+id/joinButton"
@@ -27,6 +28,8 @@
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="OR"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +54,7 @@
         android:layout_marginTop="24dp"
         android:enabled="false"
         android:text="Scan QR code"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/joinButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

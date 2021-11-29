@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item>
-        <shape android:shape="rectangle" >
-            <gradient
-                android:type="radial"
-                android:gradientRadius="50%"
-                android:centerX="100%"
-                android:centerY="20%"
-                android:startColor="#1B49A6" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle" >
-            <gradient
-                android:type="radial"
-                android:gradientRadius="50%"
-                android:centerX="100%"
-                android:centerY="40%"
-                android:startColor="#1B49A6" />
-        </shape>
-    </item>
-    <item>
         <shape  android:shape="rectangle" >
-            <gradient
-                android:type="radial"
-                android:gradientRadius="180%"
-                android:centerX="50%"
-                android:centerY="100%"
-                android:startColor="#140643"
-                android:centerColor="#7D071353"/>
+            <solid
+                android:color="#140643"
+                />
         </shape>
     </item>
     <item>
@@ -39,6 +15,26 @@
                 android:centerX="50%"
                 android:centerY="40%"
                 android:startColor="#143678"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle" >
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%"
+                android:centerX="100%"
+                android:centerY="40%"
+                android:startColor="#11347C" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle" >
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%"
+                android:centerX="100%"
+                android:centerY="20%"
+                android:startColor="#0E327C" />
         </shape>
     </item>
 </layer-list>

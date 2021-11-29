@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".start.ShareFragment" >
+    android:background="@drawable/blue_gradient_background"
+    tools:context=".start.ShareFragment">
 
     <Button
         android:id="@+id/startSwipingButton"
@@ -43,6 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/qrView"
         app:layout_constraintEnd_toEndOf="parent"
