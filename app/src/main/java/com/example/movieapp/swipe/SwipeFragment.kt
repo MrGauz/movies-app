@@ -15,8 +15,10 @@ import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.FilterToSwipeItemList
+import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.MoviesBatchViewModel
 import java.util.ArrayList
@@ -26,6 +28,7 @@ class SwipeFragment : Fragment() {
     private var cardStack: SwipeDeck? = null
     private lateinit var movies: List<Movie>
     private lateinit var moviesBatchViewModel: MoviesBatchViewModel
+    private lateinit var matchesViewModel: MatchesViewModel
 
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
@@ -57,21 +60,14 @@ class SwipeFragment : Fragment() {
 
             }
 
+            // This method is called when no card is present
             override fun cardsDepleted() {
-                // this method is called when no card is present
                 Toast.makeText(context, "No more courses present", Toast.LENGTH_SHORT)
                     .show()
             }
 
-            override fun cardActionDown() {
-                // this method is called when card is swiped down.
-                Log.i("TAG", "CARDS MOVED DOWN")
-            }
-
-            override fun cardActionUp() {
-                // this method is called when card is moved up.
-                Log.i("TAG", "CARDS MOVED UP")
-            }
+            override fun cardActionDown() {}
+            override fun cardActionUp() {}
         })
 
         view.findViewById<Button>(R.id.matchesButton).setOnClickListener(
