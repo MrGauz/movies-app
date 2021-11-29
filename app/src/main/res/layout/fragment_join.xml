@@ -25,6 +25,7 @@
         android:layout_marginTop="200dp"
         android:ems="10"
         android:hint="Session ID"
+        android:background="@drawable/fancy_text_view"
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
