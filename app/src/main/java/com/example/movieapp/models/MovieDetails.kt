@@ -14,13 +14,13 @@ data class MovieDetails(val response: MovieDetailsResponse) {
     val trailerKey: String? = response.videos.results.find { v ->
         v.site == "YouTube" && v.type == "Trailer"
     }?.key
-    // TODO: director, screenplay by etc
+    val crew: List<Person> = response.credits.crew
 
-    fun getTrailerUrl(): String? {
-        if (trailerKey == null) return null
+    fun getTrailerUrl() = "https://www.youtube.com/watch?v=$trailerKey"
 
-        return "https://www.youtube.com/watch?v=$trailerKey"
-    }
     fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$posterPath"
 
+    fun getImdbLink() = "https://www.imdb.com/title/$imdbId"
+
+    fun getDirectorName() = crew.find { c -> c.job == "Director" }?.name ?: ""
 }

@@ -34,5 +34,5 @@ data class MovieDetailsResponse(
     @SerializedName("release_date") val release_date: String,
     @SerializedName("runtime") val duration: Int,
     @SerializedName("videos") val videos: Videos,
-    // TODO: director, screenplay by etc
+    @SerializedName("credits") val credits: Credits
 )
