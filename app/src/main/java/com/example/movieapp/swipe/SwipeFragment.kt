@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.daprlabs.cardstack.SwipeDeck
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
 import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.FilterToSwipeItemList
@@ -83,6 +86,10 @@ class SwipeFragment : Fragment() {
                 Log.i("TAG", "CARDS MOVED UP")
             }
         })
+
+        view.findViewById<Button>(R.id.matchesButton).setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
+        )
 
         return view
     }

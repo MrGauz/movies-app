@@ -29,10 +29,14 @@ class DetailsFragment : Fragment() {
         // TODO: show "loading details" on the screen,
         //  in case internet connection is slow and details are not loaded instantly
         // Load movie details
-        MoviesRepository.getMovieDetails(
-            api_id = 100, //FilterToSwipeItemList.currentItemApiId, // TODO: pass API ID here
-            fragment = this
-        )
+        if (arguments?.getLong("apiId") != null) {
+            MoviesRepository.getMovieDetails(
+                api_id = arguments?.getLong("apiId")!!,
+                fragment = this
+            )
+        }
+
+        // TODO: change where back button leads
 
         return binding.root
     }
@@ -41,5 +45,9 @@ class DetailsFragment : Fragment() {
         binding.titleText.text = movieDetails.title
         binding.descriptionText.text = movieDetails.overview
         binding.tmdbRatingText.text = movieDetails.rating.toString()
+    }
+
+    companion object MovieInfo {
+        var apiId: Long? = null
     }
 }

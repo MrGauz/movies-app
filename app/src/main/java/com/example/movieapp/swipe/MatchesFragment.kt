@@ -5,26 +5,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.movieapp.R
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.databinding.FragmentMatchesBinding
-import com.example.movieapp.databinding.MatchCardBinding
+import com.example.movieapp.models.MatchesViewModel
 
 class MatchesFragment : Fragment() {
-    private lateinit var binding: FragmentMatchesBinding
+    private var _binding: FragmentMatchesBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        for (i in 0..3) {
-            val matchCardBinding: MatchCardBinding = MatchCardBinding.inflate(layoutInflater)
-            binding.matchesList.addView(matchCardBinding.root)
-        }
-    }
+    private var viewManager = LinearLayoutManager(context)
+    private lateinit var matchesViewModel: MatchesViewModel
+    private lateinit var matchesRecycler: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_matches, container, false)
+    ): View {
+        _binding = FragmentMatchesBinding.inflate(inflater, container, false)
+
+        val factory = MatchesViewModelFactory()
+        matchesViewModel = ViewModelProviders.of(this, factory).get(MatchesViewModel::class.java)
+
+        matchesRecycler = binding.matchesList
+        matchesRecycler.layoutManager = viewManager
+        matchesViewModel.getMatches().observe(viewLifecycleOwner, { notes ->
+            matchesRecycler.adapter = MatchesRecyclerAdapter(notes, requireContext())
+        })
+
+        return binding.root
     }
 }

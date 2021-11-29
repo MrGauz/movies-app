@@ -1,9 +1,6 @@
 package com.example.movieapp.database
 
-import com.example.movieapp.models.Filter
-import com.example.movieapp.models.Movie
-import com.example.movieapp.models.Options
-import com.example.movieapp.models.Session
+import com.example.movieapp.models.*
 import com.example.movieapp.start.JoinFragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -92,13 +89,20 @@ object Database {
         if (uid != null) {
             sessionReference.child("movies").child(uid).setValue(batch)
         }
+        // TODO: remove after debug
+        for (i in 0..2) {
+            val uid = sessionReference.child("matches").push().key
+            if (uid != null) {
+                sessionReference.child("matches").child(uid).setValue(batch[i])
+            }
+        }
     }
 
     fun loadNextMoviesBatch() {
         TODO()
     }
 
-    fun getMoviesReference():DatabaseReference {
-        return sessionReference.child("movies")
-    }
+    fun getMoviesReference() = sessionReference.child("movies")
+
+    fun getMatchesReference() = sessionReference.child("matches")
 }

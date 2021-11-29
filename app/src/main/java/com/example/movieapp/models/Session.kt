@@ -8,6 +8,6 @@ data class Session(
     var options: Options = Options(),
 ) {
     var users: HashMap<String, String> = hashMapOf()
-    var matches: List<Movie> = mutableListOf()
-    var movies: List<List<Movie>> = mutableListOf()
+    var matches: HashMap<String, Movie> = hashMapOf()
+    var movies: HashMap<String, List<Movie>> = hashMapOf()
 }

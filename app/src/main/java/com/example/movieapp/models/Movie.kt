@@ -18,7 +18,9 @@ data class Movie(
     @SerializedName("release_date") val releaseDate: String = "",
     @SerializedName("genre_ids") val genre_ids: List<Int> = listOf()
 ) {
-    var isSwiped: Boolean = false
-    fun getPosterUrl(size: PosterSize): String =
-        "https://image.tmdb.org/t/p/${size.url_size}$poster_path"
+    var isSwiped = false
+    var isAccepted = false
+
+    fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$poster_path"
+    fun getReleaseYear() = releaseDate.substring(0, 4).toInt()
 }

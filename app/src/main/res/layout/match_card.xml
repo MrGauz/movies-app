@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/match_card_poster"
+        android:id="@+id/matchCardPoster"
         android:layout_width="60dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
@@ -19,40 +19,26 @@
         app:srcCompat="@drawable/movie_poster_test" />
 
     <TextView
-        android:id="@+id/match_card_title_year"
+        android:id="@+id/matchCardTitleYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="The Gentlemen, 2019"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/match_card_poster"
+        app:layout_constraintStart_toEndOf="@+id/matchCardPoster"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/match_card_director"
+        android:id="@+id/matchCardRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Guy Ritchie"
-        app:layout_constraintStart_toEndOf="@+id/match_card_poster"
-        app:layout_constraintTop_toBottomOf="@+id/match_card_title_year" />
-
-    <TextView
-        android:id="@+id/match_card_genres"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Action, Crime, Comedy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/match_card_poster"
-        app:layout_constraintTop_toBottomOf="@+id/match_card_director"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/matchCardPoster"
+        app:layout_constraintTop_toBottomOf="@+id/matchCardTitleYear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
