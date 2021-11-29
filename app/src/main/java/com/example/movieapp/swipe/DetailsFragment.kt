@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
 import com.example.movieapp.models.MovieDetails
 import com.example.movieapp.databinding.FragmentDetailsBinding
+import com.example.movieapp.models.PosterSize
 
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
@@ -42,6 +44,9 @@ class DetailsFragment : Fragment() {
     }
 
     fun showLoadedMovieDetails(movieDetails: MovieDetails) {
+        val posterView = binding.detailsImage
+        Glide.with(posterView).load(movieDetails.getPosterUrl(PosterSize.MIDDLE))
+            .into(posterView)
         binding.titleText.text = movieDetails.title
         binding.descriptionText.text = movieDetails.overview
         binding.tmdbRatingText.text = movieDetails.rating.toString()

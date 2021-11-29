@@ -21,4 +21,6 @@ data class MovieDetails(val response: MovieDetailsResponse) {
 
         return "https://www.youtube.com/watch?v=$trailerKey"
     }
+    fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$posterPath"
+
 }
