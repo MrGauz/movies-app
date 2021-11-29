@@ -32,6 +32,7 @@ class SwipeFragment : Fragment() {
 
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,14 +51,23 @@ class SwipeFragment : Fragment() {
             this.movies = movies
         })
 
+        // Show realtime matches count
+        val matchesFactory = MatchesViewModelFactory()
+        matchesViewModel =
+            ViewModelProviders.of(this, matchesFactory).get(MatchesViewModel::class.java)
+        matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            view.findViewById<Button>(R.id.matchesButton).text = matches.size.toString()
+        })
+
         cardStack?.setEventCallback(object :
             SwipeEventCallback { //<----we gotta get the position of the Item in the List somehow, then it is possible to get the id
             override fun cardSwipedLeft(position: Int) {
                 movies[position].isSwiped = true
+                Toast.makeText(context, "Swiped left", Toast.LENGTH_SHORT).show()
             }
 
             override fun cardSwipedRight(position: Int) {
-
+                Toast.makeText(context, "Swiped right", Toast.LENGTH_SHORT).show()
             }
 
             // This method is called when no card is present
