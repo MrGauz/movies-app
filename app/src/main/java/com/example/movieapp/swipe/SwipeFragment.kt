@@ -14,8 +14,10 @@ import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.FilterToSwipeItemList
+import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.MoviesBatchViewModel
 import java.util.ArrayList
@@ -25,6 +27,7 @@ class SwipeFragment : Fragment() {
     private var cardStack: SwipeDeck? = null
     private var swipeItemInfoArrayList: ArrayList<Movie>? = null
     private lateinit var moviesBatchViewModel: MoviesBatchViewModel
+    private lateinit var matchesViewModel: MatchesViewModel
 
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
@@ -43,6 +46,14 @@ class SwipeFragment : Fragment() {
 
         moviesBatchViewModel.getBatch().observe(viewLifecycleOwner, { movies ->
             cardStack?.setAdapter(DeckAdapter(movies as ArrayList<Movie>, requireContext()))
+        })
+
+        // Show realtime matches count
+        val matchesFactory = MatchesViewModelFactory()
+        matchesViewModel =
+            ViewModelProviders.of(this, matchesFactory).get(MatchesViewModel::class.java)
+        matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            view.findViewById<Button>(R.id.matchesButton).text = matches.size.toString()
         })
 
         cardStack?.setEventCallback(object : SwipeEventCallback {

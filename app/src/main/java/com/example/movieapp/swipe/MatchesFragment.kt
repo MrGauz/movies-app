@@ -31,8 +31,8 @@ class MatchesFragment : Fragment() {
 
         matchesRecycler = binding.matchesList
         matchesRecycler.layoutManager = viewManager
-        matchesViewModel.getMatches().observe(viewLifecycleOwner, { notes ->
-            matchesRecycler.adapter = MatchesRecyclerAdapter(notes, requireContext())
+        matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            matchesRecycler.adapter = MatchesRecyclerAdapter(matches, requireContext())
         })
 
         return binding.root
