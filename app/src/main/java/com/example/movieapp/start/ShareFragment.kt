@@ -14,6 +14,7 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
+import com.example.movieapp.R
 import com.example.movieapp.database.Database
 
 class ShareFragment : Fragment() {
@@ -29,8 +30,7 @@ class ShareFragment : Fragment() {
         // Compose sharing information
         val databaseId = Database.sessionId
         binding.sessionId.text = "Session ID: $databaseId"
-        // TODO: setup a real deep link
-        val deepLink = "https://www.meineurl.com/path?id=$databaseId"
+        val deepLink = "https://" + getString(R.string.domain_name) + "/?id=$databaseId"
 
         // Copy session ID button
         binding.copySessionId.setOnClickListener {

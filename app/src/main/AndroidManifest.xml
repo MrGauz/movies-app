@@ -36,8 +36,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.meineurl.com"
-                    android:pathPrefix="/path"
+                    android:host="@string/domain_name"
                     android:scheme="https" />
 
             </intent-filter>

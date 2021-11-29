@@ -9,11 +9,9 @@
         <item>1920</item>
         <item>2012</item>
     </string-array>
-
     <string-array name="rangeRatingSliderValues">
         <item>2.4</item>
         <item>7.4</item>
     </string-array>
-
-
+    <string name="domain_name">swovie.app</string>
 </resources>
