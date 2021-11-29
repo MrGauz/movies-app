@@ -55,7 +55,7 @@ class FilterScreenFragment : Fragment() {
             MoviesRepository.getMovies(filter)
 
             // Navigate to share screen
-            FilterToSwipeItemList.updateswipeItemInfoArrayList(filter)
+            //FilterToSwipeItemList.updateswipeItemInfoArrayList(filter)
             binding.root.findNavController()
                 .navigate(R.id.action_filterScreenFragment_to_shareFragment)
         }

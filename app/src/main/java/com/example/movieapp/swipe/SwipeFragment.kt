@@ -24,7 +24,7 @@ import java.util.ArrayList
 
 class SwipeFragment : Fragment() {
     private var cardStack: SwipeDeck? = null
-    private var swipeItemInfoArrayList: ArrayList<Movie>? = null
+    private lateinit var movies: List<Movie>
     private lateinit var moviesBatchViewModel: MoviesBatchViewModel
 
     private var _binding: FragmentSwipeBinding? = null
@@ -44,30 +44,17 @@ class SwipeFragment : Fragment() {
 
         moviesBatchViewModel.getBatch().observe(viewLifecycleOwner, { movies ->
             cardStack?.setAdapter(DeckAdapter(movies as ArrayList<Movie>, requireContext()))
+            this.movies = movies
         })
 
         cardStack?.setEventCallback(object :
             SwipeEventCallback { //<----we gotta get the position of the Item in the List somehow, then it is possible to get the id
             override fun cardSwipedLeft(position: Int) {
-                updateCurrentItemApiID(position)//<----call this function for cardSwiped left aswell the function is implemented below
-                // on card swipe left we are displaying a toast message.
-                val title = swipeItemInfoArrayList!![position].title
-                FilterToSwipeItemList.setItemSwiped(
-                    swipeItemInfoArrayList!![position].id,
-                    "left"
-                )
-                Toast.makeText(context, "Card Swiped Left on " + title, Toast.LENGTH_SHORT).show()
+                movies[position].isSwiped = true
             }
 
             override fun cardSwipedRight(position: Int) {
-                updateCurrentItemApiID(position)
-                // on card swiped to right we are displaying a toast message.
-                val title = swipeItemInfoArrayList!![position].title
-                FilterToSwipeItemList.setItemSwiped(
-                    swipeItemInfoArrayList!![position].id,
-                    "right"
-                )
-                Toast.makeText(context, "Card Swiped Right" + title, Toast.LENGTH_SHORT).show()
+
             }
 
             override fun cardsDepleted() {
@@ -92,12 +79,5 @@ class SwipeFragment : Fragment() {
         )
 
         return view
-    }
-
-    fun updateCurrentItemApiID(position: Int) {//<--- implemented here
-        if (swipeItemInfoArrayList!!.size > position + 1) {//position +1 bec the current position was already swiped
-            FilterToSwipeItemList.currentItemApiId =
-                swipeItemInfoArrayList!![position + 1].id // write the ApiID of the next Item in our object class
-        }
     }
 }
