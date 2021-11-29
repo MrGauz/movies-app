@@ -1,69 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start_background"
+    tools:context=".start.StartScreenFragment">
+
+    <TextView
+        android:id="@+id/sloganText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="60dp"
+        android:text="Find\nyour\nperfect\nmovie"
+        android:textColor="@color/white"
+        android:textSize="70dp" />
+
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_primary_variant"
-        tools:context=".start.StartScreenFragment">
+        android:id="@+id/buttonsLayout"
+        android:layout_width="360dp"
+        android:layout_height="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp">
 
-        <TextView
-            android:id="@+id/sloganText"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/startLobby"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="60dp"
-            android:text="Find\nyour\nperfect\nmovie"
-            android:textColor="@color/white"
-            android:textSize="70dp" />
-
-        <RelativeLayout
-            android:id="@+id/buttonsLayout"
-            android:layout_width="360dp"
-            android:layout_height="125dp"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="500dp">
-
-            <Button
-                android:id="@+id/startLobby"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="START LOBBY" />
-
-            <TextView
-                android:id="@+id/buttonSeparatorText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="or"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
-
-
-            <Button
-                android:id="@+id/joinLobby"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/transparent"
-                android:text="JOIN LOBBY" />
-        </RelativeLayout>
+            android:text="START LOBBY" />
 
         <TextView
-            android:id="@+id/titleText"
+            android:id="@+id/buttonSeparatorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="675dp"
-            android:text="Swovie"
+            android:layout_centerVertical="true"
+            android:text="or"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
 
+        <Button
+            android:id="@+id/joinLobby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:text="JOIN LOBBY" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="675dp"
+        android:text="Swovie"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
