@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import java.util.*
@@ -33,13 +35,20 @@ class DeckAdapter(
             .inflate(R.layout.movie_swipe_item, parent, false)
 
         // Load movie info onto the card
+        val movie = swipeInfoData[position]
+        val posterView = cardView.findViewById<ImageView>(R.id.posterView)
+        (cardView.findViewById<View>(R.id.titleId) as TextView).text = movie.title
+        Glide.with(cardView).load(movie.getPosterUrl(PosterSize.BIG)).into(posterView)
         // TODO: show more info
-        (cardView.findViewById<View>(R.id.titleId) as TextView).text =
-            swipeInfoData[position].title
-        Glide.with(cardView).load(swipeInfoData[position].getPosterUrl(PosterSize.BIG))
-            .into(cardView.findViewById(R.id.posterView))
 
-        cardView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_infoFragment))
+        // Set OnClickListeners to open details screen
+        val onClickListener = Navigation.createNavigateOnClickListener(
+            R.id.action_swipeFragment_to_infoFragment,
+            bundleOf("apiId" to movie.id)
+        )
+        cardView.setOnClickListener(onClickListener)
+        posterView.setOnClickListener(onClickListener)
+
 
         return cardView
     }

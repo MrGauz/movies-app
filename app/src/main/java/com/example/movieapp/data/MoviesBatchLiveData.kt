@@ -1,6 +1,5 @@
 package com.example.movieapp.data
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.movieapp.database.Database
 import com.example.movieapp.models.Movie
@@ -16,8 +15,8 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
     fun getBatch(): MoviesBatchLiveData {
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                // Populate a list of notes from database
-                var tmpMoviesList = mutableListOf<Movie>()
+                // Load movies from the database
+                val tmpMoviesList = mutableListOf<Movie>()
                 snapshot.children.elementAt(currentIndex).children.forEach {
                     if (it != null) {
                         tmpMoviesList.add(it.getValue<Movie>()!!)
@@ -28,9 +27,7 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
                 value = tmpMoviesList
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("firebase", error.message)
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
 
         return this

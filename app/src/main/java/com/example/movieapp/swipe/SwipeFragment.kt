@@ -1,7 +1,6 @@
 package com.example.movieapp.swipe
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,15 +45,15 @@ class SwipeFragment : Fragment() {
             cardStack?.setAdapter(DeckAdapter(movies as ArrayList<Movie>, requireContext()))
         })
 
-        cardStack?.setEventCallback(object :
-            SwipeEventCallback { //<----we gotta get the position of the Item in the List somehow, then it is possible to get the id
+        cardStack?.setEventCallback(object : SwipeEventCallback {
             override fun cardSwipedLeft(position: Int) {
-                updateCurrentItemApiID(position)//<----call this function for cardSwiped left aswell the function is implemented below
-                // on card swipe left we are displaying a toast message.
-                val title = swipeItemInfoArrayList!![position].title
+                updateCurrentItemApiID(position)
+
+                val p = cardStack!![position]
+                val title = moviesBatchViewModel.getBatch().value?.elementAt(position)?.title
                 FilterToSwipeItemList.setItemSwiped(
                     swipeItemInfoArrayList!![position].id,
-                    "left"
+                    false
                 )
                 Toast.makeText(context, "Card Swiped Left on " + title, Toast.LENGTH_SHORT).show()
             }
@@ -65,26 +64,19 @@ class SwipeFragment : Fragment() {
                 val title = swipeItemInfoArrayList!![position].title
                 FilterToSwipeItemList.setItemSwiped(
                     swipeItemInfoArrayList!![position].id,
-                    "right"
+                    true
                 )
-                Toast.makeText(context, "Card Swiped Right" + title, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Card Swiped Right " + title, Toast.LENGTH_SHORT).show()
             }
 
+            // This method is called when no card is present
             override fun cardsDepleted() {
-                // this method is called when no card is present
                 Toast.makeText(context, "No more courses present", Toast.LENGTH_SHORT)
                     .show()
             }
 
-            override fun cardActionDown() {
-                // this method is called when card is swiped down.
-                Log.i("TAG", "CARDS MOVED DOWN")
-            }
-
-            override fun cardActionUp() {
-                // this method is called when card is moved up.
-                Log.i("TAG", "CARDS MOVED UP")
-            }
+            override fun cardActionDown() {}
+            override fun cardActionUp() {}
         })
 
         view.findViewById<Button>(R.id.matchesButton).setOnClickListener(
@@ -94,7 +86,7 @@ class SwipeFragment : Fragment() {
         return view
     }
 
-    fun updateCurrentItemApiID(position: Int) {//<--- implemented here
+    fun updateCurrentItemApiID(position: Int) {
         if (swipeItemInfoArrayList!!.size > position + 1) {//position +1 bec the current position was already swiped
             FilterToSwipeItemList.currentItemApiId =
                 swipeItemInfoArrayList!![position + 1].id // write the ApiID of the next Item in our object class

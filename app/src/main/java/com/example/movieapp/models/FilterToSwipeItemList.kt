@@ -15,7 +15,7 @@ object FilterToSwipeItemList {
                 "/2VgZW2ZD3pNoV2j8U2GXNRwOsk9.jpg",
                 4f,
                 "2021",
-                listOf(1,2)
+                listOf(1, 2)
             )
         )
         swipeItemInfoArrayList.add(
@@ -27,7 +27,7 @@ object FilterToSwipeItemList {
                 "/zJNFiWBGYSMbfTAk6Ygqdj6Rahq.jpg",
                 4f,
                 "2021",
-                listOf(1,2)
+                listOf(1, 2)
             )
         )
         if (swipeItemInfoArrayList.size > 0) { //<--- update currentID directly after the list is being created, so the first element is covered aswell
@@ -41,8 +41,9 @@ object FilterToSwipeItemList {
 
     fun setItemSwiped(
         movId: Long,
-        direction: String
+        isAccepted: Boolean
     ) {
-        swipeItemInfoArrayList.find { m -> m.id == movId }?.isSwiped = true
+        swipeItemInfoArrayList.find { m -> m.id == movId }?.also { it.isSwiped = true }
+            .also { it?.isAccepted = isAccepted }
     }
 }
