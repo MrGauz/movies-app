@@ -51,8 +51,4 @@ class DetailsFragment : Fragment() {
         binding.descriptionText.text = movieDetails.overview
         binding.tmdbRatingText.text = movieDetails.rating.toString()
     }
-
-    companion object MovieInfo {
-        var apiId: Long? = null
-    }
 }
