@@ -22,7 +22,7 @@
     <RelativeLayout
         android:id="@+id/buttonsLayout"
         android:layout_width="360dp"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="500dp">
 
@@ -40,9 +40,9 @@
             android:id="@+id/buttonSeparatorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:text="or"
+            android:fontFamily="sans-serif-black"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -50,12 +50,13 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/joinLobby"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif-medium"
+
             android:background="@drawable/button_join_lobby"
+            android:fontFamily="sans-serif-medium"
             android:text="JOIN LOBBY" />
     </RelativeLayout>
 
