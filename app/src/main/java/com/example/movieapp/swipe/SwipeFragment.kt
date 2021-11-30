@@ -20,7 +20,7 @@ import com.example.movieapp.models.MoviesBatchViewModel
 import java.util.ArrayList
 
 class SwipeFragment : Fragment() {
-    private lateinit var movies: List<Movie>
+    private lateinit var shownMovies: List<Movie>
     private lateinit var moviesBatchViewModel: MoviesBatchViewModel
     private lateinit var matchesViewModel: MatchesViewModel
 
@@ -38,10 +38,10 @@ class SwipeFragment : Fragment() {
         moviesBatchViewModel =
             ViewModelProviders.of(this, factory).get(MoviesBatchViewModel::class.java)
         moviesBatchViewModel.getBatch().observe(viewLifecycleOwner, { movies ->
-            this.movies = movies.filter { m -> !m.swipedBy.contains(SessionData.deviceId) }
+            shownMovies = movies.filter { m -> !m.swipedBy.contains(SessionData.deviceId) }
             binding.swipeDeck.setAdapter(
                 DeckAdapter(
-                    this.movies as ArrayList<Movie>,
+                    this.shownMovies as ArrayList<Movie>,
                     requireContext()
                 )
             )
@@ -57,12 +57,19 @@ class SwipeFragment : Fragment() {
 
         binding.swipeDeck.setEventCallback(object : SwipeEventCallback {
             override fun cardSwipedLeft(position: Int) {
-                moviesBatchViewModel.setSwiped(movies[position])
+                moviesBatchViewModel.setSwiped(shownMovies[position])
             }
 
             override fun cardSwipedRight(position: Int) {
-                // TODO: test if a match
-                moviesBatchViewModel.setSwiped(movies[position], true)
+                // Test if a match
+                val acceptedCount = shownMovies[position].acceptedBy.size + 1
+                val minMatchCount =
+                    SessionData.users!!.size * SessionData.options.matchPercentage / 100
+                if (acceptedCount >= minMatchCount) {
+                    moviesBatchViewModel.setMatch(shownMovies[position])
+                }
+
+                moviesBatchViewModel.setSwiped(shownMovies[position], true)
             }
 
             // This method is called when no card is present

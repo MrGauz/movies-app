@@ -9,7 +9,7 @@ enum class PosterSize(val url_size: String) {
 }
 
 data class Movie(
-    @SerializedName("id") val id: Long = 0,
+    @SerializedName("id") val apiId: Long = 0,
     @SerializedName("title") val title: String = "",
     @SerializedName("original_title") val original_title: String = "",
     @SerializedName("overview") val overview: String = "",

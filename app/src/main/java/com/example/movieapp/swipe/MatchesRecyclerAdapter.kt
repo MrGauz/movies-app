@@ -47,7 +47,7 @@ class MatchesRecyclerAdapter(private val matches: List<Movie>, private val conte
         viewHolder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
                 R.id.action_matchesFragment_to_infoFragment,
-                bundleOf("apiId" to match.id)
+                bundleOf("apiId" to match.apiId)
             )
         )
     }

@@ -9,4 +9,6 @@ class MoviesBatchViewModel : ViewModel() {
     fun getBatch() = batch.getBatch()
 
     fun setSwiped(movie: Movie, isAccepted: Boolean = false) = batch.setSwiped(movie, isAccepted)
+
+    fun setMatch(movie: Movie) = batch.setMatch(movie)
 }

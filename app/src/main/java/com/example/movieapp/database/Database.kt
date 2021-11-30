@@ -103,13 +103,6 @@ object Database {
                 }
             }
         }
-        // TODO: remove after debug
-        for (i in 0..2) {
-            val uid = sessionReference.child("matches").push().key
-            if (uid != null) {
-                sessionReference.child("matches").child(uid).setValue(batch[i])
-            }
-        }
     }
 
     fun loadNextMoviesBatch() {

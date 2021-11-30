@@ -17,18 +17,18 @@ import com.example.movieapp.models.Movie
 import com.example.movieapp.models.PosterSize
 
 class DeckAdapter(
-    private val swipeInfoData: ArrayList<Movie>, private val context: Context
+    private val movies: ArrayList<Movie>, private val context: Context
 ) : BaseAdapter() {
     override fun getCount(): Int {
-        return swipeInfoData.size
+        return movies.size
     }
 
     override fun getItem(position: Int): Any {
-        return swipeInfoData[position]
+        return movies[position]
     }
 
     override fun getItemId(position: Int): Long {
-        return swipeInfoData[position].id
+        return movies[position].apiId
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -36,17 +36,19 @@ class DeckAdapter(
             .inflate(R.layout.movie_swipe_item, parent, false)
 
         // Load movie info onto the card
-        val movie = swipeInfoData[position]
+        val movie = movies[position]
         val posterView = cardView.findViewById<ImageView>(R.id.posterView)
         (cardView.findViewById<View>(R.id.titleId) as TextView).text = movie.title
         Glide.with(cardView).load(movie.getPosterUrl(PosterSize.BIG)).into(posterView)
         (cardView.findViewById<View>(R.id.swipeDescription) as TextView).text = movie.overview
-        (cardView.findViewById<View>(R.id.genresID) as TextView).text = GenresData.genres.filter { g -> movie.genre_ids.contains(g.id) }.joinToString(separator = " | ") { g -> g.name }
+        (cardView.findViewById<View>(R.id.genresID) as TextView).text =
+            GenresData.genres.filter { g -> movie.genre_ids.contains(g.id) }
+                .joinToString(separator = " | ") { g -> g.name }
 
         // Set OnClickListeners to open details screen
         val onClickListener = Navigation.createNavigateOnClickListener(
             R.id.action_swipeFragment_to_infoFragment,
-            bundleOf("apiId" to movie.id)
+            bundleOf("apiId" to movie.apiId)
         )
         cardView.setOnClickListener(onClickListener)
         posterView.setOnClickListener(onClickListener)

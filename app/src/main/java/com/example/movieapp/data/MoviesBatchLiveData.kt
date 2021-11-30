@@ -9,13 +9,12 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
 class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
-    private var moviesReference = Database.getMoviesReference()
-
     fun getBatch(): MoviesBatchLiveData {
-        moviesReference.addValueEventListener(object : ValueEventListener {
+        Database.getMoviesReference().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                // TODO: save current batch uid
                 // Load movies from the database
-                // TODO: test if movies loaded
+                // TODO: test if elementAt is available
                 val tmpMoviesList = mutableListOf<Movie>()
                 snapshot.children.elementAt(SessionData.currentBatchIndex).children.forEach {
                     if (it != null) {
@@ -35,15 +34,20 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
 
     fun setSwiped(movie: Movie, isAccepted: Boolean = false) {
         movie.swipedBy.add(SessionData.deviceId!!)
-        moviesReference.child(SessionData.currentBatchUid).child(movie.uid!!).child("swipedBy")
-            .setValue(movie.swipedBy)
+        Database.getMoviesReference().child(SessionData.currentBatchUid).child(movie.uid!!)
+            .child("swipedBy").setValue(movie.swipedBy)
 
         if (isAccepted) {
             movie.acceptedBy.add(SessionData.deviceId!!)
-            moviesReference.child(SessionData.currentBatchUid).child(movie.uid!!)
-                .child("acceptedBy")
-                .setValue(movie.acceptedBy)
+            Database.getMoviesReference().child(SessionData.currentBatchUid).child(movie.uid!!)
+                .child("acceptedBy").setValue(movie.acceptedBy)
         }
+    }
 
+    fun setMatch(movie: Movie) {
+        val uid = Database.getMatchesReference().push().key
+        if (uid != null) {
+            Database.getMatchesReference().child(uid).setValue(movie)
+        }
     }
 }
