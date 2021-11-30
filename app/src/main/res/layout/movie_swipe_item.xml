@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
-            android:maxLines="11"
+            android:maxLines="8"
             android:minLines="1"
             android:ellipsize="end"
             android:textColor="@color/white" />
