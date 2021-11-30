@@ -118,32 +118,38 @@ object Database {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Load filter
-        sessionReference.child("filter").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.getValue<Filter>() != null) {
-                    SessionData.filter = snapshot.getValue<Filter>()!!
-                }
-            }
+        // Load filter (only guests)
+        if (!SessionData.isHost) {
+            sessionReference.child("filter")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.getValue<Filter>() != null) {
+                            SessionData.filter = snapshot.getValue<Filter>()!!
+                        }
+                    }
 
-            override fun onCancelled(error: DatabaseError) {}
-        })
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+        }
 
-        // Load options
-        sessionReference.child("options").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.getValue<Options>() != null) {
-                    SessionData.options = snapshot.getValue<Options>()!!
-                }
-            }
+        // Load options (only guests)
+        if (!SessionData.isHost) {
+            sessionReference.child("options")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.getValue<Options>() != null) {
+                            SessionData.options = snapshot.getValue<Options>()!!
+                        }
+                    }
 
-            override fun onCancelled(error: DatabaseError) {}
-        })
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+        }
 
-        // Load options
+        // Load active users
         sessionReference.child("users").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var tmpUsersList = mutableListOf<String>()
+                val tmpUsersList = mutableListOf<String>()
                 snapshot.children.forEach {
                     if (it != null) {
                         tmpUsersList.add(it.getValue<String>()!!)
