@@ -82,8 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:backgroundTint="#F4ECEC"
-                    android:popupBackground="@color/white" />
+                    android:backgroundTint="#1C1971"
+                    android:popupBackground="@color/purple_700" />
 
                 <View style="@style/Divider" />
 

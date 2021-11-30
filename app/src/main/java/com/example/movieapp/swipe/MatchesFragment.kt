@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.R
 import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.databinding.FragmentMatchesBinding
 import com.example.movieapp.models.MatchesViewModel
@@ -34,6 +36,7 @@ class MatchesFragment : Fragment() {
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
             matchesRecycler.adapter = MatchesRecyclerAdapter(matches, requireContext())
         })
+        binding.backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_matchesFragment_to_swipeFragment))
 
         return binding.root
     }
