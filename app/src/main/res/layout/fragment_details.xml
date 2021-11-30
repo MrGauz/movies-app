@@ -107,19 +107,17 @@
         android:id="@+id/detailsGenresText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="genres"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintStart_toStartOf="@+id/titleText"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <TextView
         android:id="@+id/detailsDirectorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="directed by"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        tools:layout_editor_absoluteY="211dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/detailsGenresText"
+        app:layout_constraintTop_toBottomOf="@+id/detailsGenresText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
