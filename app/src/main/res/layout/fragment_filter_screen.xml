@@ -35,9 +35,10 @@
                     android:id="@+id/filterTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Let' s start"
-                    android:textSize="48sp"
                     android:layout_marginBottom="40dp"
+                    android:text="Let' s start"
+                    android:textColor="@color/white"
+                    android:textSize="48sp"
                     android:textStyle="bold" />
 
                 <View style="@style/Divider" />
@@ -59,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Release date"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
 
@@ -91,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Minimal Rating"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
 
@@ -113,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Duration"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <com.google.android.material.slider.RangeSlider
@@ -133,6 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Vote's percentage"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
 
@@ -154,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Join link active for"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <com.google.android.material.slider.RangeSlider
