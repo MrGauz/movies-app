@@ -37,10 +37,10 @@ class FilterScreenFragment : Fragment() {
         // Initialize UI values
         applyConfigValues()
 
-        binding.genreButton.setOnClickListener(
-            // TODO: save values before navigation (updateConfigValues())
-            Navigation.createNavigateOnClickListener(R.id.action_filterScreenFragment_to_genreFragment)
-        )
+        binding.genreButton.setOnClickListener{
+            updateConfigValues()
+            binding.root.findNavController().navigate(R.id.action_filterScreenFragment_to_genreFragment)
+        }
 
         val spinner = binding.countrySpinner
         spinner.onItemSelectedListener
@@ -100,9 +100,10 @@ class FilterScreenFragment : Fragment() {
         )
 
         SessionData.filter.releaseYear = releaseYearInterval
+        // TODO: round to .1f without extra hassle
         val format: NumberFormat = NumberFormat.getInstance(Locale.FRANCE) // numbers are shown with a comma, this transforms it back to real doubles
         val number: Number? = format.parse("%.1f".format(binding.sliderRangeRating.values[0]))
-        val minRating = number?.toDouble()
+        val minRating = number?.toDouble()?.div(10)
         SessionData.filter.minRating = minRating //otherwise this will complain
         SessionData.filter.duration = durationInterval
 
