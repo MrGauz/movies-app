@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="30dp"
     android:layout_marginTop="30dp"
     android:layout_marginBottom="10dp"
+    android:background="@drawable/blue_gradient_background"
     android:elevation="8dp"
-    app:cardCornerRadius="4dp">
+    app:cardBackgroundColor="#343360"
+    app:cardCornerRadius="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/blue_gradient_background"
         android:orientation="vertical">
 
         <!--image view for course image-->
@@ -32,14 +34,15 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:text="Title"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/swipeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description" />
+            android:text="Description"
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,7 +58,7 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="genres"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <!--text view for our course duration-->
 
@@ -69,7 +72,7 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:text="director"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
