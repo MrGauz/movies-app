@@ -25,6 +25,7 @@
             android:id="@+id/posterView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:background="#3F3E6A"
             android:scaleType="centerCrop" />
 
         <!--text view for our course name-->
