@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.database.MoviesBatchViewModelFactory
+import com.example.movieapp.models.AlertDialogBuilder
 import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.MoviesBatchViewModel
@@ -90,6 +92,9 @@ class SwipeFragment : Fragment() {
         binding.matchesButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
         )
+        // TODO: 30.11.2021 This doesnt work somehow Alert somehow gets triggered even coming from other fragments 
+        //builds the alert
+        //AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog)
 
         return binding.root
     }
