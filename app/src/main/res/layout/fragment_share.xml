@@ -14,12 +14,12 @@
         android:layout_height="40dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_start_lobby"
-        android:text="start Swiping"
         android:fontFamily="@font/spacegrotesk"
+        android:text="start Swiping"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/qrView"
+        app:layout_constraintStart_toStartOf="@+id/qrView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/shareLinkButton"
@@ -27,14 +27,14 @@
         android:layout_height="40dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_share_link"
+        android:drawableRight="@android:drawable/ic_menu_share"
+        android:fontFamily="@font/spacegrotesk"
+        android:paddingEnd="10dp"
         android:text="Share Link"
         android:textColor="@color/white"
-        android:fontFamily="@font/spacegrotesk"
-        android:drawableRight="@android:drawable/ic_menu_share"
-        android:paddingEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/startSwipingButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/qrView"
+        app:layout_constraintStart_toStartOf="@+id/qrView" />
 
     <ImageView
         android:id="@+id/qrView"
@@ -43,24 +43,21 @@
         android:layout_marginBottom="48dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toTopOf="@+id/shareLinkButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/sessionId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/qrView"
+        app:layout_constraintBottom_toBottomOf="@+id/copySessionId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/copySessionId" />
 
     <ImageButton
         android:id="@+id/copySessionId"
@@ -72,8 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/sessionId"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
@@ -90,7 +86,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/share_back"
         android:layout_width="54dp"
         android:layout_height="41dp"
         android:layout_centerHorizontal="true"
