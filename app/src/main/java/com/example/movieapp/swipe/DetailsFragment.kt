@@ -1,5 +1,7 @@
 package com.example.movieapp.swipe
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,5 +52,16 @@ class DetailsFragment : Fragment() {
         binding.titleText.text = movieDetails.title
         binding.descriptionText.text = movieDetails.overview
         binding.tmdbRatingText.text = movieDetails.rating.toString()
+
+        binding.tmdbButton.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(movieDetails.getImdbLink())
+            startActivity(i)
+        }
+        binding.trailerButton.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(movieDetails.getTrailerUrl())
+            startActivity(i)
+        }
     }
 }
