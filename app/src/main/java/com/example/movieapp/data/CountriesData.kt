@@ -1009,12 +1009,14 @@ object CountriesData {
         ]
     """.trimIndent()
 
-    val countries: List<Country> = Gson().fromJson(
+    private val countries: List<Country> = Gson().fromJson(
         jsonCountries,
         type
     )
 
     fun findByName(name: String) = countries.find { c -> c.name == name }
+
     fun findByCode(code: String) = countries.find { c -> c.code == code }
+
     fun getNamesList() = countries.map { g -> g.name }
 }

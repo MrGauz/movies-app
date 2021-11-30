@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
@@ -16,15 +14,12 @@ import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
 import com.example.movieapp.models.*
-import java.text.NumberFormat
-import java.util.*
 import java.util.Collections.max
 import java.util.Collections.min
 
 class FilterScreenFragment : Fragment() {
     private var _binding: FragmentFilterScreenBinding? = null
     private val binding get() = _binding!!
-    private lateinit var country: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,38 +30,20 @@ class FilterScreenFragment : Fragment() {
 
         SessionData.isHost = true
 
+        // Prepare countries spinner
+        binding.countrySpinner.adapter = ArrayAdapter(
+            this.requireContext(),
+            R.layout.custom_spinner_item,
+            CountriesData.getNamesList()
+        )
+
         // Initialize UI values
         applyConfigValues()
 
-        binding.genreButton.setOnClickListener{
+        binding.genreButton.setOnClickListener {
             updateConfigValues()
-            binding.root.findNavController().navigate(R.id.action_filterScreenFragment_to_genreFragment)
-        }
-
-        val spinner = binding.countrySpinner
-        spinner.onItemSelectedListener
-        val genres: List<String> = CountriesData.getNamesList()//Elements of the dropdown
-        val spinnerAdapter =
-            ArrayAdapter<String>(this.requireContext(), R.layout.custom_spinner_item, genres)
-        spinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_item)
-        spinner.adapter = spinnerAdapter
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                country = "none"
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) { //get the selected item
-                if (parent != null) {
-                    country = parent.getItemAtPosition(position).toString()
-                    SessionData.filter.country = CountriesData.findByName(country)
-                }
-            }
-
+            binding.root.findNavController()
+                .navigate(R.id.action_filterScreenFragment_to_genreFragment)
         }
 
         binding.createButton.setOnClickListener {
@@ -103,6 +80,9 @@ class FilterScreenFragment : Fragment() {
         SessionData.filter.releaseYear = releaseYearInterval
         SessionData.filter.minRating = binding.sliderRangeRating.values[0].toDouble()
         SessionData.filter.duration = durationInterval
+        SessionData.filter.country = CountriesData.findByName(
+            binding.countrySpinner.selectedItem as String
+        )
 
         SessionData.options.matchPercentage = binding.sliderVotesPercentage.values[0].toInt()
         SessionData.options.joinTimer = binding.joinTimerSlider.values[0].toInt()
@@ -118,6 +98,9 @@ class FilterScreenFragment : Fragment() {
         binding.sliderRangeDuration.setValues(
             SessionData.filter.duration?.from?.toFloat(),
             SessionData.filter.duration?.to?.toFloat()
+        )
+        binding.countrySpinner.setSelection(
+            CountriesData.getNamesList().indexOf(SessionData.filter.country?.name)
         )
 
         // Options

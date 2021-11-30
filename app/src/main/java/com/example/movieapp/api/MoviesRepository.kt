@@ -46,7 +46,7 @@ object MoviesRepository {
     fun getMovies(filter: Filter, page: Int = 1) {
         getMovies(
             genre_ids = filter.genres ?: emptyList(),
-            countryCode = filter.country?.code,
+            country_code = filter.country?.code,
             min_release_year = filter.releaseYear?.from,
             max_release_year = filter.releaseYear?.to,
             min_rating = filter.minRating,
@@ -59,7 +59,7 @@ object MoviesRepository {
 
     private fun getMovies(
         genre_ids: List<Long> = emptyList(),
-        countryCode: String?,
+        country_code: String?,
         min_release_year: Int? = null,
         max_release_year: Int? = null,
         min_rating: Double? = 4.0,
@@ -71,7 +71,7 @@ object MoviesRepository {
     ) {
         api.getMovies(
             with_genres = genre_ids.joinToString(separator = ","),
-            region = countryCode ?: "",
+            region = country_code ?: "",
             primary_release_date_gte = min_release_year?.toString() ?: "",
             primary_release_date_lte = max_release_year?.toString() ?: "",
             vote_average_gte = min_rating?.toString() ?: "",
