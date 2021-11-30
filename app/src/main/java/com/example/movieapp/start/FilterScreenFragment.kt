@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
-import com.example.movieapp.data.CountriesData
+import com.example.movieapp.data.LanguagesData
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
@@ -30,11 +30,11 @@ class FilterScreenFragment : Fragment() {
 
         SessionData.isHost = true
 
-        // Prepare countries spinner
-        binding.countrySpinner.adapter = ArrayAdapter(
+        // Prepare languages spinner
+        binding.languageSpinner.adapter = ArrayAdapter(
             this.requireContext(),
             R.layout.custom_spinner_item,
-            CountriesData.getNamesList()
+            LanguagesData.getNamesList()
         )
 
         // Initialize UI values
@@ -80,8 +80,8 @@ class FilterScreenFragment : Fragment() {
         SessionData.filter.releaseYear = releaseYearInterval
         SessionData.filter.minRating = binding.sliderRangeRating.values[0].toDouble()
         SessionData.filter.duration = durationInterval
-        SessionData.filter.country = CountriesData.findByName(
-            binding.countrySpinner.selectedItem as String
+        SessionData.filter.language = LanguagesData.findByName(
+            binding.languageSpinner.selectedItem as String
         )
 
         SessionData.options.matchPercentage = binding.sliderVotesPercentage.values[0].toInt()
@@ -99,8 +99,8 @@ class FilterScreenFragment : Fragment() {
             SessionData.filter.duration?.from?.toFloat(),
             SessionData.filter.duration?.to?.toFloat()
         )
-        binding.countrySpinner.setSelection(
-            CountriesData.getNamesList().indexOf(SessionData.filter.country?.name)
+        binding.languageSpinner.setSelection(
+            LanguagesData.getNamesList().indexOf(SessionData.filter.language?.name)
         )
 
         // Options
