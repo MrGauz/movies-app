@@ -38,12 +38,19 @@
             android:textColor="@color/white"
             android:textSize="24sp" />
 
+        <View style="@style/Divider" />
+
         <TextView
             android:id="@+id/swipeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:maxLines="11"
+            android:minLines="1"
+            android:ellipsize="end"
             android:textColor="@color/white" />
+
+        <View style="@style/Divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +61,7 @@
             <!--text view for our course tracks-->
             <TextView
                 android:id="@+id/genresID"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="3dp"
@@ -66,14 +73,6 @@
         </LinearLayout>
 
         <!--text view for our course description-->
-        <TextView
-            android:id="@+id/directorID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="3dp"
-            android:text="director"
-            android:textColor="@color/white" />
 
     </LinearLayout>
 

@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import java.util.*
 import com.example.movieapp.R
+import com.example.movieapp.data.GenresData
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.PosterSize
 
@@ -39,7 +40,8 @@ class DeckAdapter(
         val posterView = cardView.findViewById<ImageView>(R.id.posterView)
         (cardView.findViewById<View>(R.id.titleId) as TextView).text = movie.title
         Glide.with(cardView).load(movie.getPosterUrl(PosterSize.BIG)).into(posterView)
-        // TODO: show more info
+        (cardView.findViewById<View>(R.id.swipeDescription) as TextView).text = movie.overview
+        (cardView.findViewById<View>(R.id.genresID) as TextView).text = GenresData.genres.filter { g -> movie.genre_ids.contains(g.id) }.joinToString(separator = " | ") { g -> g.name }
 
         // Set OnClickListeners to open details screen
         val onClickListener = Navigation.createNavigateOnClickListener(
