@@ -57,7 +57,7 @@ object MoviesRepository {
         )
     }
 
-    fun getMovies(
+    private fun getMovies(
         genre_ids: List<Long> = emptyList(),
         countryCode: String?,
         min_release_year: Int? = null,

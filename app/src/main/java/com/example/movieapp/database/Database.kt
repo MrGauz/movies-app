@@ -22,11 +22,17 @@ object Database {
         sessionsReference = database.getReference("sessions")
     }
 
-    fun createNewSession(filter: Filter, options: Options): String? {
+    fun createNewSession(): String? {
         val uid: String? = sessionsReference.push().key
         if (uid != null) {
             // Create session
-            val session = Session(uid, System.currentTimeMillis(), true, filter, options)
+            val session = Session(
+                uid,
+                System.currentTimeMillis(),
+                true,
+                SessionData.filter,
+                SessionData.options
+            )
             sessionsReference.child(uid).setValue(session)
             SessionData.id = uid
             sessionReference = sessionsReference.child(uid)
@@ -115,7 +121,9 @@ object Database {
         // Load filter
         sessionReference.child("filter").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                SessionData.filter = snapshot.getValue<Filter>()
+                if (snapshot.getValue<Filter>() != null) {
+                    SessionData.filter = snapshot.getValue<Filter>()!!
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {}
@@ -124,7 +132,9 @@ object Database {
         // Load options
         sessionReference.child("options").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                SessionData.options = snapshot.getValue<Options>()
+                if (snapshot.getValue<Options>() != null) {
+                    SessionData.options = snapshot.getValue<Options>()!!
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {}

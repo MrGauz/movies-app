@@ -1,6 +1,6 @@
 package com.example.movieapp.models
 
 data class Options(
-    var matchPercentage: Double = 1.0,
+    var matchPercentage: Int = 100,
     var joinTimer: Int = 120
 )

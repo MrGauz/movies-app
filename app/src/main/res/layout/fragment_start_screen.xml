@@ -34,8 +34,8 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_start_lobby"
             android:fontFamily="@font/spacegrotesk"
-            android:textColor="@color/white"
-            android:text="Start lobby" />
+            android:text="Start lobby"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/buttonSeparatorText"

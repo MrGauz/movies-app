@@ -15,8 +15,7 @@
         android:contentDescription="@string/match_card_poster_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/movie_poster_test" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/matchCardTitleYear"

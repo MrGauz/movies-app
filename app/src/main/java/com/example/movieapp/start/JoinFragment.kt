@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentJoinBinding
 
@@ -17,6 +18,8 @@ class JoinFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
+
+        SessionData.isHost = false
 
         // Join after a deep link
         if (sessionId != null) {
@@ -42,6 +45,8 @@ class JoinFragment : Fragment() {
     }
 
     fun onSuccessfulSessionJoin() {
+        // Load session data
+        Database.loadSessionData()
         // Navigate to swipe screen
         val swipeIntent = Intents(isHost = false, context = this.context)
         swipeIntent.intentToSwipe()

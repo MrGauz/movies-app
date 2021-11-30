@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ScrollView
             android:id="@+id/durationText"
             android:layout_width="0dp"
@@ -42,7 +41,6 @@
                     android:layout_marginBottom="20dp"
                     android:text="Genres" />
 
-
                 <View style="@style/Divider" />
 
                 <TextView
@@ -60,11 +58,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:stepSize="1"
-                    android:value="20"
-                    android:valueFrom="1912"
+                    android:valueFrom="1900"
                     android:valueTo="2021"
-                    app:tickVisible="false"
-                    app:values="@array/rangeSliderValues" />
+                    app:tickVisible="false" />
 
                 <View style="@style/Divider" />
 
@@ -94,7 +90,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:stepSize="0.1"
-                    android:value="20"
                     android:valueFrom="0"
                     android:valueTo="10"
                     app:tickVisible="false"
@@ -115,12 +110,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="66dp"
                     android:layout_marginBottom="20dp"
-                    android:stepSize="1"
-                    android:value="20"
-                    android:valueFrom="1912"
-                    android:valueTo="2021"
-                    app:tickVisible="false"
-                    app:values="@array/rangeSliderValues" />
+                    android:stepSize="10"
+                    android:valueFrom="0"
+                    android:valueTo="300"
+                    app:tickVisible="false" />
 
                 <View style="@style/Divider" />
 
@@ -138,8 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:stepSize="1"
-                    android:value="20"
+                    android:stepSize="10"
                     android:valueFrom="0"
                     android:valueTo="100"
                     app:tickVisible="false" />
@@ -159,13 +151,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:stepSize="0.1"
-                    android:value="20"
-                    android:valueFrom="0"
-                    android:valueTo="10"
-                    app:tickVisible="false"
-                    tools:ignore="MissingConstraints" />
-
+                    android:stepSize="30"
+                    android:valueFrom="30"
+                    android:valueTo="300"
+                    app:tickVisible="false" />
 
                 <Button
                     android:id="@+id/createButton"
@@ -174,10 +163,6 @@
                     android:text="Create" />
 
             </LinearLayout>
-
         </ScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

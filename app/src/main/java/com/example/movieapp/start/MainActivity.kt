@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         MoviesRepository.getGenres()
 
         // User joined via deep link
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navController = findNavController(R.id.nav_host_fragment_activity_main) // TODO: put inside if and test
         if (intent?.action == "android.intent.action.VIEW") {
             JoinFragment.sessionId = intent?.data?.getQueryParameter("id").toString()
             navController.navigate(R.id.joinFragment)
