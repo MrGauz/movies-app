@@ -68,7 +68,7 @@ class SwipeFragment : Fragment() {
                 // TODO: check if matches from active users
                 val minMatchCount =
                     SessionData.users!!.size * SessionData.options.matchPercentage / 100
-                if (acceptedCount >= minMatchCount) {
+                if (acceptedCount >= minMatchCount && SessionData.isJoinTimerOver()) {
                     moviesBatchViewModel.setMatch(shownMovies[position])
                 }
 

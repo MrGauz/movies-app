@@ -23,5 +23,6 @@ data class Movie(
     var acceptedBy: MutableList<String> = mutableListOf()
 
     fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$poster_path"
+
     fun getReleaseYear() = releaseDate.substring(0, 4).toInt()
 }

@@ -11,7 +11,7 @@ object SessionData {
     var deviceId: String? = null
     var isHost: Boolean = false
     var isActive: Boolean? = null
-    var startTimestamp: Long? = null
+    var startTimestamp: Long = Long.MAX_VALUE - 120 * 1000
     var filter = Filter(
         genres = mutableListOf(),
         releaseYear = ReleaseYearInterval(1900, Calendar.getInstance().get(Calendar.YEAR)),
@@ -26,6 +26,8 @@ object SessionData {
     var users: List<String>? = null
     var currentBatchIndex: Int = 0
     var currentBatchUid: String = ""
+
+    fun isJoinTimerOver() = startTimestamp + options.joinTimer * 1000 < System.currentTimeMillis()
 
     fun leaveSession() {
         // TODO: delete device id, update users list in firebase
