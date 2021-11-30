@@ -100,6 +100,6 @@
         app:layout_constraintEnd_toStartOf="@+id/tmdbRatingText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tmdbRatingText"
-        app:srcCompat="@drawable/ratingStars"
+        app:srcCompat="@drawable/rating_stars"
         tools:src="@tools:sample/backgrounds/scenic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
