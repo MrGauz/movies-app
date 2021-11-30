@@ -23,7 +23,7 @@ class MatchesRecyclerAdapter(private val matches: List<Movie>, private val conte
         val poster: ImageView = view.findViewById(R.id.matchCardPoster)
         val titleAndYear: TextView = view.findViewById(R.id.matchCardTitleYear)
         val rating: TextView = view.findViewById(R.id.matchCardRating)
-        val genres : TextView = view.findViewById(R.id.matchCardGenres)
+        val genres: TextView = view.findViewById(R.id.matchCardGenres)
     }
 
     // Create new views
@@ -39,7 +39,8 @@ class MatchesRecyclerAdapter(private val matches: List<Movie>, private val conte
         val match = matches[position]
         viewHolder.titleAndYear.text = "${match.title}, ${match.getReleaseYear()}"
         viewHolder.rating.text = "Rating: ${match.rating}/10"
-        viewHolder.genres.text = GenresData.genres.filter { g -> match.genre_ids.contains(g.id) }.joinToString(separator = " | ") { g -> g.name }
+        viewHolder.genres.text = GenresData.genres.filter { g -> match.genre_ids.contains(g.id) }
+            .joinToString(separator = " | ") { g -> g.name }
         Glide.with(viewHolder.poster).load(match.getPosterUrl(PosterSize.THUMBNAIL))
             .into(viewHolder.poster)
 

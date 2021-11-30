@@ -9,15 +9,15 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
 class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
-    private var reference = Database.getMoviesReference()
-    var currentIndex = 0
+    private var moviesReference = Database.getMoviesReference()
 
     fun getBatch(): MoviesBatchLiveData {
-        reference.addValueEventListener(object : ValueEventListener {
+        moviesReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // Load movies from the database
+                // TODO: test if movies loaded
                 val tmpMoviesList = mutableListOf<Movie>()
-                snapshot.children.elementAt(currentIndex).children.forEach {
+                snapshot.children.elementAt(SessionData.currentBatchIndex).children.forEach {
                     if (it != null) {
                         tmpMoviesList.add(it.getValue<Movie>()!!)
                     }
@@ -31,5 +31,19 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
         })
 
         return this
+    }
+
+    fun setSwiped(movie: Movie, isAccepted: Boolean = false) {
+        movie.swipedBy.add(SessionData.deviceId!!)
+        moviesReference.child(SessionData.currentBatchUid).child(movie.uid!!).child("swipedBy")
+            .setValue(movie.swipedBy)
+
+        if (isAccepted) {
+            movie.acceptedBy.add(SessionData.deviceId!!)
+            moviesReference.child(SessionData.currentBatchUid).child(movie.uid!!)
+                .child("acceptedBy")
+                .setValue(movie.acceptedBy)
+        }
+
     }
 }

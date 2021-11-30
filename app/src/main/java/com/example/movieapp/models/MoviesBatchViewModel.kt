@@ -7,4 +7,6 @@ class MoviesBatchViewModel : ViewModel() {
     private val batch = MoviesBatchLiveData()
 
     fun getBatch() = batch.getBatch()
+
+    fun setSwiped(movie: Movie, isAccepted: Boolean = false) = batch.setSwiped(movie, isAccepted)
 }
