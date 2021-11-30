@@ -31,14 +31,24 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Let' s start"
+                    android:textSize="48sp"
+                    android:layout_marginBottom="40dp"
+                    android:textStyle="bold" />
+
                 <View style="@style/Divider" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/genreButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_to_genre"
                     android:text="Genres" />
 
                 <View style="@style/Divider" />
@@ -156,10 +166,11 @@
                     android:valueTo="300"
                     app:tickVisible="false" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/createButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_join_lobby"
                     android:text="Create" />
 
             </LinearLayout>
