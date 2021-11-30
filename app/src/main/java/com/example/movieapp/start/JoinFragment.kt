@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.example.movieapp.R
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentJoinBinding
@@ -31,6 +33,7 @@ class JoinFragment : Fragment() {
         binding.joinButton.setOnClickListener {
             trySessionJoin(binding.sessionIdInput.text.toString().trim())
         }
+        binding.joinBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_joinFragment_to_startScreenFragment))
 
         return binding.root
     }

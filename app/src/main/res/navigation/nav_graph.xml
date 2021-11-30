@@ -69,10 +69,18 @@
         android:id="@+id/shareFragment"
         android:name="com.example.movieapp.start.ShareFragment"
         android:label="fragment_share"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_share" >
+        <action
+            android:id="@+id/action_shareFragment_to_filterScreenFragment"
+            app:destination="@id/filterScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/joinFragment"
         android:name="com.example.movieapp.start.JoinFragment"
         android:label="fragment_join"
-        tools:layout="@layout/fragment_join" />
+        tools:layout="@layout/fragment_join" >
+        <action
+            android:id="@+id/action_joinFragment_to_startScreenFragment"
+            app:destination="@id/startScreenFragment" />
+    </fragment>
 </navigation>

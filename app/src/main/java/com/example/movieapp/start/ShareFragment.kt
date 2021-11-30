@@ -14,6 +14,7 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
+import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.data.SessionData
 
@@ -58,6 +59,7 @@ class ShareFragment : Fragment() {
             val swipeIntent = Intents(true, this.context)
             swipeIntent.intentToSwipe()
         }
+        binding.shareBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shareFragment_to_filterScreenFragment))
 
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)

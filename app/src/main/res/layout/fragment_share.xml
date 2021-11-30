@@ -86,7 +86,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/share_back"
+        android:id="@+id/shareBack"
         android:layout_width="54dp"
         android:layout_height="41dp"
         android:layout_centerHorizontal="true"
