@@ -88,7 +88,7 @@ class ShareFragment : Fragment() {
         return binding.root
     }
     fun createDialog(){ //creates the alert, if user wants to leave he gets kicked out of the session and the app, otherwise nothing happens
-        val alertDialogBuilder = AlertDialog.Builder(this.context)
+        val alertDialogBuilder = AlertDialog.Builder(this.context, R.style.AlertDialog)
         alertDialogBuilder.setTitle("Exit App")
         alertDialogBuilder.setMessage("Are you sure you want to exit?")
         alertDialogBuilder.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
