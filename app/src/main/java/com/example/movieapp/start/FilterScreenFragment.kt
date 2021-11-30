@@ -100,11 +100,7 @@ class FilterScreenFragment : Fragment() {
         )
 
         SessionData.filter.releaseYear = releaseYearInterval
-        // TODO: round to .1f without extra hassle
-        val format: NumberFormat = NumberFormat.getInstance(Locale.FRANCE) // numbers are shown with a comma, this transforms it back to real doubles
-        val number: Number? = format.parse("%.1f".format(binding.sliderRangeRating.values[0]))
-        val minRating = number?.toDouble()?.div(10)
-        SessionData.filter.minRating = minRating //otherwise this will complain
+        SessionData.filter.minRating = binding.sliderRangeRating.values[0].toDouble()
         SessionData.filter.duration = durationInterval
 
         SessionData.options.matchPercentage = binding.sliderVotesPercentage.values[0].toInt()
