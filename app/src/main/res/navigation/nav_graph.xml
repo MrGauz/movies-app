@@ -31,7 +31,11 @@
         tools:layout="@layout/fragment_filter_screen" >
         <action
             android:id="@+id/action_filterScreenFragment_to_genreFragment"
-            app:destination="@id/genreFragment" />
+            app:destination="@id/genreFragment"
+            app:enterAnim="@anim/bottom_up"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/bottom_up"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_filterScreenFragment_to_directorFragment"
             app:destination="@id/directorFragment" />
@@ -46,7 +50,11 @@
         tools:layout="@layout/fragment_genre" >
         <action
             android:id="@+id/action_genreFragment_to_filterScreenFragment"
-            app:destination="@id/filterScreenFragment" />
+            app:destination="@id/filterScreenFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/bottom_down"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/bottom_down" />
     </fragment>
     <fragment
         android:id="@+id/directorFragment"

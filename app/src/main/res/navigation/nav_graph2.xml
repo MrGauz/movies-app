@@ -11,7 +11,11 @@
         tools:layout="@layout/fragment_swipe" >
         <action
             android:id="@+id/action_swipeFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/bottom_up"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/bottom_up"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_swipeFragment_to_matchesFragment"
             app:destination="@id/matchesFragment" />
@@ -23,7 +27,11 @@
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_infoFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment" />
+            app:destination="@id/swipeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/bottom_down"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/bottom_down" />
     </fragment>
     <fragment
         android:id="@+id/matchesFragment"
@@ -32,7 +40,11 @@
         tools:layout="@layout/fragment_matches" >
         <action
             android:id="@+id/action_matchesFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/bottom_up"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/bottom_up"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_matchesFragment_to_swipeFragment"
             app:destination="@id/swipeFragment" />
