@@ -46,7 +46,7 @@ object MoviesRepository {
     fun getMovies(filter: Filter, page: Int = 1) {
         getMovies(
             genre_ids = filter.genres ?: emptyList(),
-            countryCode = filter.country?.code,
+            language_code = filter.language?.code,
             min_release_year = filter.releaseYear?.from,
             max_release_year = filter.releaseYear?.to,
             min_rating = filter.minRating,
@@ -59,27 +59,25 @@ object MoviesRepository {
 
     private fun getMovies(
         genre_ids: List<Long> = emptyList(),
-        countryCode: String?,
+        language_code: String?,
         min_release_year: Int? = null,
         max_release_year: Int? = null,
         min_rating: Double? = 4.0,
         max_rating: Double? = null,
         min_duration: Int? = 60,
         max_duration: Int? = 120,
-        page: Int = 1,
-        append_to_response: List<String> = listOf("videos", "credits")
+        page: Int = 1
     ) {
         api.getMovies(
             with_genres = genre_ids.joinToString(separator = ","),
-            region = countryCode ?: "",
+            original_language = language_code ?: "",
             primary_release_date_gte = min_release_year?.toString() ?: "",
             primary_release_date_lte = max_release_year?.toString() ?: "",
             vote_average_gte = min_rating?.toString() ?: "",
             vote_average_lte = max_rating?.toString() ?: "",
             with_runtime_gte = min_duration?.toString() ?: "",
             with_runtime_lte = max_duration?.toString() ?: "",
-            page = page,
-            append_to_response = append_to_response.joinToString(separator = ",")
+            page = page
         )
             .enqueue(object : Callback<MoviesListResponse> {
                 override fun onResponse(

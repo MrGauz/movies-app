@@ -22,15 +22,14 @@ interface Api {
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("page") page: Int,
         @Query("language") language: String = "en-US",
-        @Query("region") region: String,
+        @Query("with_original_language") original_language: String,
         @Query("with_genres") with_genres: String,
         @Query("primary_release_date.gte") primary_release_date_gte: String,
         @Query("primary_release_date.lte") primary_release_date_lte: String,
         @Query("vote_average.gte") vote_average_gte: String,
         @Query("vote_average.lte") vote_average_lte: String,
         @Query("with_runtime.gte") with_runtime_gte: String,
-        @Query("with_runtime.lte") with_runtime_lte: String,
-        @Query("append_to_response") append_to_response: String
+        @Query("with_runtime.lte") with_runtime_lte: String
     ): Call<MoviesListResponse>
 
     @GET("search/person")
