@@ -8,15 +8,16 @@
     android:background="@drawable/join_background"
     tools:context=".start.JoinFragment">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/joinButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
+        android:background="@drawable/button_join_lobby"
         android:text="Join"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/sessionIdInput"
+        app:layout_constraintStart_toStartOf="@+id/sessionIdInput" />
 
     <EditText
         android:id="@+id/sessionIdInput"

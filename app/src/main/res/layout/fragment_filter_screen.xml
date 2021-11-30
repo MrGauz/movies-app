@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/filterTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Let' s start"
@@ -168,10 +168,20 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/createButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/button_join_lobby"
-                    android:text="Create" />
+                    android:text="submit" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/stopSessionButton"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_start_lobby"
+                    android:text="stop session"
+                    android:visibility="invisible" />
 
             </LinearLayout>
         </ScrollView>
