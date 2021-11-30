@@ -16,7 +16,7 @@ data class Movie(
     @SerializedName("poster_path") val poster_path: String = "",
     @SerializedName("vote_average") val rating: Float = 0f,
     @SerializedName("release_date") val releaseDate: String = "",
-    @SerializedName("genre_ids") val genre_ids: List<Int> = listOf()
+    @SerializedName("genre_ids") val genre_ids: List<Long> = listOf()
 ) {
     var isSwiped = false
     var isAccepted = false
