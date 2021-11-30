@@ -1,5 +1,6 @@
 package com.example.movieapp.start
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,9 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
+import android.content.ContentValues.TAG
+import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.data.SessionData
@@ -21,6 +25,7 @@ import com.example.movieapp.data.SessionData
 class ShareFragment : Fragment() {
     private var _binding: FragmentShareBinding? = null
     private val binding get() = _binding!!
+    var alertDialog: AlertDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,11 +70,35 @@ class ShareFragment : Fragment() {
 
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)
+        createDialog()
+
 
         // TODO - Carlos: ask if users wants to close the app on back click
         //  if yes - call SessionData.leaveSession() and close the app
 
+        requireActivity()//on back press this launches the alert
+            .onBackPressedDispatcher
+            .addCallback(this.requireActivity(), object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    alertDialog?.show()
+                }
+            }
+            )
+
         return binding.root
+    }
+    fun createDialog(){ //creates the alert, if user wants to leave he gets kicked out of the session and the app, otherwise nothing happens
+        val alertDialogBuilder = AlertDialog.Builder(this.context)
+        alertDialogBuilder.setTitle("Exit App")
+        alertDialogBuilder.setMessage("Are you sure you want to exit?")
+        alertDialogBuilder.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
+            SessionData.leaveSession()
+            activity?.moveTaskToBack(true)
+            activity?.finish()
+        })
+        alertDialogBuilder.setNegativeButton("Cancel", { dialogInterface: DialogInterface, i: Int -> })
+
+        alertDialog = alertDialogBuilder.create()
     }
 
     private fun generateQRCode(message: String, qrView: ImageView) {
