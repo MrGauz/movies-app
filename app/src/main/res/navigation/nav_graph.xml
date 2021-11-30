@@ -41,7 +41,8 @@
             app:destination="@id/directorFragment" />
         <action
             android:id="@+id/action_filterScreenFragment_to_shareFragment"
-            app:destination="@id/shareFragment" />
+            app:destination="@id/shareFragment"
+            app:popUpTo="@id/startScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/genreFragment"
@@ -71,8 +72,9 @@
         android:label="fragment_share"
         tools:layout="@layout/fragment_share" >
         <action
-            android:id="@+id/action_shareFragment_to_filterScreenFragment"
-            app:destination="@id/filterScreenFragment" />
+            android:id="@+id/action_shareFragment_to_startScreenFragment"
+            app:destination="@id/startScreenFragment"
+            app:popUpTo="@id/startScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinFragment"

@@ -59,7 +59,7 @@ class ShareFragment : Fragment() {
             val swipeIntent = Intents(true, this.context)
             swipeIntent.intentToSwipe()
         }
-        binding.shareBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shareFragment_to_filterScreenFragment))
+        binding.shareBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shareFragment_to_startScreenFragment))
 
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)
