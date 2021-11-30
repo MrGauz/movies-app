@@ -121,7 +121,7 @@ object MoviesRepository {
 
     fun getMovieDetails(
         api_id: Long,
-        append_to_results: List<String> = listOf("videos"),
+        append_to_results: List<String> = listOf("videos", "credits"),
         fragment: DetailsFragment
     ) {
         api.getMovieDetails(
