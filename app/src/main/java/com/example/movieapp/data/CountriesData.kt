@@ -1016,4 +1016,5 @@ object CountriesData {
 
     fun findByName(name: String) = countries.find { c -> c.name == name }
     fun findByCode(code: String) = countries.find { c -> c.code == code }
+    fun getNamesList() = countries.map { g -> g.name }
 }
