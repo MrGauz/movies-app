@@ -8,25 +8,26 @@
     android:background="@drawable/join_background"
     tools:context=".start.JoinFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/joinButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="380dp"
         android:background="@drawable/button_join_lobby"
         android:text="Join"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/sessionIdInput"
-        app:layout_constraintStart_toStartOf="@+id/sessionIdInput" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/sessionIdInput"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="36dp"
         android:layout_marginTop="200dp"
-        android:ems="10"
-        android:hint="Session ID"
         android:background="@drawable/fancy_text_view"
+        android:ems="10"
+        android:hint="Enter Session ID"
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -40,27 +41,33 @@
         android:id="@+id/orText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="OR"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="or simply scan QR code with your camera"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sessionIdInput" />
+        app:layout_constraintTop_toBottomOf="@+id/joinButton" />
 
-    <Button
-        android:id="@+id/scanQrCodeButton"
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:enabled="false"
-        android:text="Scan QR code"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/joinButton"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-black"
+        android:text="Swovie"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.757"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

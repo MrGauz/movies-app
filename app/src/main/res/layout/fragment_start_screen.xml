@@ -73,8 +73,8 @@
         android:fontFamily="sans-serif-black"
         android:text="Swovie"
         android:textColor="@color/white"
-        android:textStyle="italic"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="italic" />
 
 
 </RelativeLayout>
