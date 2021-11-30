@@ -59,10 +59,15 @@ class ShareFragment : Fragment() {
             val swipeIntent = Intents(true, this.context)
             swipeIntent.intentToSwipe()
         }
-        binding.shareBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shareFragment_to_startScreenFragment))
+        binding.shareBack.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_shareFragment_to_startScreenFragment)
+        )
 
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)
+
+        // TODO - Carlos: ask if users wants to close the app on back click
+        //  if yes - call SessionData.leaveSession() and close the app
 
         return binding.root
     }

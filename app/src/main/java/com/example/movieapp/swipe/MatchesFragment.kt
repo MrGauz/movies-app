@@ -21,6 +21,7 @@ class MatchesFragment : Fragment() {
     private var viewManager = LinearLayoutManager(context)
     private lateinit var matchesViewModel: MatchesViewModel
     private lateinit var matchesRecycler: RecyclerView
+    private var matchesCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +35,15 @@ class MatchesFragment : Fragment() {
         matchesRecycler = binding.matchesList
         matchesRecycler.layoutManager = viewManager
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            matchesCount = matches.size
             matchesRecycler.adapter = MatchesRecyclerAdapter(matches, requireContext())
         })
-        binding.backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_matchesFragment_to_swipeFragment))
+
+        // TODO - Carlos: if matchesCount >= 3 -> close app on back click
+        //  after asking if user wants to close the app
+        binding.backButton.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_matchesFragment_to_swipeFragment)
+        )
 
         return binding.root
     }

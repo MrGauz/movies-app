@@ -14,6 +14,5 @@ class SwipeActivity : AppCompatActivity() {
         binding = ActivitySwipeBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        // TODO: 30.11.2021 Prevent users from going out of session
     }
 }

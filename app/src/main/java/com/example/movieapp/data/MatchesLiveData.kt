@@ -25,6 +25,11 @@ class MatchesLiveData : MutableLiveData<MutableList<Movie>>() {
 
                 // Update data in LiveData
                 value = tmpMoviesList
+
+                if (tmpMoviesList.size >= 3) {
+                    // Limit reached
+                    // TODO - Carlos: navigate to matches screen
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {}

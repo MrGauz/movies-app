@@ -63,6 +63,7 @@ class SwipeFragment : Fragment() {
             override fun cardSwipedRight(position: Int) {
                 // Test if a match
                 val acceptedCount = shownMovies[position].acceptedBy.size + 1
+                // TODO: check if matches from active users
                 val minMatchCount =
                     SessionData.users!!.size * SessionData.options.matchPercentage / 100
                 if (acceptedCount >= minMatchCount) {
@@ -81,6 +82,9 @@ class SwipeFragment : Fragment() {
             override fun cardActionDown() {}
             override fun cardActionUp() {}
         })
+
+        // TODO - Carlos: ask if users wants to close the app on back click
+        //  if yes - call SessionData.leaveSession() and close the app
 
         // Button to navigate to matches screen
         binding.matchesButton.setOnClickListener(

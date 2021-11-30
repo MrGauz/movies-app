@@ -19,16 +19,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set device ID
-        SessionData.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        SessionData.deviceId =
+            Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
         // Load movie genres
         MoviesRepository.getGenres()
 
         // User joined via deep link
-        val navController = findNavController(R.id.nav_host_fragment_activity_main) // TODO: put inside if and test
         if (intent?.action == "android.intent.action.VIEW") {
             JoinFragment.sessionId = intent?.data?.getQueryParameter("id").toString()
-            navController.navigate(R.id.joinFragment)
+            findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.joinFragment)
         }
     }
 }
