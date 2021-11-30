@@ -25,4 +25,5 @@ object SessionData {
     )
     var users: List<String>? = null
     var currentBatchIndex: Int = 0
+    var currentBatchUid: String = ""
 }

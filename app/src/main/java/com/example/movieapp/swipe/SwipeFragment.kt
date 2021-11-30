@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.MatchesViewModel
@@ -37,8 +38,13 @@ class SwipeFragment : Fragment() {
         moviesBatchViewModel =
             ViewModelProviders.of(this, factory).get(MoviesBatchViewModel::class.java)
         moviesBatchViewModel.getBatch().observe(viewLifecycleOwner, { movies ->
-            binding.swipeDeck.setAdapter(DeckAdapter(movies as ArrayList<Movie>, requireContext()))
-            this.movies = movies
+            this.movies = movies.filter { m -> !m.swipedBy.contains(SessionData.deviceId) }
+            binding.swipeDeck.setAdapter(
+                DeckAdapter(
+                    this.movies as ArrayList<Movie>,
+                    requireContext()
+                )
+            )
         })
 
         // Show realtime matches count
@@ -51,17 +57,17 @@ class SwipeFragment : Fragment() {
 
         binding.swipeDeck.setEventCallback(object : SwipeEventCallback {
             override fun cardSwipedLeft(position: Int) {
-                movies[position].isSwiped = true
-                Toast.makeText(context, "Swiped left", Toast.LENGTH_SHORT).show()
+                moviesBatchViewModel.setSwiped(movies[position])
             }
 
             override fun cardSwipedRight(position: Int) {
-                Toast.makeText(context, "Swiped right", Toast.LENGTH_SHORT).show()
+                // TODO: test if a match
+                moviesBatchViewModel.setSwiped(movies[position], true)
             }
 
             // This method is called when no card is present
             override fun cardsDepleted() {
-                Toast.makeText(context, "No more courses present", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Loading more movies...", Toast.LENGTH_SHORT).show()
             }
 
             // These methods are called when a card is moved up or down
@@ -79,5 +85,6 @@ class SwipeFragment : Fragment() {
 
     private fun newMatch(matches: MutableList<Movie>) {
         binding.matchesButton.text = matches.size.toString()
+        // TODO: show animation
     }
 }

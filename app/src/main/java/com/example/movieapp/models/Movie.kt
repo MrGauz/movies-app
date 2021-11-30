@@ -18,8 +18,9 @@ data class Movie(
     @SerializedName("release_date") val releaseDate: String = "",
     @SerializedName("genre_ids") val genre_ids: List<Long> = listOf()
 ) {
-    var isSwiped = false
-    var isAccepted = false
+    var uid: String? = null
+    var swipedBy: MutableList<String> = mutableListOf()
+    var acceptedBy: MutableList<String> = mutableListOf()
 
     fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$poster_path"
     fun getReleaseYear() = releaseDate.substring(0, 4).toInt()

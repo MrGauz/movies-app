@@ -91,9 +91,17 @@ object Database {
     }
 
     fun saveNewMoviesBatch(batch: List<Movie>) {
-        val uid = sessionReference.child("movies").push().key
-        if (uid != null) {
-            sessionReference.child("movies").child(uid).setValue(batch)
+        val batchUid = sessionReference.child("movies").push().key
+        if (batchUid != null) {
+            SessionData.currentBatchUid = batchUid
+            val batchReference = sessionReference.child("movies").child(batchUid)
+            for (movie in batch) {
+                val uid = batchReference.push().key
+                if (uid != null) {
+                    movie.uid = uid
+                    batchReference.child(uid).setValue(movie)
+                }
+            }
         }
         // TODO: remove after debug
         for (i in 0..2) {
