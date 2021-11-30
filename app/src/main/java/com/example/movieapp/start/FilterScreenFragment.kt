@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
+import com.example.movieapp.data.CountriesData
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
@@ -44,8 +45,7 @@ class FilterScreenFragment : Fragment() {
 
         val spinner = binding.countrySpinner
         spinner.onItemSelectedListener
-        val genres: List<String> =
-            listOf("Country...", "Germany", "Georgia", "France") //Elements of the dropdown
+        val genres: List<String> = CountriesData.getNamesList()//Elements of the dropdown
         val spinnerAdapter =
             ArrayAdapter<String>(this.requireContext(), R.layout.custom_spinner_item, genres)
         spinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_item)
@@ -63,6 +63,7 @@ class FilterScreenFragment : Fragment() {
             ) { //get the selected item
                 if (parent != null) {
                     country = parent.getItemAtPosition(position).toString()
+                    SessionData.filter.country = CountriesData.findByName(country)
                 }
             }
 
