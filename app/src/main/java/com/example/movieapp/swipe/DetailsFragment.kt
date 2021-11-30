@@ -38,9 +38,8 @@ class DetailsFragment : Fragment() {
                 api_id = arguments?.getLong("apiId")!!,
                 fragment = this
             )
-        }
 
-        // TODO: change where back button leads
+        }
 
         return binding.root
     }
@@ -50,18 +49,18 @@ class DetailsFragment : Fragment() {
         Glide.with(posterView).load(movieDetails.getPosterUrl(PosterSize.MIDDLE))
             .into(posterView)
         binding.titleText.text = movieDetails.title
+        binding.detailsGenresText.text =
+            movieDetails.genres.joinToString(separator = " | ") { g -> g.name }
+        binding.detailsDirectorText.text = "directed by ${movieDetails.getDirectorName()}"
         binding.descriptionText.text = movieDetails.overview
-        binding.tmdbRatingText.text = movieDetails.rating.toString()
+        binding.tmdbRatingText.text = "${movieDetails.rating} / 10"
 
-        binding.tmdbButton.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(movieDetails.getImdbLink())
-            startActivity(i)
-        }
         binding.trailerButton.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(movieDetails.getTrailerUrl())
-            startActivity(i)
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(movieDetails.getTrailerUrl())))
+        }
+
+        binding.imdbButton.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(movieDetails.getImdbLink())))
         }
     }
 }
