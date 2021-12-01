@@ -164,6 +164,13 @@ object Database {
         })
     }
 
+    fun leaveSession() {
+        if (SessionData.users != null) {
+            sessionReference.child("users")
+                .setValue(SessionData.users!!.filter { u -> u != SessionData.deviceId })
+        }
+    }
+
     fun getMoviesReference() = sessionReference.child("movies")
 
     fun getMatchesReference() = sessionReference.child("matches")

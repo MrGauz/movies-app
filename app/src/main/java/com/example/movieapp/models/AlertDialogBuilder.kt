@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
-import com.example.movieapp.data.SessionData
+import com.example.movieapp.database.Database
 
 /**
  * Creates the alert,
@@ -25,7 +25,7 @@ class AlertDialogBuilder {
         alertDialogBuilder.setTitle("Exit App")
         alertDialogBuilder.setMessage("Are you sure you want to exit?")
         alertDialogBuilder.setPositiveButton("Yes") { _: DialogInterface, _: Int ->
-            SessionData.leaveSession()
+            Database.leaveSession()
             activity?.moveTaskToBack(true)
             activity?.finish()
         }

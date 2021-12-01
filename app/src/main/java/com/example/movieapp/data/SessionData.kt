@@ -23,13 +23,9 @@ object SessionData {
         matchPercentage = 100,
         joinTimer = 120
     )
-    var users: List<String>? = null
+    var users: MutableList<String>? = null
     var currentBatchIndex: Int = 0
     var currentBatchUid: String = ""
 
     fun isJoinTimerOver() = startTimestamp + options.joinTimer * 1000 < System.currentTimeMillis()
-
-    fun leaveSession() {
-        // TODO: delete device id, update users list in firebase
-    }
 }

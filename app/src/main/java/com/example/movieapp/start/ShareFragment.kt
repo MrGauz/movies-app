@@ -73,8 +73,6 @@ class ShareFragment : Fragment() {
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)
 
-        // TODO - Carlos: ask if users wants to close the app on back click
-        //  if yes - call SessionData.leaveSession() and close the app
         AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog)
 
         return binding.root

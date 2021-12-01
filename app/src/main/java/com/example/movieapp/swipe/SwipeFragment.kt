@@ -83,8 +83,9 @@ class SwipeFragment : Fragment() {
 
             override fun cardSwipedRight(position: Int) {
                 // Test if a match
-                val acceptedCount = shownMovies[position].acceptedBy.size + 1
-                // TODO: check if matches from active users
+                // TODO: test if matches only from active users
+                val acceptedCount =
+                    shownMovies[position].acceptedBy.filter { u -> SessionData.users!!.contains(u) }.size + 1
                 val minMatchCount =
                     SessionData.users!!.size * SessionData.options.matchPercentage / 100
                 if (acceptedCount >= minMatchCount && SessionData.isJoinTimerOver()) {
