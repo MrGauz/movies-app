@@ -21,7 +21,6 @@
             android:drawableRight="@drawable/back_foreground"
             android:paddingTop="15dp"
             android:paddingEnd="-25dp"
-            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toStartOf="parent"
