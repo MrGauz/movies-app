@@ -25,7 +25,7 @@ class MatchesFragment : Fragment() {
     private var _binding: FragmentMatchesBinding? = null
     private val binding get() = _binding!!
 
-    private var viewManager = LinearLayoutManager(context)
+    //private var viewManager = LinearLayoutManager(context)
     private lateinit var matchesViewModel: MatchesViewModel
     private lateinit var matchesRecycler: RecyclerView
     private lateinit var matches: List<Movie>
@@ -41,7 +41,8 @@ class MatchesFragment : Fragment() {
         matchesViewModel = ViewModelProviders.of(this, factory).get(MatchesViewModel::class.java)
 
         matchesRecycler = binding.matchesList
-        matchesRecycler.layoutManager = viewManager
+        matchesRecycler.layoutManager = LinearLayoutManager(this.context) //just getting a completely new layoutManager fixes the bug.
+        //praised be stackoverflow. This has to do with the garbage collector or something somehow.
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
             this.matches = matches
             shareText = "Hey, here's what we decided to watch:\n" +
