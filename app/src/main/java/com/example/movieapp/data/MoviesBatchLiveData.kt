@@ -34,12 +34,13 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
 
     fun setSwiped(movie: Movie, isAccepted: Boolean = false) {
         movie.swipedBy.add(SessionData.deviceId!!)
-        Database.getMoviesReference().child(SessionData.currentBatchUid).child(movie.uid!!)
-            .child("swipedBy").setValue(movie.swipedBy)
+        Database.getMoviesReference().child(SessionData.batchUids[SessionData.currentBatchIndex])
+            .child(movie.uid!!).child("swipedBy").setValue(movie.swipedBy)
 
         if (isAccepted) {
             movie.acceptedBy.add(SessionData.deviceId!!)
-            Database.getMoviesReference().child(SessionData.currentBatchUid).child(movie.uid!!)
+            Database.getMoviesReference()
+                .child(SessionData.batchUids[SessionData.currentBatchIndex]).child(movie.uid!!)
                 .child("acceptedBy").setValue(movie.acceptedBy)
         }
     }

@@ -36,7 +36,7 @@ class ShareFragment : Fragment() {
 
         // Compose sharing information
         val databaseId = SessionData.id
-        binding.sessionId.text = "Session ID: $databaseId"
+        binding.sessionId.text = "Session ID:\n$databaseId"
         val deepLink = "https://" + getString(R.string.domain_name) + "/?id=$databaseId"
 
         // Copy session ID button
