@@ -62,5 +62,6 @@ class DetailsFragment : Fragment() {
         binding.imdbButton.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(movieDetails.getImdbLink())))
         }
+        binding.infoBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_infoFragment_to_swipeFragment))
     }
 }
