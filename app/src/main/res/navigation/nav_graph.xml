@@ -37,9 +37,6 @@
             app:popEnterAnim="@anim/bottom_up"
             app:popExitAnim="@android:anim/fade_out" />
         <action
-            android:id="@+id/action_filterScreenFragment_to_directorFragment"
-            app:destination="@id/directorFragment" />
-        <action
             android:id="@+id/action_filterScreenFragment_to_shareFragment"
             app:destination="@id/shareFragment"
             app:popUpTo="@id/startScreenFragment" />
@@ -56,15 +53,6 @@
             app:exitAnim="@anim/bottom_down"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@anim/bottom_down" />
-    </fragment>
-    <fragment
-        android:id="@+id/directorFragment"
-        android:name="com.example.movieapp.start.DirectorFragment"
-        android:label="fragment_director"
-        tools:layout="@layout/fragment_director" >
-        <action
-            android:id="@+id/action_directorFragment_to_filterScreenFragment"
-            app:destination="@id/filterScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/shareFragment"
