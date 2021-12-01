@@ -1,12 +1,12 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="70dp"
     android:height="70dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108"
+    android:viewportWidth="110"
+    android:viewportHeight="110"
     android:tint="#FFFFFF"
     android:autoMirrored="true">
-  <group android:scaleX="2.61"
-      android:scaleY="2.61"
+  <group android:scaleX="1.61"
+      android:scaleY="1.61"
       android:translateX="22.68"
       android:translateY="22.68">
     <path
