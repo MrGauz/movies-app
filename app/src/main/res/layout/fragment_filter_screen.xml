@@ -50,9 +50,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_to_genre"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="Genres"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/montserrat_bold"/>
+                    android:textColor="@color/white" />
 
                 <View style="@style/Divider" />
 
@@ -72,13 +72,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:stepSize="1"
-                    app:trackColor = "#FF542B"
-                    app:thumbColor = "@color/white"
-                    app:thumbStrokeColor ="#FF542B"
-                    app:thumbStrokeWidth = "2dp"
                     android:valueFrom="1900"
                     android:valueTo="2021"
-                    app:tickVisible="false" />
+                    app:thumbColor="@color/white"
+                    app:thumbStrokeColor="#FF542B"
+                    app:thumbStrokeWidth="2dp"
+                    app:tickVisible="false"
+                    app:trackColor="#FF542B" />
 
                 <View style="@style/Divider" />
 
@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Language"
+                    android:text="Original language"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -122,11 +122,11 @@
                     android:stepSize="0.1"
                     android:valueFrom="0"
                     android:valueTo="10"
-                    app:trackColor = "#FF542B"
-                    app:thumbColor = "@color/white"
-                    app:thumbStrokeColor ="#FF542B"
-                    app:thumbStrokeWidth = "2dp"
+                    app:thumbColor="@color/white"
+                    app:thumbStrokeColor="#FF542B"
+                    app:thumbStrokeWidth="2dp"
                     app:tickVisible="false"
+                    app:trackColor="#FF542B"
                     tools:ignore="MissingConstraints" />
 
                 <View style="@style/Divider" />
@@ -147,12 +147,12 @@
                     android:layout_marginBottom="20dp"
                     android:stepSize="10"
                     android:valueFrom="0"
-                    app:trackColor = "#FF542B"
-                    app:thumbColor = "@color/white"
-                    app:thumbStrokeColor ="#FF542B"
-                    app:thumbStrokeWidth = "2dp"
                     android:valueTo="300"
-                    app:tickVisible="false" />
+                    app:thumbColor="@color/white"
+                    app:thumbStrokeColor="#FF542B"
+                    app:thumbStrokeWidth="2dp"
+                    app:tickVisible="false"
+                    app:trackColor="#FF542B" />
 
                 <View style="@style/Divider" />
 
@@ -174,11 +174,11 @@
                     android:stepSize="10"
                     android:valueFrom="50"
                     android:valueTo="100"
-                    app:trackColor = "#FF542B"
-                    app:thumbColor = "@color/white"
-                    app:thumbStrokeColor ="#FF542B"
-                    app:thumbStrokeWidth = "2dp"
-                    app:tickVisible="false" />
+                    app:thumbColor="@color/white"
+                    app:thumbStrokeColor="#FF542B"
+                    app:thumbStrokeWidth="2dp"
+                    app:tickVisible="false"
+                    app:trackColor="#FF542B" />
 
                 <View style="@style/Divider" />
 
@@ -198,12 +198,12 @@
                     android:layout_marginBottom="20dp"
                     android:stepSize="30"
                     android:valueFrom="30"
-                    app:trackColor = "#FF542B"
-                    app:thumbStrokeColor ="#FF542B"
-                    app:thumbStrokeWidth = "2dp"
-                    app:thumbColor = "@color/white"
                     android:valueTo="300"
-                    app:tickVisible="false" />
+                    app:thumbColor="@color/white"
+                    app:thumbStrokeColor="#FF542B"
+                    app:thumbStrokeWidth="2dp"
+                    app:tickVisible="false"
+                    app:trackColor="#FF542B" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/createButton"
