@@ -12,13 +12,14 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
     fun getBatch(): MoviesBatchLiveData {
         Database.getMoviesReference().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                // TODO: save current batch uid
                 // Load movies from the database
                 // TODO: test if elementAt is available
                 val tmpMoviesList = mutableListOf<Movie>()
-                snapshot.children.elementAt(SessionData.currentBatchIndex).children.forEach {
-                    if (it != null) {
-                        tmpMoviesList.add(it.getValue<Movie>()!!)
+                if (snapshot.children.count() >= SessionData.currentBatchIndex + 1) {
+                    snapshot.children.elementAt(SessionData.currentBatchIndex).children.forEach {
+                        if (it != null) {
+                            tmpMoviesList.add(it.getValue<Movie>()!!)
+                        }
                     }
                 }
 

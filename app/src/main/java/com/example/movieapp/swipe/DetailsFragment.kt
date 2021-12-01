@@ -40,6 +40,7 @@ class DetailsFragment : Fragment() {
         matchesViewModel =
             ViewModelProviders.of(this, matchesFactory).get(MatchesViewModel::class.java)
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            // TODO: don't force matches on opening details
             if (matches.size >= 3) {
                 binding.root.findNavController()
                     .navigate(R.id.action_infoFragment_to_matchesFragment)
