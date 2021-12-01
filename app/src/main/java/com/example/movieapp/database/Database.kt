@@ -123,6 +123,20 @@ object Database {
             override fun onCancelled(error: DatabaseError) {}
         })
 
+        // Load start timestamp
+        if (!SessionData.isHost) {
+            sessionReference.child("startTimestamp")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.getValue<Long>() != null) {
+                            SessionData.startTimestamp = snapshot.getValue<Long>()!!
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+        }
+
         // Load filter (only guests)
         if (!SessionData.isHost) {
             sessionReference.child("filter")
