@@ -38,7 +38,7 @@ class JoinFragment : Fragment() {
         return binding.root
     }
 
-    fun trySessionJoin(inputSessionId: String) {
+    private fun trySessionJoin(inputSessionId: String) {
         if (inputSessionId.isEmpty()) {
             binding.sessionIdInput.error = "Please provide a session ID"
             return
@@ -48,8 +48,12 @@ class JoinFragment : Fragment() {
     }
 
     fun onSuccessfulSessionJoin() {
+        // Delete previous matches
+        Database.clearMatches()
+
         // Load session data
         Database.loadSessionData()
+
         // Navigate to swipe screen
         val swipeIntent = Intents(isHost = false, context = this.context)
         swipeIntent.intentToSwipe()

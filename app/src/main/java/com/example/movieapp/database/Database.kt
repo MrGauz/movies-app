@@ -109,8 +109,8 @@ object Database {
         }
     }
 
-    fun loadNextMoviesBatch() {
-        TODO()
+    fun clearMatches() {
+        sessionReference.child("matches").setValue(null)
     }
 
     fun loadSessionData() {
