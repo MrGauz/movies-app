@@ -24,6 +24,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/moreMoviesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="more movies will be loaded"
+                android:textColor="@color/white"
+                swipedeck:layout_constraintBottom_toBottomOf="parent"
+                swipedeck:layout_constraintEnd_toEndOf="parent"
+                swipedeck:layout_constraintStart_toStartOf="parent"
+                swipedeck:layout_constraintTop_toTopOf="parent" />
+
             <com.daprlabs.cardstack.SwipeDeck
                 android:id="@+id/swipe_deck"
                 android:layout_width="0dp"

@@ -42,7 +42,7 @@ class DetailsFragment : Fragment() {
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
             if (matches.size >= 3) {
                 binding.root.findNavController()
-                    .navigate(R.id.action_swipeFragment_to_matchesFragment)
+                    .navigate(R.id.action_infoFragment_to_matchesFragment)
             }
         })
 

@@ -32,6 +32,9 @@
             app:exitAnim="@anim/bottom_down"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@anim/bottom_down" />
+        <action
+            android:id="@+id/action_infoFragment_to_matchesFragment"
+            app:destination="@id/matchesFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchesFragment"
