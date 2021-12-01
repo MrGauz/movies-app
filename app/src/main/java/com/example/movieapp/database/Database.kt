@@ -93,7 +93,11 @@ object Database {
     fun saveNewMoviesBatch(batch: List<Movie>) {
         val batchUid = sessionReference.child("movies").push().key
         if (batchUid != null) {
-            SessionData.currentBatchUid = batchUid
+            // Save new batch uid
+            SessionData.batchUids.add(batchUid)
+            sessionReference.child("batchUids").setValue(SessionData.batchUids)
+
+            // Save loaded movies to batch
             val batchReference = sessionReference.child("movies").child(batchUid)
             for (movie in batch) {
                 val uid = batchReference.push().key
@@ -146,6 +150,22 @@ object Database {
                     override fun onCancelled(error: DatabaseError) {}
                 })
         }
+
+        // Load batches uids
+        sessionReference.child("batchUids").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val tmpBatchesUidsList = mutableListOf<String>()
+                snapshot.children.forEach {
+                    if (it != null) {
+                        tmpBatchesUidsList.add(it.getValue<String>()!!)
+                    }
+                }
+
+                SessionData.batchUids = tmpBatchesUidsList
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
 
         // Load active users
         sessionReference.child("users").addValueEventListener(object : ValueEventListener {

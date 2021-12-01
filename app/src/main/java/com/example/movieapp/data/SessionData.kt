@@ -25,7 +25,7 @@ object SessionData {
     )
     var users: MutableList<String>? = null
     var currentBatchIndex: Int = 0
-    var currentBatchUid: String = ""
+    var batchUids: MutableList<String> = mutableListOf()
 
     fun isJoinTimerOver() = startTimestamp + options.joinTimer * 1000 < System.currentTimeMillis()
 }

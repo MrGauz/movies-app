@@ -9,5 +9,5 @@ data class Session(
 ) {
     var users: HashMap<String, String> = hashMapOf()
     var matches: HashMap<String, Movie> = hashMapOf()
-    var movies: HashMap<String, List<Movie>> = hashMapOf()
+    var movies: HashMap<String, HashMap<String, Movie>> = hashMapOf()
 }
