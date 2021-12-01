@@ -13,7 +13,6 @@ import com.example.movieapp.R
 import com.example.movieapp.api.MoviesRepository
 import com.example.movieapp.models.MovieDetails
 import com.example.movieapp.databinding.FragmentDetailsBinding
-import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.PosterSize
 
 class DetailsFragment : Fragment() {
