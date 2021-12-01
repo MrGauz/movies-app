@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
@@ -41,15 +40,19 @@ class MatchesFragment : Fragment() {
             matchesRecycler.adapter = MatchesRecyclerAdapter(matches, requireContext())
         })
 
-        // TODO - Carlos: if matchesCount >= 3 -> close app on back click
-        //  after asking if user wants to close the app
-        binding.backButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_matchesFragment_to_swipeFragment)
-        )
-        // TODO: 30.11.2021 Matches count funktioniert nicht
-        if (matchesCount>=3) { // if there are more than 2 matches, throw users out if they want to leave
-            AlertDialogBuilder().createDialogOnBackButtonPress(this.context, activity, R.style.AlertDialog)
+        binding.backButton.setOnClickListener {
+            if (matchesCount >= 3) {
+                AlertDialogBuilder().createDialogOnBackButtonPress(
+                    this.context,
+                    activity,
+                    R.style.AlertDialog
+                )
+            } else {
+                binding.root.findNavController()
+                    .navigate(R.id.action_matchesFragment_to_swipeFragment)
+            }
         }
+
         return binding.root
     }
 }

@@ -1,8 +1,6 @@
 package com.example.movieapp.data
 
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation.findNavController
-import com.example.movieapp.R
 import com.example.movieapp.database.Database
 import com.example.movieapp.models.Movie
 import com.google.firebase.database.DataSnapshot
@@ -27,12 +25,6 @@ class MatchesLiveData : MutableLiveData<MutableList<Movie>>() {
 
                 // Update data in LiveData
                 value = tmpMoviesList
-
-                if (tmpMoviesList.size >= 3) {
-                    // Limit reached
-                    // TODO - Kirill: I cant navigate without a view you need to find a way to pass the context of the current fragment somewhere
-                    // TODO - Carlos: navigate to matches screen
-                }
             }
 
             override fun onCancelled(error: DatabaseError) {}

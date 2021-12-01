@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.MatchesViewModelFactory
@@ -54,6 +55,11 @@ class SwipeFragment : Fragment() {
         matchesViewModel =
             ViewModelProviders.of(this, matchesFactory).get(MatchesViewModel::class.java)
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
+            if (matches.size >= 3) {
+                binding.root.findNavController()
+                    .navigate(R.id.action_swipeFragment_to_matchesFragment)
+            }
+
             newMatch(matches)
         })
 
