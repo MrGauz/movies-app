@@ -20,49 +20,49 @@
         android:background="@drawable/poster_background"
         android:orientation="vertical">
 
-        <!--image view for course image-->
-        <ImageButton
+        <ImageView
             android:id="@+id/posterView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@drawable/poster_background"
             android:scaleType="centerCrop" />
 
-        <!--text view for our course name-->
         <TextView
             android:id="@+id/titleId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="Title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
             android:fontFamily="@font/montserrat_bold"
+            android:padding="3dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Title"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
-        <View style="@style/Divider"
-            android:layout_height="0.3dp"/>
+        <View
+            style="@style/Divider"
+            android:layout_height="0.3dp" />
 
         <TextView
             android:id="@+id/swipeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
             android:fontFamily="@font/spacegrotesk_light"
             android:maxLines="5"
             android:minLines="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingBottom="10dp"
             android:paddingTop="10dp"
-            android:ellipsize="end"
+            android:paddingBottom="10dp"
+            android:text="Description"
             android:textColor="@color/white" />
 
-        <View style="@style/Divider"
-            android:layout_height="0.3dp"/>
+        <View
+            style="@style/Divider"
+            android:layout_height="0.3dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,26 +70,19 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!--text view for our course tracks-->
             <TextView
                 android:id="@+id/genresID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="genres"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/spacegrotesk_light"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="genres"
                 android:textColor="@color/white" />
 
-            <!--text view for our course duration-->
-
         </LinearLayout>
-
-        <!--text view for our course description-->
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

@@ -28,10 +28,10 @@
                 android:id="@+id/moreMoviesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="more movies are being loaded..."
                 android:fontFamily="@font/spacegrotesk"
-                android:textSize="17dp"
+                android:text="more movies are being loaded..."
                 android:textColor="@color/white"
+                android:textSize="17dp"
                 swipedeck:layout_constraintBottom_toBottomOf="parent"
                 swipedeck:layout_constraintEnd_toEndOf="parent"
                 swipedeck:layout_constraintStart_toStartOf="parent"
@@ -62,17 +62,14 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:background="@drawable/back_button_white"
                 android:text="matches"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:background="@drawable/back_button_white"
                 swipedeck:layout_constraintEnd_toEndOf="parent"
                 swipedeck:layout_constraintHorizontal_bias="1.0"
                 swipedeck:layout_constraintStart_toStartOf="parent"
                 swipedeck:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.daprlabs.cardstack.SwipeFrameLayout>
-
-</RelativeLayout>
-<!--source: https://www.geeksforgeeks.org/tinder-swipe-view-with-example-in-android/ -->
+</RelativeLayout><!--source: https://www.geeksforgeeks.org/tinder-swipe-view-with-example-in-android/ -->

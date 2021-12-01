@@ -46,13 +46,12 @@ class DeckAdapter(
                 .joinToString(separator = " | ") { g -> g.name }
 
         // Set OnClickListeners to open details screen
-        val onClickListener = Navigation.createNavigateOnClickListener(
-            R.id.action_swipeFragment_to_infoFragment,
-            bundleOf("apiId" to movie.apiId)
+        cardView.setOnClickListener(
+            Navigation.createNavigateOnClickListener(
+                R.id.action_swipeFragment_to_infoFragment,
+                bundleOf("apiId" to movie.apiId)
+            )
         )
-        cardView.setOnClickListener(onClickListener)
-        posterView.setOnClickListener(onClickListener)
-
 
         return cardView
     }

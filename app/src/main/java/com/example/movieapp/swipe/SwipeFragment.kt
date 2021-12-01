@@ -30,7 +30,6 @@ class SwipeFragment : Fragment() {
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
