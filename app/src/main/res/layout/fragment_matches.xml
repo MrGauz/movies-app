@@ -53,6 +53,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/matches_list" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/shareMatchesButton"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_share_link"
+            android:drawableRight="@android:drawable/ic_menu_share"
+            android:fontFamily="@font/spacegrotesk"
+            android:paddingEnd="10dp"
+            android:text="Share Matches"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

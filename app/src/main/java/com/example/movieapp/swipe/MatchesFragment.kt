@@ -1,12 +1,14 @@
 package com.example.movieapp.swipe
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.forEach
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -62,6 +64,18 @@ class MatchesFragment : Fragment() {
                 R.style.AlertDialog,
                 R.id.matchesFragment
             )
+        if (matchesCount>=1){
+            binding.shareMatchesButton.visibility = View.VISIBLE
+            binding.shareMatchesButton.setOnClickListener {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "Hi there, let's watch a movie together: $deepLink")
+                    type = "text/plain"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
+            }
+        }
 
         return binding.root
     }
