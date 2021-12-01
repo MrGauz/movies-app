@@ -85,7 +85,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="#1C1971"
-                    android:popupBackground="#CAD2FF" />
+                    android:popupBackground="#354395" />
 
                 <View style="@style/Divider" />
 
