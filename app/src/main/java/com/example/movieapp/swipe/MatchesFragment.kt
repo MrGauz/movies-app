@@ -69,7 +69,7 @@ class MatchesFragment : Fragment() {
             binding.shareMatchesButton.setOnClickListener {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "Hi there, let's watch a movie together: $deepLink")
+                    //putExtra(Intent.EXTRA_TEXT, "Hi there, let's watch a movie together: $deepLink")
                     type = "text/plain"
                 }
                 val shareIntent = Intent.createChooser(sendIntent, null)
