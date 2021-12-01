@@ -43,6 +43,8 @@
         android:layout_marginEnd="20dp"
         android:text="Title"
         android:textSize="34sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -54,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="PlotDescription"
+        android:fontFamily="@font/spacegrotesk_light"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/titleText"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -64,6 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="TMDb rating"
+        android:fontFamily="@font/spacegrotesk_light"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/trailerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +115,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="genres"
+        android:fontFamily="@font/spacegrotesk_light"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/titleText"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
@@ -117,6 +125,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="directed by"
+        android:fontFamily="@font/spacegrotesk_light"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/detailsGenresText"
         app:layout_constraintTop_toBottomOf="@+id/detailsGenresText" />
