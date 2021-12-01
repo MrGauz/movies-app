@@ -72,6 +72,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:stepSize="1"
+                    app:trackColor = "#FF542B"
+                    app:thumbColor = "@color/white"
+                    app:thumbStrokeColor ="#FF542B"
+                    app:thumbStrokeWidth = "2dp"
                     android:valueFrom="1900"
                     android:valueTo="2021"
                     app:tickVisible="false" />
@@ -107,6 +111,10 @@
                     android:stepSize="0.1"
                     android:valueFrom="0"
                     android:valueTo="10"
+                    app:trackColor = "#FF542B"
+                    app:thumbColor = "@color/white"
+                    app:thumbStrokeColor ="#FF542B"
+                    app:thumbStrokeWidth = "2dp"
                     app:tickVisible="false"
                     tools:ignore="MissingConstraints" />
 
@@ -128,6 +136,10 @@
                     android:layout_marginBottom="20dp"
                     android:stepSize="10"
                     android:valueFrom="0"
+                    app:trackColor = "#FF542B"
+                    app:thumbColor = "@color/white"
+                    app:thumbStrokeColor ="#FF542B"
+                    app:thumbStrokeWidth = "2dp"
                     android:valueTo="300"
                     app:tickVisible="false" />
 
@@ -151,6 +163,10 @@
                     android:stepSize="10"
                     android:valueFrom="50"
                     android:valueTo="100"
+                    app:trackColor = "#FF542B"
+                    app:thumbColor = "@color/white"
+                    app:thumbStrokeColor ="#FF542B"
+                    app:thumbStrokeWidth = "2dp"
                     app:tickVisible="false" />
 
                 <View style="@style/Divider" />
@@ -171,6 +187,10 @@
                     android:layout_marginBottom="20dp"
                     android:stepSize="30"
                     android:valueFrom="30"
+                    app:trackColor = "#FF542B"
+                    app:thumbStrokeColor ="#FF542B"
+                    app:thumbStrokeWidth = "2dp"
+                    app:thumbColor = "@color/white"
                     android:valueTo="300"
                     app:tickVisible="false" />
 
@@ -182,14 +202,6 @@
                     android:background="@drawable/button_join_lobby"
                     android:text="submit" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/stopSessionButton"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/button_start_lobby"
-                    android:text="stop session"
-                    android:visibility="invisible" />
 
             </LinearLayout>
         </ScrollView>

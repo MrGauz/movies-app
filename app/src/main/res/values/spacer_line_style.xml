@@ -3,6 +3,6 @@
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2.4dp</item>
-        <item name="android:background">#E2632F</item>
+        <item name="android:background">#CAD2FF</item>
     </style>
 </resources>
