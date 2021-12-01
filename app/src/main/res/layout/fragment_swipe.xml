@@ -53,15 +53,17 @@
                 swipedeck:render_above="true"
                 swipedeck:rotation_degrees="15" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/matchesButton"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="matches"
-                android:background="@drawable/back_button"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:background="@drawable/back_button_white"
                 swipedeck:layout_constraintEnd_toEndOf="parent"
                 swipedeck:layout_constraintHorizontal_bias="1.0"
                 swipedeck:layout_constraintStart_toStartOf="parent"
