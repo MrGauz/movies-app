@@ -57,24 +57,39 @@
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
-    <TextView
-        android:id="@+id/descriptionText"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="PlotDescription"
-        android:fontFamily="@font/spacegrotesk_light"
-        android:textColor="@color/white"
-        android:textSize= "18dp"
-        app:layout_constraintEnd_toEndOf="@+id/titleText"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/spacegrotesk_light"
+                android:text="PlotDescription"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/tmdbRatingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/spacegrotesk_light"
         android:text="TMDb rating"
         android:textColor="@color/white"
@@ -83,8 +98,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="123dp"
+        android:layout_height="78dp"
+        app:layout_constraintBottom_toTopOf="@+id/trailerButton"
+        app:layout_constraintEnd_toStartOf="@+id/tmdbRatingText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:srcCompat="@drawable/rating_icon"
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imdbButton"
@@ -112,19 +137,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imdbButton"
         app:layout_constraintStart_toStartOf="@+id/imdbButton" />
 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="123dp"
-        android:layout_height="78dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tmdbRatingText"
-        app:layout_constraintEnd_toStartOf="@+id/tmdbRatingText"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tmdbRatingText"
-        app:layout_constraintVertical_bias="0.464"
-        app:srcCompat="@drawable/rating_icon"
-        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/detailsGenresText"
