@@ -45,7 +45,8 @@ class MatchesFragment : Fragment() {
                 AlertDialogBuilder().createDialogOnBackButtonPress(
                     this.context,
                     activity,
-                    R.style.AlertDialog
+                    R.style.AlertDialog,
+                    R.id.matchesFragment
                 )
             } else {
                 binding.root.findNavController()

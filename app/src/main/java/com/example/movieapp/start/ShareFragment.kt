@@ -73,7 +73,7 @@ class ShareFragment : Fragment() {
         // Show a QR code
         generateQRCode(deepLink, binding.qrView)
 
-        AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog)
+        AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog,R.id.shareFragment)
 
         return binding.root
     }

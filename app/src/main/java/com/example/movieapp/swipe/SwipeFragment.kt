@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.MatchesViewModelFactory
@@ -30,18 +31,6 @@ class SwipeFragment : Fragment() {
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                AlertDialogBuilder().createDialogOnBackButtonPress(
-                    context,
-                    activity,
-                    R.style.AlertDialog
-                )
-            }
-        })
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -109,6 +98,8 @@ class SwipeFragment : Fragment() {
         binding.matchesButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
         )
+        //create alert on back press
+        AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog,R.id.swipeFragment)
         return binding.root
     }
 
