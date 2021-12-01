@@ -16,7 +16,7 @@ object SessionData {
         genres = mutableListOf(),
         releaseYear = ReleaseYearInterval(1900, Calendar.getInstance().get(Calendar.YEAR)),
         language = LanguagesData.findByCode("en"),
-        minRating = 4.0,
+        minRating = 4.2,
         duration = DurationInterval(0, 300)
     )
     var options = Options(
