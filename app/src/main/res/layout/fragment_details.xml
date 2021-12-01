@@ -7,16 +7,22 @@
     android:layout_height="match_parent"
     android:background="@drawable/red_gradient_background"
     tools:context=".swipe.DetailsFragment">
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/infoBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="back"
-        android:background="@drawable/youtube_button_background"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/back_button"
+        android:drawableRight="@drawable/back_foreground"
+        android:paddingTop="15dp"
+        android:paddingEnd="-25dp"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
@@ -59,6 +65,7 @@
         android:text="PlotDescription"
         android:fontFamily="@font/spacegrotesk_light"
         android:textColor="@color/white"
+        android:textSize= "18dp"
         app:layout_constraintEnd_toEndOf="@+id/titleText"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -68,13 +75,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="TMDb rating"
         android:fontFamily="@font/spacegrotesk_light"
+        android:text="TMDb rating"
         android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/trailerButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+        app:layout_constraintVertical_bias="0.593" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imdbButton"
@@ -95,19 +105,24 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/youtube_button_background"
         android:text="Trailer"
+
+        android:fontFamily="@font/spacegrotesk_light"
         android:textColor="#F1ECEC"
         app:layout_constraintBottom_toTopOf="@+id/imdbButton"
         app:layout_constraintEnd_toEndOf="@+id/imdbButton"
         app:layout_constraintStart_toStartOf="@+id/imdbButton" />
 
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
+        android:layout_width="123dp"
+        android:layout_height="78dp"
         app:layout_constraintBottom_toBottomOf="@+id/tmdbRatingText"
         app:layout_constraintEnd_toStartOf="@+id/tmdbRatingText"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tmdbRatingText"
+        app:layout_constraintVertical_bias="0.464"
         app:srcCompat="@drawable/rating_icon"
         tools:src="@tools:sample/backgrounds/scenic" />
 
