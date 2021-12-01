@@ -1,11 +1,15 @@
 package com.example.movieapp.swipe
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,19 +45,43 @@ class MatchesFragment : Fragment() {
         })
 
         binding.backButton.setOnClickListener {
+            System.out.println(matchesCount)
             if (matchesCount >= 3) {
-                AlertDialogBuilder().createDialogOnBackButtonPress(
-                    this.context,
+                AlertDialogBuilder().createDialog(this.context,
                     activity,
-                    R.style.AlertDialog,
-                    R.id.matchesFragment
-                )
+                    R.style.AlertDialog
+                ).show()
             } else {
                 binding.root.findNavController()
                     .navigate(R.id.action_matchesFragment_to_swipeFragment)
             }
         }
+        createDialogOnBackButtonPressCustom(
+                this.context,
+                activity,
+                R.style.AlertDialog,
+                R.id.matchesFragment
+            )
 
         return binding.root
+    }
+
+    private fun createDialogOnBackButtonPressCustom(context: Context?, activity: FragmentActivity?, style: Int, fragmentID : Int) {
+        val alertDialog = AlertDialogBuilder().createDialog(context,activity,style)
+        activity?.onBackPressedDispatcher?.addCallback(
+            activity,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (fragmentID == Navigation.findNavController
+                            (activity, activity.supportFragmentManager.primaryNavigationFragment!!.id).
+                        currentDestination?.id && matchesCount>=3){ //the only change is made here, we need to check matchesCount
+                        alertDialog.show()
+                    }
+                    else{
+                        isEnabled = false
+                        activity.onBackPressed()
+                    }
+                }
+            })
     }
 }
