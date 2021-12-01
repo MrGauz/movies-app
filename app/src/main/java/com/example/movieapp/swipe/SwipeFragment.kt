@@ -7,14 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSwipeBinding
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
+import com.example.movieapp.api.MoviesRepository
 import com.example.movieapp.data.SessionData
+import com.example.movieapp.database.Database
 import com.example.movieapp.database.MatchesViewModelFactory
 import com.example.movieapp.database.MoviesBatchViewModelFactory
 import com.example.movieapp.models.AlertDialogBuilder
@@ -85,7 +84,20 @@ class SwipeFragment : Fragment() {
 
             // This method is called when no card is present
             override fun cardsDepleted() {
-                Toast.makeText(context, "Loading more movies...", Toast.LENGTH_SHORT).show()
+                SessionData.currentBatchIndex++
+                if (SessionData.batchUids.size >= SessionData.currentBatchIndex + 1) {
+                    // Batches are already in firebase -> trigger LiveData reload
+                    Database.getMoviesReference()
+                        .child(SessionData.batchUids[SessionData.currentBatchIndex - 1])
+                        .child("uid")
+                        .setValue(SessionData.batchUids[SessionData.currentBatchIndex - 1])
+                } else {
+                    // New batch should be loaded
+                    MoviesRepository.getMovies(
+                        SessionData.filter,
+                        SessionData.currentBatchIndex + 1
+                    )
+                }
             }
 
             // These methods are called when a card is moved up or down
@@ -98,7 +110,12 @@ class SwipeFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
         )
         //create alert on back press
-        AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog,R.id.swipeFragment)
+        AlertDialogBuilder().createDialogOnBackButtonPress(
+            this.context,
+            activity,
+            R.style.AlertDialog,
+            R.id.swipeFragment
+        )
         return binding.root
     }
 

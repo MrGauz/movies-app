@@ -46,8 +46,6 @@ class GenreFragment : Fragment() {
                 view.layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
                 view.setBackgroundResource(R.drawable.genre_item_background_selected)
             }
-            Toast.makeText(context, SessionData.filter.genres?.toString(), Toast.LENGTH_SHORT)
-                .show()
         }
 
         binding.genreContinue.setOnClickListener(
