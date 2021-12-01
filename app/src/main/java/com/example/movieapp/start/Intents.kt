@@ -5,14 +5,7 @@ import android.content.Intent
 import androidx.core.content.ContextCompat.startActivity
 import com.example.movieapp.swipe.SwipeActivity
 
-class Intents {
-    private val isHost: Boolean
-    private val context: Context?
-
-    constructor(isHost: Boolean, context: Context?) {
-        this.isHost = isHost
-        this.context = context
-    }
+class Intents(private val isHost: Boolean, private val context: Context?) {
 
     fun intentToSwipe() {
         val intent = Intent(this.context, SwipeActivity::class.java);

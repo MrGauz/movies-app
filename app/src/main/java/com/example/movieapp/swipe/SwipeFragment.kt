@@ -30,6 +30,19 @@ class SwipeFragment : Fragment() {
     private var _binding: FragmentSwipeBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                AlertDialogBuilder().createDialogOnBackButtonPress(
+                    context,
+                    activity,
+                    R.style.AlertDialog
+                )
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -91,17 +104,10 @@ class SwipeFragment : Fragment() {
             override fun cardActionUp() {}
         })
 
-        // TODO - Carlos: ask if users wants to close the app on back click
-        //  if yes - call SessionData.leaveSession() and close the app
-
         // Button to navigate to matches screen
         binding.matchesButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
         )
-        // TODO: 30.11.2021 This doesnt work somehow Alert somehow gets triggered even coming from other fragments 
-        //builds the alert
-        //AlertDialogBuilder().createDialogOnBackButtonPress(this.context,activity,R.style.AlertDialog)
-
         return binding.root
     }
 
