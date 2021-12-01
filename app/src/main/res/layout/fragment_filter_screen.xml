@@ -36,25 +36,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="40dp"
-                    android:text="Let' s start"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingTop="20dp"
+                    android:text="Let's start!"
                     android:textColor="@color/white"
                     android:textSize="48sp"
                     android:textStyle="bold" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/genreButton"
-                    android:layout_width="250dp"
+                    android:layout_width="370dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/button_to_genre"
+                    android:background="@drawable/back_button"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Genres"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp" />
 
                 <TextView
                     android:id="@+id/yearText"
@@ -62,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Release date"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -80,7 +87,8 @@
                     app:tickVisible="false"
                     app:trackColor="#FF542B" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <TextView
                     android:id="@+id/textViewLanguage"
@@ -88,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Original language"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -98,11 +107,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:textAlignment="center"
                     android:background="@drawable/blue_outline"
-                    android:backgroundTint="#FF542B"
+                    android:backgroundTint="#e2632f"
                     android:popupBackground="#354395" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <TextView
                     android:id="@+id/textView"
@@ -110,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Minimal Rating"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -129,7 +141,8 @@
                     app:trackColor="#FF542B"
                     tools:ignore="MissingConstraints" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <TextView
                     android:id="@+id/textView3"
@@ -137,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Duration"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -154,7 +168,8 @@
                     app:tickVisible="false"
                     app:trackColor="#FF542B" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <TextView
                     android:id="@+id/textView2"
@@ -162,6 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Vote's percentage"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -180,7 +196,8 @@
                     app:tickVisible="false"
                     app:trackColor="#FF542B" />
 
-                <View style="@style/Divider" />
+                <View style="@style/Divider"
+                    android:layout_height="0.3dp"/>
 
                 <TextView
                     android:id="@+id/textView6"
@@ -188,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Join link active for"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -211,7 +229,8 @@
                     android:layout_height="40dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_join_lobby"
-                    android:text="submit" />
+                    android:text="submit"
+                    android:textColor="@color/white"/>
 
 
             </LinearLayout>
