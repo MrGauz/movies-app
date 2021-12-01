@@ -9,7 +9,7 @@
     android:background="@drawable/blue_gradient_background"
     android:elevation="8dp"
     app:cardBackgroundColor="#343360"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/blue_gradient_background"
+        android:background="@drawable/poster_background"
         android:orientation="vertical">
 
         <!--image view for course image-->
@@ -25,7 +25,7 @@
             android:id="@+id/posterView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#3F3E6A"
+            android:background="@drawable/poster_background"
             android:scaleType="centerCrop" />
 
         <!--text view for our course name-->
@@ -35,11 +35,16 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:text="Title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
-        <View style="@style/Divider" />
+        <View style="@style/Divider"
+            android:layout_height="0.3dp"/>
 
         <TextView
             android:id="@+id/swipeDescription"
@@ -49,10 +54,15 @@
             android:fontFamily="@font/spacegrotesk_light"
             android:maxLines="5"
             android:minLines="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:ellipsize="end"
             android:textColor="@color/white" />
 
-        <View style="@style/Divider" />
+        <View style="@style/Divider"
+            android:layout_height="0.3dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,8 +76,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="3dp"
                 android:text="genres"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:fontFamily="@font/spacegrotesk_light"
                 android:textColor="@color/white" />
 
