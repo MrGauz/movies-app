@@ -2,7 +2,7 @@
 <resources>
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:background">@android:color/holo_blue_light</item>
+        <item name="android:layout_height">2.4dp</item>
+        <item name="android:background">#E2632F</item>
     </style>
 </resources>

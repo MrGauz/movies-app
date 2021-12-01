@@ -45,12 +45,14 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/genreButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_to_genre"
-                    android:text="Genres" />
+                    android:text="Genres"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/montserrat_bold"/>
 
                 <View style="@style/Divider" />
 
@@ -83,7 +85,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="#1C1971"
-                    android:popupBackground="@color/purple_700" />
+                    android:popupBackground="#CAD2FF" />
 
                 <View style="@style/Divider" />
 

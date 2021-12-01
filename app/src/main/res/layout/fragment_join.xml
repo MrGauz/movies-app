@@ -18,15 +18,16 @@
         android:text="Join"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sessionIdInput" />
+        app:layout_constraintTop_toBottomOf="@+id/sessionIdInput"
+        app:layout_constraintVertical_bias="0.51" />
 
     <EditText
         android:id="@+id/sessionIdInput"
         android:layout_width="290dp"
         android:layout_height="36dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="196dp"
         android:background="@drawable/fancy_text_view"
         android:ems="10"
         android:hint="Enter Session ID"
@@ -36,6 +37,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
