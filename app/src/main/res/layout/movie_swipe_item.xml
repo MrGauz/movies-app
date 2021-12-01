@@ -25,7 +25,7 @@
             android:id="@+id/posterView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#3F3E6A"
+            android:background="@drawable/poster_background"
             android:scaleType="centerCrop" />
 
         <!--text view for our course name-->
@@ -35,6 +35,8 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:text="Title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/white"
             android:textSize="24sp" />
@@ -49,6 +51,8 @@
             android:fontFamily="@font/spacegrotesk_light"
             android:maxLines="5"
             android:minLines="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:ellipsize="end"
             android:textColor="@color/white" />
 
@@ -68,6 +72,8 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="genres"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:fontFamily="@font/spacegrotesk_light"
                 android:textColor="@color/white" />
 
