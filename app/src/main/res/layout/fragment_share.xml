@@ -53,6 +53,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="17sp"
+        android:textAlignment="center"
         android:fontFamily="@font/spacegrotesk"
         app:layout_constraintBottom_toBottomOf="@+id/copySessionId"
         app:layout_constraintEnd_toEndOf="parent"
