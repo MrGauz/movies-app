@@ -92,13 +92,14 @@
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/languageSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:backgroundTint="#1C1971"
+                    android:background="@drawable/blue_outline"
+                    android:backgroundTint="#FF542B"
                     android:popupBackground="#354395" />
 
                 <View style="@style/Divider" />
