@@ -43,8 +43,9 @@
                     android:textSize="48sp"
                     android:textStyle="bold" />
 
-                <View style="@style/Divider"
-                    android:layout_height="0.3dp"/>
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.3dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/genreButton"
@@ -56,10 +57,11 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Genres"
                     android:textAllCaps="false"
-                    android:textSize="20sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
-                <View style="@style/Divider"
+                <View
+                    style="@style/Divider"
                     android:layout_height="0.3dp" />
 
                 <TextView
@@ -67,8 +69,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Release date"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Release date"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -87,16 +89,17 @@
                     app:tickVisible="false"
                     app:trackColor="#FF542B" />
 
-                <View style="@style/Divider"
-                    android:layout_height="0.3dp"/>
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.3dp" />
 
                 <TextView
                     android:id="@+id/textViewLanguage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Original language"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Original language"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -107,21 +110,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:textAlignment="center"
                     android:background="@drawable/blue_outline"
                     android:backgroundTint="#e2632f"
-                    android:popupBackground="#354395" />
+                    android:popupBackground="#354395"
+                    android:textAlignment="center" />
 
-                <View style="@style/Divider"
-                    android:layout_height="0.3dp"/>
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.3dp" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Minimal Rating"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Minimal Rating"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -141,15 +145,17 @@
                     app:trackColor="#FF542B"
                     tools:ignore="MissingConstraints" />
 
-                <View style="@style/Divider"
-                    android:layout_height="0.3dp"/>
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.3dp" />
+
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Duration"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Duration"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -170,8 +176,8 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/divider_chair" />
+                    android:layout_height="70dp"
+                    android:src="@drawable/chair" />
 
 
                 <TextView
@@ -179,8 +185,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Vote's percentage"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Vote's percentage"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints" />
@@ -199,16 +205,17 @@
                     app:tickVisible="false"
                     app:trackColor="#FF542B" />
 
-                <View style="@style/Divider"
-                    android:layout_height="0.3dp"/>
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.3dp" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Join link active for"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Join link active for"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -233,7 +240,7 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_join_lobby"
                     android:text="submit"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
