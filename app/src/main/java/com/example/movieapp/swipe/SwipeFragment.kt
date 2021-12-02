@@ -127,6 +127,5 @@ class SwipeFragment : Fragment() {
      */
     private fun newMatch(matches: MutableList<Movie>) {
         binding.matchesButton.text = matches.size.toString()
-        // TODO: show animation
     }
 }
