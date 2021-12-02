@@ -55,7 +55,8 @@ class SwipeFragment : Fragment() {
         matchesViewModel =
             ViewModelProviders.of(this, matchesFactory).get(MatchesViewModel::class.java)
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
-            if (matches.size >= 3) {
+            if (matches.size >= 3 && Navigation.findNavController(//the second argument fixes a bug caused by the onBackButtonPressed override.
+                    binding.root).currentDestination?.id == R.id.swipeFragment) {
                 binding.root.findNavController()
                     .navigate(R.id.action_swipeFragment_to_matchesFragment)
             }
