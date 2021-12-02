@@ -6,7 +6,7 @@
     app:startDestination="@id/startScreenFragment">
     <fragment
         android:id="@+id/startScreenFragment"
-        android:name="com.example.movieapp.start.StartScreenFragment"
+        android:name="com.example.movieapp.start.StartFragment"
         android:label="fragment_start_screen"
         tools:layout="@layout/fragment_start_screen" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/filterScreenFragment"
-        android:name="com.example.movieapp.start.FilterScreenFragment"
+        android:name="com.example.movieapp.start.FilterFragment"
         android:label="fragment_filter_screen"
         tools:layout="@layout/fragment_filter_screen" >
         <action

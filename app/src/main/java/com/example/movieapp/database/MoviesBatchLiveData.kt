@@ -1,16 +1,22 @@
-package com.example.movieapp.data
+package com.example.movieapp.database
 
 import androidx.lifecycle.MutableLiveData
-import com.example.movieapp.database.Database
+import com.example.movieapp.data.SessionData
 import com.example.movieapp.models.Movie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
 class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
+    /**
+     * A reference to session's "movies" node
+     */
+    private var moviesReference: DatabaseReference = Database.getMoviesReference()
+
     fun getBatch(): MoviesBatchLiveData {
-        Database.getMoviesReference().addValueEventListener(object : ValueEventListener {
+        moviesReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // Load movies from the database
                 val tmpMoviesList = mutableListOf<Movie>()
@@ -34,21 +40,14 @@ class MoviesBatchLiveData : MutableLiveData<MutableList<Movie>>() {
 
     fun setSwiped(movie: Movie, isAccepted: Boolean = false) {
         movie.swipedBy.add(SessionData.deviceId!!)
-        Database.getMoviesReference().child(SessionData.batchUids[SessionData.currentBatchIndex])
+        moviesReference.child(SessionData.batchUids[SessionData.currentBatchIndex])
             .child(movie.uid!!).child("swipedBy").setValue(movie.swipedBy)
 
         if (isAccepted) {
             movie.acceptedBy.add(SessionData.deviceId!!)
-            Database.getMoviesReference()
+            moviesReference
                 .child(SessionData.batchUids[SessionData.currentBatchIndex]).child(movie.uid!!)
                 .child("acceptedBy").setValue(movie.acceptedBy)
-        }
-    }
-
-    fun setMatch(movie: Movie) {
-        val uid = Database.getMatchesReference().push().key
-        if (uid != null) {
-            Database.getMatchesReference().child(uid).setValue(movie)
         }
     }
 }

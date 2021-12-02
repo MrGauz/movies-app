@@ -23,6 +23,7 @@ class GenreFragment : Fragment() {
     ): View {
         _binding = FragmentGenreBinding.inflate(inflater, container, false)
 
+        // Display genres buttons dynamically from GenresData
         val adapter = GenresViewAdapter(
             requireContext(),
             R.layout.genre_item_view,

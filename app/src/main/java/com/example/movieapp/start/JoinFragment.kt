@@ -33,11 +33,18 @@ class JoinFragment : Fragment() {
         binding.joinButton.setOnClickListener {
             trySessionJoin(binding.sessionIdInput.text.toString().trim())
         }
-        binding.joinBack.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_joinFragment_to_startScreenFragment))
+
+        // Back button
+        binding.joinBack.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_joinFragment_to_startScreenFragment)
+        )
 
         return binding.root
     }
 
+    /**
+     * Tries to load session from Firebase
+     */
     private fun trySessionJoin(inputSessionId: String) {
         if (inputSessionId.isEmpty()) {
             binding.sessionIdInput.error = "Please provide a session ID"
@@ -47,6 +54,9 @@ class JoinFragment : Fragment() {
         Database.joinSession(inputSessionId, this)
     }
 
+    /**
+     * Callback from Database if user joined successfully
+     */
     fun onSuccessfulSessionJoin() {
         // Delete previous matches
         Database.clearMatches()
@@ -59,10 +69,16 @@ class JoinFragment : Fragment() {
         swipeIntent.intentToSwipe()
     }
 
+    /**
+     * Callback from Database if user didn't join the session
+     */
     fun onFailedSessionJoin(error: String = "Could not connect to session :c") {
         binding.sessionIdInput.error = error
     }
 
+    /**
+     * Holds session ID from join link
+     */
     companion object DeepLinkData {
         var sessionId: String? = null
     }

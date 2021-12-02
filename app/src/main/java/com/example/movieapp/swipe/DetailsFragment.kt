@@ -30,24 +30,23 @@ class DetailsFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_infoFragment_to_swipeFragment)
         )
 
-        // TODO: show "loading details" on the screen,
-        //  in case internet connection is slow and details are not loaded instantly
         // Load movie details
         if (arguments?.getLong("apiId") != null) {
             MoviesRepository.getMovieDetails(
                 api_id = arguments?.getLong("apiId")!!,
                 fragment = this
             )
-
         }
 
         return binding.root
     }
 
+    /**
+     * Callback function to show the data loaded by the API
+     */
     fun showLoadedMovieDetails(movieDetails: MovieDetails) {
-        val posterView = binding.detailsImage
-        Glide.with(posterView).load(movieDetails.getPosterUrl(PosterSize.MIDDLE))
-            .into(posterView)
+        Glide.with(binding.detailsImage).load(movieDetails.getPosterUrl(PosterSize.MIDDLE))
+            .into(binding.detailsImage)
         binding.titleText.text = movieDetails.title
         binding.detailsGenresText.text =
             movieDetails.genres.joinToString(separator = " | ") { g -> g.name }

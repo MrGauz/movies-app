@@ -12,6 +12,9 @@ import com.example.movieapp.data.GenresData
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.databinding.GenreItemViewBinding
 
+/**
+ * Adapter for displaying genres buttons
+ */
 internal class GenresViewAdapter internal constructor(
     context: Context,
     resource: Int,

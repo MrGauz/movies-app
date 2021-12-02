@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentStartScreenBinding
 
-class StartScreenFragment : Fragment() {
+class StartFragment : Fragment() {
     private var _binding: FragmentStartScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -20,10 +20,12 @@ class StartScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentStartScreenBinding.inflate(inflater, container, false)
 
+        // Start new session button
         binding.startLobby.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_filterScreenFragment)
         )
 
+        // Join existing session button
         binding.joinLobby.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_startScreenFragment_to_joinFragment)
         )

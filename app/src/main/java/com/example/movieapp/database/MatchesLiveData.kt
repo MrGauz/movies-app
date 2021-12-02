@@ -1,7 +1,6 @@
-package com.example.movieapp.data
+package com.example.movieapp.database
 
 import androidx.lifecycle.MutableLiveData
-import com.example.movieapp.database.Database
 import com.example.movieapp.models.Movie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -10,8 +9,16 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
 class MatchesLiveData : MutableLiveData<MutableList<Movie>>() {
+    /**
+     * A reference to session's "matches" node
+     */
     private var matchesReference: DatabaseReference = Database.getMatchesReference()
 
+    /**
+     * Loads a list of session's matches
+     *
+     * @return MatchesLiveData
+     */
     fun getMatches(): MatchesLiveData {
         matchesReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -33,6 +40,11 @@ class MatchesLiveData : MutableLiveData<MutableList<Movie>>() {
         return this
     }
 
+    /**
+     * Add a new match to Firebase
+     *
+     * @param newMatch A movie that became a match
+     */
     fun addMatch(newMatch: Movie) {
         val uid: String? = matchesReference.push().key
         if (uid != null) {

@@ -1,17 +1,12 @@
-package com.example.movieapp.models
+package com.example.movieapp.ui
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import com.example.movieapp.R
 import com.example.movieapp.database.Database
-import com.example.movieapp.swipe.SwipeFragment
 
 /**
  * Creates the alert,
@@ -45,18 +40,25 @@ class AlertDialogBuilder {
     /**
      * On back press this launches the alert
      */
-    fun createDialogOnBackButtonPress(context: Context?, activity: FragmentActivity?, style: Int, fragmentID : Int) {
+    fun createDialogOnBackButtonPress(
+        context: Context?,
+        activity: FragmentActivity?,
+        style: Int,
+        fragmentID: Int
+    ) {
         val alertDialog = createDialog(context, activity, style)
         activity?.onBackPressedDispatcher?.addCallback(
             activity,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     if (fragmentID == Navigation.findNavController
-                            (activity, activity.supportFragmentManager.primaryNavigationFragment!!.id).
-                        currentDestination?.id){
+                            (
+                            activity,
+                            activity.supportFragmentManager.primaryNavigationFragment!!.id
+                        ).currentDestination?.id
+                    ) {
                         alertDialog.show()
-                    }
-                    else{
+                    } else {
                         isEnabled = false
                         activity.onBackPressed()
                     }

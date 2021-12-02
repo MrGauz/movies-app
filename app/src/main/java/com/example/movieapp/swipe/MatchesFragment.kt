@@ -15,17 +15,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
-import com.example.movieapp.database.MatchesViewModelFactory
+import com.example.movieapp.ui.MatchesViewModelFactory
 import com.example.movieapp.databinding.FragmentMatchesBinding
-import com.example.movieapp.models.AlertDialogBuilder
+import com.example.movieapp.ui.AlertDialogBuilder
 import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.Movie
+import com.example.movieapp.ui.MatchesRecyclerAdapter
 
 class MatchesFragment : Fragment() {
     private var _binding: FragmentMatchesBinding? = null
     private val binding get() = _binding!!
 
-    //private var viewManager = LinearLayoutManager(context)
     private lateinit var matchesViewModel: MatchesViewModel
     private lateinit var matchesRecycler: RecyclerView
     private lateinit var matches: List<Movie>
@@ -37,23 +37,27 @@ class MatchesFragment : Fragment() {
     ): View {
         _binding = FragmentMatchesBinding.inflate(inflater, container, false)
 
+        // Load and display matches
         val factory = MatchesViewModelFactory()
         matchesViewModel = ViewModelProviders.of(this, factory).get(MatchesViewModel::class.java)
-
         matchesRecycler = binding.matchesList
-        matchesRecycler.layoutManager = LinearLayoutManager(this.context) //just getting a completely new layoutManager fixes the bug.
-        //praised be stackoverflow. This has to do with the garbage collector or something somehow.
+        matchesRecycler.layoutManager = LinearLayoutManager(this.context)
         matchesViewModel.getMatches().observe(viewLifecycleOwner, { matches ->
             this.matches = matches
+
+            // Update share text and display "share matches" button
             shareText = "Hey, here's what we decided to watch:\n" +
                     matches.joinToString(separator = "\n") { m -> "  - ${m.title}" }
             if (this.matches.isNotEmpty()) {
                 binding.shareMatchesButton.visibility = View.VISIBLE
             }
+
             matchesRecycler.adapter = MatchesRecyclerAdapter(matches, requireContext())
         })
 
+        // Back button
         binding.backButton.setOnClickListener {
+            // Disallow going back if 3 matches found
             if (matches.size >= 3) {
                 AlertDialogBuilder().createDialog(
                     this.context,
@@ -65,6 +69,8 @@ class MatchesFragment : Fragment() {
                     .navigate(R.id.action_matchesFragment_to_swipeFragment)
             }
         }
+
+        // Dialog for closing the app
         createDialogOnBackButtonPressCustom(
             this.context,
             activity,
@@ -86,6 +92,9 @@ class MatchesFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * If 3 matches were found, suggests to close the app on pressing back button
+     */
     private fun createDialogOnBackButtonPressCustom(
         context: Context?,
         activity: FragmentActivity?,

@@ -12,7 +12,14 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
 object Database {
+    /**
+     * Root reference
+     */
     private var sessionsReference: DatabaseReference
+
+    /**
+     * Reference to current session
+     */
     private lateinit var sessionReference: DatabaseReference
 
     init {
@@ -22,6 +29,11 @@ object Database {
         sessionsReference = database.getReference("sessions")
     }
 
+    /**
+     * Creates a new session in Firebase
+     *
+     * @return New session's UID
+     */
     fun createNewSession(): String? {
         val uid: String? = sessionsReference.push().key
         if (uid != null) {
@@ -36,7 +48,7 @@ object Database {
             sessionsReference.child(uid).setValue(session)
             SessionData.id = uid
             sessionReference = sessionsReference.child(uid)
-            // Add user
+            // Add user to the active users list
             val newUser = sessionReference.child("users").push()
             newUser.setValue(SessionData.deviceId)
             // Save startTimestamp
@@ -45,6 +57,14 @@ object Database {
         return uid
     }
 
+    /**
+     * Join a session and loads data about it if
+     *   - session with passed session ID exists
+     *   - time to join is not over yet
+     *
+     *   @param inputSessionId session ID passed in JoinFragment or per join link
+     *   @param fragment JoinFragment instance that called this method for UI update callback
+     */
     fun joinSession(inputSessionId: String, fragment: JoinFragment) {
         // Check if session with this ID exists
         sessionsReference.child(inputSessionId).addListenerForSingleValueEvent(
@@ -56,15 +76,10 @@ object Database {
                         return
                     }
 
+                    // Try to deserialize to Session object
                     val session = snapshot.getValue<Session>()
                     if (session == null) {
                         fragment.onFailedSessionJoin()
-                        return
-                    }
-
-                    // Check if session is still active
-                    if (!session.isActive) {
-                        fragment.onFailedSessionJoin("This session is over")
                         return
                     }
 
@@ -77,9 +92,11 @@ object Database {
                     // Save session data
                     SessionData.id = inputSessionId
                     sessionReference = sessionsReference.child(inputSessionId)
-                    // Add user
+
+                    // Add user to active users list
                     val newUser = sessionReference.child("users").push()
                     newUser.setValue(SessionData.deviceId)
+
                     // UI callback to continue
                     fragment.onSuccessfulSessionJoin()
                 }
@@ -90,6 +107,11 @@ object Database {
             })
     }
 
+    /**
+     * Saves passed list of movies as a new batch in Firebase
+     *
+     * @param batch A new batch of movies
+     */
     fun saveNewMoviesBatch(batch: List<Movie>) {
         val batchUid = sessionReference.child("movies").push().key
         if (batchUid != null) {
@@ -109,21 +131,18 @@ object Database {
         }
     }
 
+    /**
+     * Clear the "matches" node in Firebase
+     */
     fun clearMatches() {
         sessionReference.child("matches").setValue(null)
     }
 
+    /**
+     * Load session data and add onDataChange listeners to keep it synced
+     */
     fun loadSessionData() {
-        // Load isActive
-        sessionReference.child("active").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                SessionData.isActive = snapshot.getValue<Boolean>()
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
-
-        // Load start timestamp
+        // Load start timestamp once (only guests)
         if (!SessionData.isHost) {
             sessionReference.child("startTimestamp")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -137,7 +156,7 @@ object Database {
                 })
         }
 
-        // Load filter (only guests)
+        // Load movies filter once (only guests)
         if (!SessionData.isHost) {
             sessionReference.child("filter")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -151,7 +170,7 @@ object Database {
                 })
         }
 
-        // Load options (only guests)
+        // Load session options once (only guests)
         if (!SessionData.isHost) {
             sessionReference.child("options")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -165,7 +184,7 @@ object Database {
                 })
         }
 
-        // Load batches uids
+        // Load batches' UIDs list and keep it synced
         sessionReference.child("batchUids").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val tmpBatchesUidsList = mutableListOf<String>()
@@ -181,7 +200,7 @@ object Database {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Load active users
+        // Load active users' list and keep it synced
         sessionReference.child("users").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val tmpUsersList = mutableListOf<String>()
@@ -198,14 +217,24 @@ object Database {
         })
     }
 
+    /**
+     * Exit the current session
+     */
     fun leaveSession() {
+        // Remove yourself from active users list
         if (SessionData.users != null) {
             sessionReference.child("users")
                 .setValue(SessionData.users!!.filter { u -> u != SessionData.deviceId })
         }
     }
 
+    /**
+     * Return a reference to session's "movies" node
+     */
     fun getMoviesReference() = sessionReference.child("movies")
 
+    /**
+     * Return a reference to session's "matches" node
+     */
     fun getMatchesReference() = sessionReference.child("matches")
 }
