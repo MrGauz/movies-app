@@ -15,7 +15,7 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_start_lobby"
         android:fontFamily="@font/spacegrotesk"
-        android:text="start Swiping"
+        android:text="Start swiping"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/qrView"
@@ -27,7 +27,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_share_link"
-        android:drawableRight="@android:drawable/ic_menu_share"
+        android:drawableEnd="@android:drawable/ic_menu_share"
         android:fontFamily="@font/spacegrotesk"
         android:paddingEnd="10dp"
         android:text="Share Link"
@@ -49,11 +49,11 @@
         android:id="@+id/sessionId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/spacegrotesk"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="17sp"
-        android:textAlignment="center"
-        android:fontFamily="@font/spacegrotesk"
         app:layout_constraintBottom_toBottomOf="@+id/copySessionId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.38"
@@ -83,7 +83,7 @@
         android:text="Lobby created!"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="49dp"
+        android:textSize="49sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +95,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/back_button"
-        android:drawableRight="@drawable/back_foreground"
+        android:drawableEnd="@drawable/back_foreground"
         android:paddingTop="15dp"
         android:paddingEnd="-25dp"
         android:text=""
@@ -103,6 +103,4 @@
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:background="@drawable/back_button"
-        android:drawableRight="@drawable/back_foreground"
+        android:drawableEnd="@drawable/back_foreground"
         android:paddingTop="15dp"
         android:paddingEnd="-25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Title"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +78,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/spacegrotesk_light"
-                android:text="PlotDescription"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -91,9 +89,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spacegrotesk_light"
-        android:text="TMDb rating"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/trailerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.735"
@@ -117,9 +114,9 @@
         android:layout_height="40dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_imdb"
-        android:drawableRight="@drawable/imdb_logo"
-        android:paddingEnd="23dp"
+        android:drawableEnd="@drawable/imdb_logo"
         android:paddingStart="30dp"
+        android:paddingEnd="23dp"
         android:text="IMDb"
         android:textColor="#830505"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,16 +129,15 @@
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/youtube_button_background"
+        android:drawableEnd="@drawable/youtube_logo"
         android:fontFamily="@font/spacegrotesk_light"
-        android:drawableRight="@drawable/youtube_logo"
-        android:paddingEnd="30dp"
         android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:text="Trailer"
         android:textColor="#F1ECEC"
         app:layout_constraintBottom_toTopOf="@+id/imdbButton"
         app:layout_constraintEnd_toEndOf="@+id/imdbButton"
         app:layout_constraintStart_toStartOf="@+id/imdbButton" />
-
 
     <TextView
         android:id="@+id/detailsGenresText"
@@ -149,7 +145,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/spacegrotesk_light"
-        android:text="genres"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/titleText"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
@@ -159,7 +154,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spacegrotesk_light"
-        android:text="directed by"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/detailsGenresText"
