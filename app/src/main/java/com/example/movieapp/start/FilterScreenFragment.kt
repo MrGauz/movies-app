@@ -14,6 +14,7 @@ import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
 import com.example.movieapp.databinding.FragmentFilterScreenBinding
 import com.example.movieapp.models.*
+import java.util.*
 import java.util.Collections.max
 import java.util.Collections.min
 
@@ -27,7 +28,8 @@ class FilterScreenFragment : Fragment() {
 
     ): View {
         _binding = FragmentFilterScreenBinding.inflate(inflater, container, false)
-
+        binding.sliderRangeYears.valueFrom = 1900F
+        binding.sliderRangeYears.valueTo = Calendar.getInstance().get(Calendar.YEAR).toFloat()
         SessionData.isHost = true
 
         // Prepare languages spinner

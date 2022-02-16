@@ -81,8 +81,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:stepSize="1"
-                    android:valueFrom="1900"
-                    android:valueTo="2021"
                     app:thumbColor="@color/white"
                     app:thumbStrokeColor="#FF542B"
                     app:thumbStrokeWidth="2dp"
