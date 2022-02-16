@@ -2,6 +2,9 @@ package com.example.movieapp.models
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Used to deserialize TMDB's API responses
+ */
 class ApiResponses()
 
 data class MoviesListResponse(

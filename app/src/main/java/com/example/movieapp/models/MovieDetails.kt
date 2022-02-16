@@ -1,5 +1,8 @@
 package com.example.movieapp.models
 
+/**
+ * Movie details object
+ */
 data class MovieDetails(val response: MovieDetailsResponse) {
     val id: Long = response.id
     val imdbId: String = response.imdb_id
@@ -16,11 +19,25 @@ data class MovieDetails(val response: MovieDetailsResponse) {
     }?.key
     val crew: List<Person> = response.credits.crew
 
+    /**
+     * Returns Youtube trailer link
+     */
     fun getTrailerUrl() = "https://www.youtube.com/watch?v=$trailerKey"
 
+    /**
+     * Returns full poster URL
+     *
+     * @param size Desired poster size
+     */
     fun getPosterUrl(size: PosterSize) = "https://image.tmdb.org/t/p/${size.url_size}$posterPath"
 
+    /**
+     * Returns a movie link to IMDB
+     */
     fun getImdbLink() = "https://www.imdb.com/title/$imdbId"
 
+    /**
+     * Returns director's name
+     */
     fun getDirectorName() = crew.find { c -> c.job == "Director" }?.name ?: ""
 }

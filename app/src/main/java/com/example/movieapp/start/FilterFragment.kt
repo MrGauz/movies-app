@@ -18,7 +18,7 @@ import java.util.*
 import java.util.Collections.max
 import java.util.Collections.min
 
-class FilterScreenFragment : Fragment() {
+class FilterFragment : Fragment() {
     private var _binding: FragmentFilterScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -69,12 +69,16 @@ class FilterScreenFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Saves UI values of filter and options to SessionData
+     */
     private fun updateConfigValues() {
-        val releaseYearInterval = ReleaseYearInterval(
+        // Filter
+        val releaseYearInterval = Interval(
             min(binding.sliderRangeYears.values).toInt(),
             max(binding.sliderRangeYears.values).toInt()
         )
-        val durationInterval = DurationInterval(
+        val durationInterval = Interval(
             min(binding.sliderRangeDuration.values).toInt(),
             max(binding.sliderRangeDuration.values).toInt()
         )
@@ -86,10 +90,14 @@ class FilterScreenFragment : Fragment() {
             binding.languageSpinner.selectedItem as String
         )
 
+        // Options
         SessionData.options.matchPercentage = binding.sliderVotesPercentage.values[0].toInt()
         SessionData.options.joinTimer = binding.joinTimerSlider.values[0].toInt()
     }
 
+    /**
+     * Loads SessionData filter and options values onto UI
+     */
     private fun applyConfigValues() {
         // Filter
         binding.sliderRangeYears.setValues(

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/start_background"
-    tools:context=".start.StartScreenFragment">
+    tools:context=".start.StartFragment">
 
     <TextView
         android:id="@+id/sloganText"
@@ -17,7 +17,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="Find\nyour\nperfect\nmovie"
         android:textColor="@color/white"
-        android:textSize="70dp" />
+        android:textSize="70sp" />
 
     <RelativeLayout
         android:id="@+id/buttonsLayout"
@@ -46,8 +46,7 @@
             android:fontFamily="@font/spacegrotesk_regular"
             android:text="OR"
             android:textColor="@color/white"
-            android:textSize="16dp" />
-
+            android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/joinLobby"
@@ -76,6 +75,4 @@
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="-17dp"
         android:src="@drawable/logo_text" />
-
-
 </RelativeLayout>

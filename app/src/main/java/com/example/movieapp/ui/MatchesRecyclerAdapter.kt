@@ -1,4 +1,4 @@
-package com.example.movieapp.swipe
+package com.example.movieapp.ui
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,6 +15,9 @@ import com.example.movieapp.data.GenresData
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.PosterSize
 
+/**
+ * Adapter for displaying matches cards
+ */
 class MatchesRecyclerAdapter(private val matches: List<Movie>, private val context: Context) :
     RecyclerView.Adapter<MatchesRecyclerAdapter.ViewHolder>() {
 

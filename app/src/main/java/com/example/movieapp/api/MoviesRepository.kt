@@ -23,6 +23,10 @@ object MoviesRepository {
         api = retrofit.create(Api::class.java)
     }
 
+    /**
+     * Loads a list of genres from the TMDB API
+     * and saves loaded data to GenresData
+     */
     fun getGenres() {
         api.getGenres()
             .enqueue(object : Callback<GenresListResponse> {
@@ -43,6 +47,13 @@ object MoviesRepository {
             })
     }
 
+    /**
+     * A public wrapper method that translates Filter
+     * to getMovies() attributes
+     *
+     * @param filter Filter to query movies
+     * @param page Page number of API response
+     */
     fun getMovies(filter: Filter, page: Int = 1) {
         getMovies(
             genre_ids = filter.genres ?: emptyList(),
@@ -57,6 +68,19 @@ object MoviesRepository {
         )
     }
 
+    /**
+     * Loads movies from TMDB API by defined parameters
+     *
+     * @param genre_ids A list of genres' API IDs as defined in GenresData
+     * @param language_code Original movie's language in ISO-638 format as defined in LanguagesData
+     * @param min_release_year Minimal release year
+     * @param max_release_year Maximal release year
+     * @param min_rating Minimal TMDB rating
+     * @param max_rating Maximal TMDB rating
+     * @param min_duration Minimal movie duration in minutes
+     * @param max_duration Maximal movie duration in minutes
+     * @param page Page number of API response
+     */
     private fun getMovies(
         genre_ids: List<Long> = emptyList(),
         language_code: String?,
@@ -88,6 +112,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
+                            // Saves loaded movies batch to firebase
                             Database.saveNewMoviesBatch(responseBody.movies)
                         }
                     }
@@ -97,6 +122,12 @@ object MoviesRepository {
             })
     }
 
+    /**
+     * Searches for a person in TMDB API
+     *
+     * @param query Person's name or a part of it
+     * @param page Page number of API response
+     */
     fun searchPerson(query: String, page: Int = 1) {
         api.searchPerson(page = page, query = query)
             .enqueue(object : Callback<PeopleListResponse> {
@@ -117,6 +148,15 @@ object MoviesRepository {
             })
     }
 
+    /**
+     * Loads all details about a movie,
+     * including videos associated with it and it's crew and actors
+     * Loaded data is then shown on the DetailsFragment
+     *
+     * @param api_id TMDB's API ID of the movie
+     * @param append_to_results Extra values you want to load
+     * @param fragment DetailsFragment instance, on which the data will be shown
+     */
     fun getMovieDetails(
         api_id: Long,
         append_to_results: List<String> = listOf("videos", "credits"),
@@ -135,6 +175,7 @@ object MoviesRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
+                            // Response in converted to MovieDetails and loaded onto the fragment
                             val movieDetails = MovieDetails(responseBody)
                             fragment.showLoadedMovieDetails(movieDetails)
                         }

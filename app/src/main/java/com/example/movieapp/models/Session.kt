@@ -1,5 +1,8 @@
 package com.example.movieapp.models
 
+/**
+ * Session object
+ */
 data class Session(
     var id: String = "",
     var startTimestamp: Long = 0,

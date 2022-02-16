@@ -1,6 +1,5 @@
 package com.example.movieapp.start
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,14 +14,9 @@ import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import java.lang.Exception
 import android.content.*
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.activity.OnBackPressedCallback
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.data.SessionData
-import com.example.movieapp.models.AlertDialogBuilder
+import com.example.movieapp.ui.AlertDialogBuilder
 
 class ShareFragment : Fragment() {
     private var _binding: FragmentShareBinding? = null

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/join_background"
-    tools:context=".start.FilterScreenFragment">
+    tools:context=".start.FilterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -239,7 +239,6 @@
                     android:background="@drawable/button_join_lobby"
                     android:text="submit"
                     android:textColor="@color/white" />
-
 
             </LinearLayout>
         </ScrollView>

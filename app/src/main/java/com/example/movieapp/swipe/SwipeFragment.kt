@@ -14,12 +14,13 @@ import com.daprlabs.cardstack.SwipeDeck.SwipeEventCallback
 import com.example.movieapp.api.MoviesRepository
 import com.example.movieapp.data.SessionData
 import com.example.movieapp.database.Database
-import com.example.movieapp.database.MatchesViewModelFactory
-import com.example.movieapp.database.MoviesBatchViewModelFactory
-import com.example.movieapp.models.AlertDialogBuilder
+import com.example.movieapp.ui.MatchesViewModelFactory
+import com.example.movieapp.ui.MoviesBatchViewModelFactory
+import com.example.movieapp.ui.AlertDialogBuilder
 import com.example.movieapp.models.MatchesViewModel
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.MoviesBatchViewModel
+import com.example.movieapp.ui.DeckAdapter
 import java.util.ArrayList
 
 class SwipeFragment : Fragment() {
@@ -64,6 +65,7 @@ class SwipeFragment : Fragment() {
             newMatch(matches)
         })
 
+        // Handle cards actions
         binding.swipeDeck.setEventCallback(object : SwipeEventCallback {
             override fun cardSwipedLeft(position: Int) {
                 moviesBatchViewModel.setSwiped(shownMovies[position])
@@ -76,7 +78,7 @@ class SwipeFragment : Fragment() {
                 val minMatchCount =
                     SessionData.users!!.size * SessionData.options.matchPercentage / 100
                 if (acceptedCount >= minMatchCount) {
-                    moviesBatchViewModel.setMatch(shownMovies[position])
+                    matchesViewModel.addMatch(shownMovies[position])
                 }
 
                 moviesBatchViewModel.setSwiped(shownMovies[position], true)
@@ -109,7 +111,8 @@ class SwipeFragment : Fragment() {
         binding.matchesButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_swipeFragment_to_matchesFragment)
         )
-        //create alert on back press
+
+        // Create alert on pressing back button
         AlertDialogBuilder().createDialogOnBackButtonPress(
             this.context,
             activity,
@@ -119,8 +122,10 @@ class SwipeFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Defines behaviour if a new match is found
+     */
     private fun newMatch(matches: MutableList<Movie>) {
         binding.matchesButton.text = matches.size.toString()
-        // TODO: show animation
     }
 }

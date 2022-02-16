@@ -1,4 +1,4 @@
-package com.example.movieapp.swipe
+package com.example.movieapp.ui
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -16,6 +16,9 @@ import com.example.movieapp.data.GenresData
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.PosterSize
 
+/**
+ * Adapter for swiping movie cards
+ */
 class DeckAdapter(
     private val movies: ArrayList<Movie>, private val context: Context
 ) : BaseAdapter() {

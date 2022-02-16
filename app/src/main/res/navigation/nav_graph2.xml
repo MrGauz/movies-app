@@ -8,7 +8,7 @@
         android:id="@+id/swipeFragment"
         android:name="com.example.movieapp.swipe.SwipeFragment"
         android:label="fragment_swipe"
-        tools:layout="@layout/fragment_swipe" >
+        tools:layout="@layout/fragment_swipe">
         <action
             android:id="@+id/action_swipeFragment_to_infoFragment"
             app:destination="@id/infoFragment"
@@ -24,7 +24,7 @@
         android:id="@+id/infoFragment"
         android:name="com.example.movieapp.swipe.DetailsFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_infoFragment_to_swipeFragment"
             app:destination="@id/swipeFragment"
@@ -40,7 +40,7 @@
         android:id="@+id/matchesFragment"
         android:name="com.example.movieapp.swipe.MatchesFragment"
         android:label="fragment_matches"
-        tools:layout="@layout/fragment_matches" >
+        tools:layout="@layout/fragment_matches">
         <action
             android:id="@+id/action_matchesFragment_to_infoFragment"
             app:destination="@id/infoFragment"

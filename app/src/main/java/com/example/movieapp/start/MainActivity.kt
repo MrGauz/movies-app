@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set device ID
-        SessionData.deviceId =
-            Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        SessionData.deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
         // Load movie genres
         MoviesRepository.getGenres()

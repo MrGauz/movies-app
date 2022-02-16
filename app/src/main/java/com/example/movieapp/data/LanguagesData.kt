@@ -4,9 +4,18 @@ import com.example.movieapp.models.Language
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Contains data about languages' names and their ISO-638 codes
+ */
 object LanguagesData {
+    /**
+     * Used for deserializing JSON to List<Language>
+     */
     private val type = object : TypeToken<List<Language>>() {}.type
 
+    /**
+     * JSON with raw data
+     */
     private val jsonLanguages = """
         [
           { "code": "en", "name": "English" },
@@ -193,14 +202,30 @@ object LanguagesData {
         ]
     """.trimIndent()
 
+    /**
+     * A list with Language objects
+     */
     private val languages: List<Language> = Gson().fromJson(
         jsonLanguages,
         type
     )
 
+    /**
+     * Searches by language's name
+     *
+     * @return Language object
+     */
     fun findByName(name: String) = languages.find { c -> c.name == name }
 
+    /**
+     * Searches by language's API ID
+     *
+     * @return Language object
+     */
     fun findByCode(code: String) = languages.find { c -> c.code == code }
 
+    /**
+     * Composes a list of languages' names
+     */
     fun getNamesList() = languages.map { g -> g.name }
 }
