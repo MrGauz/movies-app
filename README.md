@@ -2,7 +2,7 @@
 
 This is the final project of TUM's Kotlin practical course. Essentially, it was a 10 day hackathon.
 
-Unfortunately, the website is down, but you can have a look at [this detailed report](./docs/Kotlin Practical Course Report.pdf) to see how the app used to look.
+Unfortunately, the website is down, but you can have a look at [this detailed report](https://github.com/MrGauz/movies-app/blob/main/docs/Kotlin%20Practical%20Course%20Report.pdf) to see how the app used to look.
 
 ## ⚙️ Setup
 
