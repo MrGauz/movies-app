@@ -1,6 +1,10 @@
-# Swovie App
+# 🍿 Swovie App
 
-## Setup
+This is the final project of TUM's Kotlin practical course. Essentially, it was a 10 day hackathon.
+
+Unfortunately, the website is down, but you can have a look at [this detailed report](./docs/Kotlin Practical Course Report.pdf) to see how the app used to look.
+
+## ⚙️ Setup
 
 - Connect Firebase Realtime Database
     - Drop ``google-services.json`` into the ``app`` folder
@@ -9,7 +13,7 @@
       to ``tmdbapikey.properties``
     - Put the API key within double quotes
 
-## Structure
+## 🧩 Structure
 
 - api: TMDB API logic
 - data: Firebase logic
